@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barrier Analysis Research & Evidence</title>
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --secondary: #34a853;
+            --accent: #fbbc05;
+            --dark: #202124;
+            --light: #f8f9fa;
+            --gray: #70757a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+            justify-content: center;
+        }
+        
+        .filter-button {
+            background-color: white;
+            border: 1px solid var(--gray);
+            color: var(--gray);
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .filter-button:hover {
+            background-color: #f1f3f4;
+        }
+        
+        .filter-button.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .publications-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .publication-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .publication-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .publication-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .publication-tag {
+            background-color: var(--light);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gray);
+        }
+        
+        .publication-tag.health {
+            background-color: #d1e7dd;
+            color: #0a3622;
+        }
+        
+        .publication-tag.nutrition {
+            background-color: #cfe2ff;
+            color: #084298;
+        }
+        
+        .publication-tag.agriculture {
+            background-color: #d8f3dc;
+            color: #1b4332;
+        }
+        
+        .publication-tag.wash {
+            background-color: #e2ecf9;
+            color: #254b7a;
+        }
+        
+        .publication-tag.year {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+        
+        .publication-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark);
+            line-height: 1.4;
+        }
+        
+        .publication-authors {
+            font-style: italic;
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        
+        .publication-abstract {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        .publication-link {
+            display: inline-block;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .publication-link:hover {
+            text-decoration: underline;
+        }
+        
+        .case-studies-section {
+            background-color: white;
+        }
+        
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .case-study-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .case-study-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .case-study-image {
+            height: 200px;
+            background-color: var(--gray);
+            position: relative;
+        }
+        
+        .case-study-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7));
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+        
+        .case-study-location {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .case-study-content {
+            padding: 20px;
+        }
+        
+        .case-study-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .case-study-description {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .metrics-section {
+            background-color: var(--light);
+        }
+        
+        .metrics-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .metric-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .metric-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .metric-label {
+            font-size: 16px;
+            color: var(--gray);
+        }
+        
+        .cta-section {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #f1f3f4;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #b0b0b0;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-header h1 {
+                font-size: 32px;
+            }
+            
+            .case-studies-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">BarrierAnalysis.org</a>
+                <ul class="nav-links">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="training.html">Training</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="tools.html">Tools</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="page-header">
+        <div class="container">
+            <h1>Research & Evidence</h1>
+            <p>Exploring the published literature, case studies, and evidence supporting Barrier Analysis</p>
+        </div>
+    </div>
+    
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Published Literature</h2>
+                <p>Peer-reviewed articles and publications documenting the effectiveness of Barrier Analysis</p>
+            </div>
+            
+            <div class="filter-bar">
+                <button class="filter-button active">All</button>
+                <button class="filter-button">Health</button>
+                <button class="filter-button">Nutrition</button>
+                <button class="filter-button">Agriculture</button>
+                <button class="filter-button">WASH</button>
+            </div>
+            
+            <div class="publications-list">
+                <div class="publication-card">
+                    <div class="publication-meta">
+                        <span class="publication-tag nutrition">Nutrition</span>
+                        <span class="publication-tag year">2019</span>
+                    </div>
+                    <h3 class="publication-title">Barrier analysis and the design of maternal and child nutrition interventions in Indonesia</h3>
+                    <p class="publication-authors">Lamstein, S., Stillman, T., Koniz-Booher, P., Aakesson, A., Collaiezzi, B., Williams, T., et al.</p>
+                    <p class="publication-abstract">This study applied Barrier Analysis to understand key determinants of optimal infant and young child feeding practices in Indonesia. Findings were used to design targeted interventions that led to significant improvements in exclusive breastfeeding rates and complementary feeding practices.</p>
+                    <a href="#" class="publication-link">View Publication →</a>
+                </div>
+                
+                <div class="publication-card">
+                    <div class="publication-meta">
+                        <span class="publication-tag health">Health</span>
+                        <span class="publication-tag year">2017</span>
+                    </div>
+                    <h3 class="publication-title">Understanding barriers to uptake of mosquito nets in rural Mozambique using Barrier Analysis</h3>
+                    <p class="publication-authors">Davis, T.P., Wetzel, C., Hernandez Avilan, E., Lopes, C., Mupotola, M., & Kacile, S.</p>
+                    <p class="publication-abstract">This study used Barrier Analysis to identify key determinants of mosquito net use in rural Mozambique. The research revealed that self-efficacy, social norms, and perceived risk were the most significant determinants. Interventions developed based on these findings led to a 47% increase in consistent mosquito net use.</p>
+                    <a href="#" class="publication-link">View Publication →</a>
+                </div>
+                
+                <div class="publication-card">
+                    <div class="publication-meta">
+                        <span class="publication-tag agriculture">Agriculture</span>
+                        <span class="publication-tag year">2016</span>
+                    </div>
+                    <h3 class="publication-title">Applying the Barrier Analysis methodology to increase conservation agriculture adoption in Burkina Faso</h3>
+                    <p class="publication-authors">McCarthy, J., Davis, T.P., & Singletary, L.</p>
+                    <p class="publication-abstract">This study applied Barrier Analysis to identify factors influencing the adoption of conservation agriculture practices among smallholder farmers in Burkina Faso. The research found that perceived self-efficacy, access to inputs, and perceived positive consequences were key determinants. Targeted interventions led to a 38% increase in adoption rates over the project period.</p>
+                    <a href="#" class="publication-link">View Publication →</a>
+                </div>
+                
+                <div class="publication-card">
+                    <div class="publication-meta">
+                        <span class="publication-tag wash">WASH</span>
+                        <span class="publication-tag year">2014</span>
+                    </div>
+                    <h3 class="publication-title">Determinants of handwashing practices in Kenya: The role of media exposure, poverty and infrastructure</h3>
+                    <p class="publication-authors">Schmidt, W.P., Aunger, R., Coombes, Y., Maina, P.M., Matiko, C.N., Biran, A., & Curtis, V.</p>
+                    <p class="publication-abstract">This study used Barrier Analysis alongside other methodologies to explore determinants of handwashing with soap in Kenya. The research identified availability of water, soap affordability, and perceived social norms as key determinants. Findings informed the development of context-specific behavior change communication strategies.</p>
+                    <a href="#" class="publication-link">View Publication →</a>
+                </div>
+                
+                <div class="publication-card">
+                    <div class="publication-meta">
+                        <span class="publication-tag nutrition">Nutrition</span>
+                        <span class="publication-tag year">2013</span>
+                    </div>
+                    <h3 class="publication-title">Designing effective nutrition-sensitive agriculture activities: Using Barrier Analysis in Guatemala</h3>
+                    <p class="publication-authors">Delaney, M., Davis, T.P., & Swindale, A.</p>
+                    <p class="publication-abstract">This study describes the application of Barrier Analysis to design nutrition-sensitive agriculture interventions in Guatemala. The research identified key determinants affecting the adoption of home gardening, poultry raising, and consumption of nutrient-rich foods. Interventions based on these findings led to significant improvements in dietary diversity and child nutritional status.</p>
+                    <a href="#" class="publication-link">View Publication →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="case-studies-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Case Studies</h2>
+                <p>Real-world examples of Barrier Analysis implementation and impact</p>
+            </div>
+            
+            <div class="case-studies-grid">
+                <div class="case-study-card">
+                    <div class="case-study-image" style="background-color: #4285f4;">
+                        <div class="case-study-overlay">
+                            <div class="case-study-location">Ethiopia</div>
+                        </div>
+                    </div>
+                    <div class="case-study-content">
+                        <h3 class="case-study-title">Improving Maternal Nutrition Practices</h3>
+                        <p class="case-study-description">Barrier Analysis was used to identify key determinants affecting maternal dietary practices during pregnancy in rural Ethiopia. The findings led to community-based interventions that increased consumption of iron-rich foods by 65% among pregnant women.</p>
+                        <a href="#" class="publication-link">Read Case Study →</a>
+                    </div>
+                </div>
+                
+                <div class="case-study-card">
+                    <div class="case-study-image" style="background-color: #34a853;">
+                        <div class="case-study-overlay">
+                            <div class="case-study-location">Haiti</div>
+                        </div>
+                    </div>
+                    <div class="case-study-content">
+                        <h3 class="case-study-title">Cholera Prevention Through Handwashing</h3>
+                        <p class="case-study-description">Following a cholera outbreak, Barrier Analysis identified key barriers to regular handwashing with soap. Targeted interventions addressing these barriers led to a 78% increase in proper handwashing practices and contributed to reduced cholera transmission.</p>
+                        <a href="#" class="publication-link">Read Case Study →</a>
+                    </div>
+                </div>
+                
+                <div class="case-study-card">
+                    <div class="case-study-image" style="background-color: #fbbc05;">
+                        <div class="case-study-overlay">
+                            <div class="case-study-location">Bangladesh</div>
+                        </div>
+                    </div>
+                    <div class="case-study-content">
+                        <h3 class="case-study-title">Climate-Smart Agriculture Adoption</h3>
+                        <p class="case-study-description">Barrier Analysis helped identify factors affecting adoption of climate-smart agricultural techniques among smallholder farmers. Interventions based on findings led to a 42% increase in adoption rates and improved resilience to climate-related challenges.</p>
+                        <a href="#" class="publication-link">Read Case Study →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="metrics-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Impact Metrics</h2>
+                <p>Key statistics highlighting the reach and impact of Barrier Analysis</p>
+            </div>
+            
+            <div class="metrics-container">
+                <div class="metric-card">
+                    <div class="metric-number">50+</div>
+                    <div class="metric-label">Countries where Barrier Analysis has been implemented</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-number">1,000+</div>
+                    <div class="metric-label">Behavior change projects informed by Barrier Analysis</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-number">30+</div>
+                    <div class="metric-label">International organizations using Barrier Analysis</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-number">35%</div>
+                    <div class="metric-label">Average increase in positive behavior adoption</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <div class="container">
+            <h2>Apply Research-based Approaches</h2>
+            <p>Use the evidence-based insights from Barrier Analysis research to strengthen your behavior change programming.</p>
+            <a href="tools.html" class="btn">Access Implementation Tools</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="about.html">What is Barrier Analysis</a></li>
+                        <li><a href="about.html#history">History</a></li>
+                        <li><a href="about.html#determinants">The 12 Determinants</a></li>
+                        <li><a href="about.html#process">Process</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="training.html">Training Manuals</a></li>
+                        <li><a href="tools.html">Implementation Tools</a></li>
+                        <li><a href="research.html">Research & Evidence</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="contact.html#training">Request Training</a></li>
+                        <li><a href="contact.html#consulting">Consulting Services</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 BarrierAnalysis.org. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple filter functionality (just visual for demo)
+        document.querySelectorAll('.filter-button').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.filter-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                button.classList.add('active');
+                
+                // In a real implementation, this would filter the publications
+                // For now, it's just a visual demonstration
+            });
+        });
+    </script>
+</body>
+</html>

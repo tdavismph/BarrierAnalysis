@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barrier Analysis - Frequently Asked Questions</title>
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --secondary: #34a853;
+            --accent: #fbbc05;
+            --dark: #202124;
+            --light: #f8f9fa;
+            --gray: #70757a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .faq-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+            justify-content: center;
+        }
+        
+        .category-button {
+            background-color: white;
+            border: 1px solid var(--gray);
+            color: var(--gray);
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .category-button:hover {
+            background-color: #f1f3f4;
+        }
+        
+        .category-button.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .accordion {
+            margin-bottom: 30px;
+        }
+        
+        .accordion-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .accordion-header {
+            padding: 20px;
+            cursor: pointer;
+            position: relative;
+            font-weight: 600;
+            color: var(--dark);
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .accordion-header:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .accordion-header::after {
+            content: '+';
+            font-size: 20px;
+            color: var(--primary);
+        }
+        
+        .accordion-header.active::after {
+            content: '-';
+        }
+        
+        .accordion-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+        
+        .accordion-content.active {
+            padding: 0 20px 20px;
+            max-height: 1000px;
+        }
+        
+        .accordion-content p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        
+        .accordion-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .accordion-content ul {
+            color: var(--gray);
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+        
+        .search-container {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .search-box {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            padding-right: 50px;
+            border-radius: 30px;
+            border: 2px solid #ddd;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .search-input:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            font-size: 20px;
+        }
+        
+        .cta-section {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #f1f3f4;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #b0b0b0;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-header h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">BarrierAnalysis.org</a>
+                <ul class="nav-links">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="training.html">Training</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="tools.html">Tools</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="page-header">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about Barrier Analysis methodology, implementation, and applications</p>
+        </div>
+    </div>
+    
+    <section>
+        <div class="container">
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search for questions...">
+                    <span class="search-icon">🔍</span>
+                </div>
+            </div>
+            
+            <div class="faq-categories">
+                <button class="category-button active">All</button>
+                <button class="category-button">Methodology</button>
+                <button class="category-button">Implementation</button>
+                <button class="category-button">Analysis</button>
+                <button class="category-button">Application</button>
+                <button class="category-button">Training</button>
+            </div>
+            
+            <div class="faq-container">
+                <div class="section-title">
+                    <h2>Methodology Questions</h2>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">What is Barrier Analysis and how does it differ from other formative research methods?</div>
+                        <div class="accordion-content">
+                            <p>Barrier Analysis is a rapid assessment tool used to identify behavioral determinants that prevent priority groups from adopting positive behaviors. It differs from other formative research methods in several key ways:</p>
+                            <ul>
+                                <li>It specifically compares Doers (those who practice the behavior) with Non-Doers (those who don't) to identify statistically significant differences</li>
+                                <li>It examines 12 specific behavioral determinants based on well-established behavior change theories</li>
+                                <li>It can be completed relatively quickly (typically 10-14 days) compared to more extensive ethnographic approaches</li>
+                                <li>It provides quantitative data on which determinants are most influential, helping prioritize program strategies</li>
+                                <li>It directly informs the design of behavior change activities through the "bridges to activities" approach</li>
+                            </ul>
+                            <p>Unlike some other methods that primarily explore what people know or believe, Barrier Analysis focuses specifically on identifying the barriers and enablers that influence actual behavior adoption.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">What are the 12 determinants explored in Barrier Analysis?</div>
+                        <div class="accordion-content">
+                            <p>Barrier Analysis explores 12 potential determinants that can influence behavior adoption:</p>
+                            <ol>
+                                <li><strong>Perceived Self-Efficacy:</strong> An individual's belief in their own ability to perform a particular behavior</li>
+                                <li><strong>Perceived Social Norms:</strong> The perception that people important to an individual think they should do the behavior</li>
+                                <li><strong>Perceived Positive Consequences:</strong> The positive things a person thinks will happen as a result of performing a behavior</li>
+                                <li><strong>Perceived Negative Consequences:</strong> The negative things a person thinks will happen as a result of performing a behavior</li>
+                                <li><strong>Access:</strong> How available the necessary products or services are for performing a behavior</li>
+                                <li><strong>Cues for Action / Reminders:</strong> The presence of reminders that help a person remember to do a particular behavior</li>
+                                <li><strong>Perceived Susceptibility / Risk:</strong> A person's perception of how vulnerable they are to the problem that the behavior addresses</li>
+                                <li><strong>Perceived Severity:</strong> The belief that the problem that the behavior addresses is serious</li>
+                                <li><strong>Perceived Divine Will:</strong> The belief that it is God's will for the person to do the behavior or have the problem</li>
+                                <li><strong>Policy:</strong> The presence of laws or regulations that affect behaviors and access to products and services</li>
+                                <li><strong>Culture:</strong> The set of history, customs, lifestyles, values, and practices within a self-defined group</li>
+                                <li><strong>Universal Motivators:</strong> The drivers that motivate most people irrespective of other factors (e.g., love, security, comfort)</li>
+                            </ol>
+                            <p>These determinants are drawn from multiple behavior change theories, including the Health Belief Model, Theory of Planned Behavior, and others.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">What theoretical frameworks inform Barrier Analysis?</div>
+                        <div class="accordion-content">
+                            <p>Barrier Analysis draws from several well-established behavior change theories and frameworks, including:</p>
+                            <ul>
+                                <li><strong>Health Belief Model:</strong> Contributes determinants such as perceived susceptibility, perceived severity, perceived benefits, and perceived barriers</li>
+                                <li><strong>Theory of Planned Behavior:</strong> Contributes determinants related to attitudes, subjective norms, and perceived behavioral control</li>
+                                <li><strong>Social Cognitive Theory:</strong> Contributes concepts related to self-efficacy and outcome expectations</li>
+                                <li><strong>Diffusion of Innovations:</strong> Informs thinking on how new behaviors spread through communities</li>
+                            </ul>
+                            <p>The strength of Barrier Analysis is that it doesn't rely on a single theoretical model but rather synthesizes key determinants from multiple frameworks to provide a more comprehensive assessment of what influences behavior.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-title">
+                    <h2>Implementation Questions</h2>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">How many people need to be interviewed for a Barrier Analysis study?</div>
+                        <div class="accordion-content">
+                            <p>A standard Barrier Analysis study typically involves interviewing 45 Doers (people who already practice the behavior) and 45 Non-Doers (people who don't practice the behavior), for a total of 90 respondents.</p>
+                            <p>This sample size is sufficient to detect statistically significant differences between Doers and Non-Doers while keeping the study manageable in terms of time and resources. If you're studying multiple behaviors, you would need separate samples for each behavior.</p>
+                            <p>In some cases, particularly for behaviors with very low prevalence (where finding 45 Doers would be extremely difficult), a smaller sample size can be used, but this may reduce the statistical power of the findings. In these situations, a minimum of 15-20 Doers is recommended, though statistical significance may be harder to establish.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">How do you accurately identify Doers and Non-Doers?</div>
+                        <div class="accordion-content">
+                            <p>Accurately identifying Doers and Non-Doers is critical for valid Barrier Analysis results. Here are key strategies:</p>
+                            <ul>
+                                <li><strong>Clear behavior definition:</strong> First, define the behavior precisely (who, what, when, where, how often) to enable accurate classification</li>
+                                <li><strong>Screening questions:</strong> Use multiple screening questions that verify actual practice, not just knowledge or intention</li>
+                                <li><strong>Verification techniques:</strong> When possible, include observation or other verification methods (e.g., showing materials used for the behavior)</li>
+                                <li><strong>Avoid self-reported bias:</strong> Frame questions to reduce social desirability bias and encourage honest responses</li>
+                                <li><strong>Context-specific criteria:</strong> Adapt screening criteria to the local context while maintaining the core definition</li>
+                            </ul>
+                            <p>For some behaviors, you may need to establish thresholds (e.g., practicing the behavior at least 80% of recommended times) to classify Doers. The key is consistency in classification across all interviews.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">How long does it take to conduct a Barrier Analysis study?</div>
+                        <div class="accordion-content">
+                            <p>A complete Barrier Analysis study typically takes 10-14 days, although this can vary based on the complexity of the behavior, geographic spread, and team experience. Here's a typical timeline:</p>
+                            <ul>
+                                <li><strong>Planning & preparation:</strong> 2-3 days (defining behavior, adapting questionnaire, preparing logistics)</li>
+                                <li><strong>Training interviewers:</strong> 2 days (including practice interviews)</li>
+                                <li><strong>Data collection:</strong> 2-4 days (depending on geographic spread and accessibility of respondents)</li>
+                                <li><strong>Coding and tabulation:</strong> 1-2 days</li>
+                                <li><strong>Data analysis and interpretation:</strong> 1-2 days</li>
+                                <li><strong>Report writing and presentation:</strong> 1-2 days</li>
+                            </ul>
+                            <p>With an experienced team and favorable field conditions, a streamlined study could be completed in as little as 7-8 days. For complex multi-behavior studies or those covering large geographic areas, it may take 3-4 weeks.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-title">
+                    <h2>Analysis Questions</h2>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">How do you determine which determinants are most important?</div>
+                        <div class="accordion-content">
+                            <p>In Barrier Analysis, determining which determinants are most important involves several analytical steps:</p>
+                            <ol>
+                                <li><strong>Statistical significance:</strong> Calculate whether the difference between Doers and Non-Doers for each determinant is statistically significant (typically using chi-square tests with p-value < 0.05)</li>
+                                <li><strong>Estimated relative risk ratio:</strong> Calculate how many times more likely Doers are than Non-Doers to give a particular response</li>
+                                <li><strong>Response frequency:</strong> Consider how commonly a particular response was mentioned (even high-frequency responses that don't show statistical significance may be worth addressing)</li>
+                                <li><strong>Practical significance:</strong> Assess whether the identified differences are meaningful enough to warrant program attention</li>
+                            </ol>
+                            <p>The Barrier Analysis Tabulation Sheet (Excel tool) automatically calculates statistical significance and estimated relative risk, highlighting the most significant determinants. Program planners then use these results along with contextual knowledge to identify which determinants should be prioritized in behavior change strategies.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">What if I don't find any statistically significant differences between Doers and Non-Doers?</div>
+                        <div class="accordion-content">
+                            <p>If you don't find statistically significant differences between Doers and Non-Doers, there are several possible explanations and next steps:</p>
+                            <ul>
+                                <li><strong>Check implementation:</strong> First, verify that the study was implemented correctly, with proper identification of Doers and Non-Doers and appropriate interviewing techniques</li>
+                                <li><strong>Review sample size:</strong> Consider whether your sample size was sufficient (especially if you had fewer than the recommended 45 respondents in each group)</li>
+                                <li><strong>Examine the behavior definition:</strong> The behavior may need to be defined more specifically to detect meaningful differences</li>
+                                <li><strong>Look at response patterns:</strong> Even without statistical significance, examine the most common responses for insights into general barriers and enablers</li>
+                                <li><strong>Consider supplementary research:</strong> You may need additional qualitative research to understand more nuanced factors influencing the behavior</li>
+                            </ul>
+                            <p>In some cases, the lack of significant differences might indicate that the barriers are universal rather than specific to Non-Doers, suggesting that broader enabling environment interventions might be needed rather than targeted behavior change strategies.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-title">
+                    <h2>Application Questions</h2>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">In what contexts or sectors is Barrier Analysis most effective?</div>
+                        <div class="accordion-content">
+                            <p>Barrier Analysis has proven effective across a wide range of sectors and contexts, including:</p>
+                            <ul>
+                                <li><strong>Health:</strong> Maternal and child health behaviors, disease prevention, treatment adherence, health service utilization</li>
+                                <li><strong>Nutrition:</strong> Breastfeeding, complementary feeding, dietary diversity, micronutrient supplementation</li>
+                                <li><strong>Agriculture:</strong> Adoption of improved agricultural techniques, crop diversification, post-harvest handling</li>
+                                <li><strong>WASH (Water, Sanitation and Hygiene):</strong> Handwashing, latrine use, water treatment, menstrual hygiene management</li>
+                                <li><strong>Natural Resource Management:</strong> Conservation practices, renewable energy adoption</li>
+                                <li><strong>Financial behaviors:</strong> Savings practices, insurance adoption, financial service utilization</li>
+                            </ul>
+                            <p>Barrier Analysis is most effective for studying specific, observable behaviors (rather than vague concepts) and works best when the behavior can be clearly defined and measured. It is particularly valuable in contexts where program resources are limited and need to be directed toward the most impactful interventions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">How do you translate Barrier Analysis findings into effective interventions?</div>
+                        <div class="accordion-content">
+                            <p>Translating Barrier Analysis findings into effective interventions follows a structured process:</p>
+                            <ol>
+                                <li><strong>Identify significant determinants:</strong> Focus on determinants showing statistically significant differences between Doers and Non-Doers</li>
+                                <li><strong>Develop "bridges to activities":</strong> For each significant finding, create a bridge statement that describes what needs to change (e.g., "Increase perception that using mosquito nets is effective in preventing malaria")</li>
+                                <li><strong>Select behavior change activities:</strong> Choose appropriate activities that address each bridge to activity, considering the local context and available resources</li>
+                                <li><strong>Design messages and materials:</strong> Develop communication messages that directly address the identified barriers and enablers, using language from respondents when possible</li>
+                                <li><strong>Implement multiple reinforcing approaches:</strong> Use a combination of interventions addressing different determinants for maximum effectiveness</li>
+                            </ol>
+                            <p>The Designing for Behavior Change (DBC) Framework provides a systematic process for translating Barrier Analysis findings into a comprehensive behavior change strategy. This approach ensures that interventions directly target the specific barriers and enablers identified in your research rather than generic awareness-raising or education.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">Can Barrier Analysis be used for complex or sensitive behaviors?</div>
+                        <div class="accordion-content">
+                            <p>Yes, Barrier Analysis can be adapted for complex or sensitive behaviors, though some modifications may be needed:</p>
+                            <p><strong>For complex behaviors (those with multiple steps or components):</strong></p>
+                            <ul>
+                                <li>Break down the complex behavior into specific component behaviors and study each separately</li>
+                                <li>Focus on the most critical components that drive the overall behavior</li>
+                                <li>Adapt screening questions to account for partial adoption</li>
+                            </ul>
+                            <p><strong>For sensitive behaviors (e.g., related to sexual health, hygiene, or stigmatized practices):</strong></p>
+                            <ul>
+                                <li>Use carefully trained interviewers of appropriate gender, age, and background</li>
+                                <li>Develop indirect questioning techniques that reduce social desirability bias</li>
+                                <li>Ensure privacy during interviews and strong confidentiality protocols</li>
+                                <li>Consider supplementing with other methods like anonymous surveys for verification</li>
+                            </ul>
+                            <p>In both cases, pilot testing the questionnaire is especially important, and more attention should be given to interviewer training and quality control. While adaptation is necessary, the core methodology of comparing Doers and Non-Doers across key determinants remains effective even for challenging behaviors.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-title">
+                    <h2>Training Questions</h2>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">What training do people need to conduct Barrier Analysis?</div>
+                        <div class="accordion-content">
+                            <p>To conduct a quality Barrier Analysis study, the following training is recommended:</p>
+                            <ul>
+                                <li><strong>For study coordinators/designers:</strong> A comprehensive 3-5 day Barrier Analysis or Designing for Behavior Change workshop, covering theoretical foundations, questionnaire development, sampling, analysis, and interpretation</li>
+                                <li><strong>For interviewers:</strong> A 2-day training focusing on interviewing techniques, proper probing, accurate recording of responses, and respondent classification</li>
+                                <li><strong>For data analysts:</strong> Training on the coding process, tabulation methods, and statistical calculations (especially if not using the standard tabulation sheets)</li>
+                            </ul>
+                            <p>The most effective training combines classroom instruction with practical field experience, including supervised practice interviews. Ideally, those leading a Barrier Analysis should first participate in a study led by experienced practitioners before conducting their own.</p>
+                            <p>Ongoing mentoring during the first study is highly valuable, especially during questionnaire development, interviewer training, and data analysis stages.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">Where can I access Barrier Analysis training?</div>
+                        <div class="accordion-content">
+                            <p>There are several ways to access Barrier Analysis training:</p>
+                            <ul>
+                                <li><strong>Formal workshops:</strong> Several organizations regularly offer Barrier Analysis and Designing for Behavior Change workshops. See our <a href="training.html">Training page</a> for upcoming opportunities</li>
+                                <li><strong>Online courses:</strong> Self-paced online courses introducing Barrier Analysis concepts are available through platforms like FSN Network and CORE Group</li>
+                                <li><strong>In-house training:</strong> Organizations can request customized training for their staff, either virtually or in-person</li>
+                                <li><strong>Training of Trainers:</strong> For organizations looking to build internal capacity, ToT programs are available</li>
+                                <li><strong>Self-study:</strong> The comprehensive "Practical Guide to Conducting Barrier Analysis" is available for download and can be used for self-study</li>
+                            </ul>
+                            <p>For more information on training options or to request training for your organization, please visit our <a href="contact.html#training">Contact page</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <div class="container">
+            <h2>Have More Questions?</h2>
+            <p>If you didn't find the answer you were looking for, please reach out to us directly. Our team is ready to help you implement Barrier Analysis effectively.</p>
+            <a href="contact.html" class="btn">Contact Us</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="about.html">What is Barrier Analysis</a></li>
+                        <li><a href="about.html#history">History</a></li>
+                        <li><a href="about.html#determinants">The 12 Determinants</a></li>
+                        <li><a href="about.html#process">Process</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="training.html">Training Manuals</a></li>
+                        <li><a href="tools.html">Implementation Tools</a></li>
+                        <li><a href="research.html">Research & Evidence</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="contact.html#training">Request Training

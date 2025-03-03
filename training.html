@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barrier Analysis Training Resources</title>
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --secondary: #34a853;
+            --accent: #fbbc05;
+            --dark: #202124;
+            --light: #f8f9fa;
+            --gray: #70757a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .resource-image {
+            height: 200px;
+            background-color: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .resource-content {
+            padding: 25px;
+        }
+        
+        .resource-content h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .resource-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #0d5bbc;
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #f1f3f4;
+        }
+        
+        .workshop-section {
+            background-color: white;
+        }
+        
+        .workshop-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .workshop-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .workshop-details {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .workshop-detail {
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            margin: 0 10px 10px 0;
+            font-weight: 500;
+            font-size: 14px;
+            color: var(--gray);
+        }
+        
+        .accordion {
+            margin-top: 50px;
+        }
+        
+        .accordion-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .accordion-header {
+            background-color: white;
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .accordion-header:hover {
+            background-color: #f1f3f4;
+        }
+        
+        .accordion-content {
+            padding: 20px;
+            background-color: white;
+            display: none;
+        }
+        
+        .accordion-content.active {
+            display: block;
+        }
+        
+        .accordion-content ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .cta-section {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .cta-section .btn {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .cta-section .btn:hover {
+            background-color: #f1f3f4;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #b0b0b0;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-header h1 {
+                font-size: 32px;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">BarrierAnalysis.org</a>
+                <ul class="nav-links">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="training.html">Training</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="tools.html">Tools</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="page-header">
+        <div class="container">
+            <h1>Training Resources</h1>
+            <p>Comprehensive materials to help you master Barrier Analysis implementation</p>
+        </div>
+    </div>
+    
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Training Manuals & Guides</h2>
+                <p>Access our collection of comprehensive training materials for Barrier Analysis</p>
+            </div>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-image" style="background-color: #4285f4;">PDF Guide</div>
+                    <div class="resource-content">
+                        <h3>A Practical Guide to Conducting Barrier Analysis</h3>
+                        <p>The definitive guide to Barrier Analysis, including step-by-step instructions, questionnaire templates, and analysis tools.</p>
+                        <a href="#" class="btn">Download PDF</a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-image" style="background-color: #34a853;">Training Manual</div>
+                    <div class="resource-content">
+                        <h3>Designing for Behavior Change: For Agriculture, NRM, Health and Nutrition</h3>
+                        <p>Comprehensive manual integrating Barrier Analysis with the Designing for Behavior Change framework.</p>
+                        <a href="#" class="btn">Download PDF</a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-image" style="background-color: #fbbc05;">Slides</div>
+                    <div class="resource-content">
+                        <h3>Barrier Analysis Facilitator's Guide</h3>
+                        <p>Complete slide deck for facilitating Barrier Analysis training workshops, including presenter notes.</p>
+                        <a href="#" class="btn">Download Slides</a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-image" style="background-color: #ea4335;">Workbook</div>
+                    <div class="resource-content">
+                        <h3>Barrier Analysis Tabulation Sheets</h3>
+                        <p>Excel workbooks with built-in formulas for tabulating and analyzing Barrier Analysis results.</p>
+                        <a href="#" class="btn">Download Excel</a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-image" style="background-color: #5f6368;">Video</div>
+                    <div class="resource-content">
+                        <h3>Barrier Analysis Video Series</h3>
+                        <p>Step-by-step video tutorials covering the complete Barrier Analysis process from planning to implementation.</p>
+                        <a href="#" class="btn">Access Videos</a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-image" style="background-color: #1a73e8;">Quick Guide</div>
+                    <div class="resource-content">
+                        <h3>Barrier Analysis Quick Reference Guide</h3>
+                        <p>Condensed field guide with key steps, questionnaire templates, and analysis tips for practitioners.</p>
+                        <a href="#" class="btn">Download PDF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="workshop-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Training Workshops</h2>
+                <p>Learn about upcoming Barrier Analysis training opportunities and workshop formats</p>
+            </div>
+            
+            <div class="workshop-card">
+                <h3>Introductory Workshop: Barrier Analysis Fundamentals</h3>
+                <div class="workshop-details">
+                    <div class="workshop-detail">Duration: 3 days</div>
+                    <div class="workshop-detail">Participants: 15-25</div>
+                    <div class="workshop-detail">Format: In-person or virtual</div>
+                </div>
+                <p>This foundational workshop introduces participants to the core concepts and methodologies of Barrier Analysis. Participants will learn how to plan, conduct, and analyze results from a Barrier Analysis study. The workshop includes practical exercises and field practice.</p>
+                <a href="contact.html#training" class="btn btn-secondary">Request Information</a>
+            </div>
+            
+            <div class="workshop-card">
+                <h3>Advanced Workshop: Designing for Behavior Change with Barrier Analysis</h3>
+                <div class="workshop-details">
+                    <div class="workshop-detail">Duration: 5 days</div>
+                    <div class="workshop-detail">Participants: 15-25</div>
+                    <div class="workshop-detail">Format: In-person</div>
+                </div>
+                <p>This comprehensive workshop combines Barrier Analysis with the Designing for Behavior Change framework. Participants will learn how to use Barrier Analysis findings to develop effective behavior change strategies and interventions. Includes field practice and strategy development.</p>
+                <a href="contact.html#training" class="btn btn-secondary">Request Information</a>
+            </div>
+            
+            <div class="workshop-card">
+                <h3>Specialized Workshop: Sector-Specific Barrier Analysis</h3>
+                <div class="workshop-details">
+                    <div class="workshop-detail">Duration: 4 days</div>
+                    <div class="workshop-detail">Participants: 15-20</div>
+                    <div class="workshop-detail">Format: In-person or virtual</div>
+                </div>
+                <p>These specialized workshops focus on applying Barrier Analysis to specific sectors such as nutrition, agriculture, WASH, or maternal and child health. Content is tailored to address sector-specific behaviors and contexts.</p>
+                <a href="contact.html#training" class="btn btn-secondary">Request Information</a>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Training Questions</h2>
+                <p>Common questions about Barrier Analysis training and implementation</p>
+            </div>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        How much prior experience is needed to attend a Barrier Analysis training?
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>No prior experience with Barrier Analysis is required for the introductory workshop. However, participants should have some background in project implementation, particularly in behavior change programming. For advanced workshops, basic familiarity with Barrier Analysis concepts is recommended.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        What is the typical training format?
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Barrier Analysis trainings typically combine:</p>
+                        <ul>
+                            <li>Classroom instruction on theoretical concepts</li>
+                            <li>Hands-on practice developing questionnaires</li>
+                            <li>Field practice interviewing real respondents</li>
+                            <li>Data analysis and interpretation</li>
+                            <li>Strategy development based on findings</li>
+                        </ul>
+                        <p>This comprehensive approach ensures participants gain both theoretical knowledge and practical skills.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        How many people can participate in a training?
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>The optimal group size is 15-25 participants. This allows for effective small group work while maintaining sufficient field teams for practice interviews. Larger groups may be accommodated with additional facilitators.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        Can Barrier Analysis training be conducted virtually?
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Yes, introductory workshops can be conducted virtually, with some adaptations to the field practice component. Participants typically conduct practice interviews in their local context and share results online. However, in-person training is generally more effective for building hands-on skills, especially for the field practice component.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        What materials do participants receive?
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Participants receive comprehensive training materials including:</p>
+                        <ul>
+                            <li>A Practical Guide to Conducting Barrier Analysis</li>
+                            <li>Questionnaire templates</li>
+                            <li>Tabulation sheets and analysis tools</li>
+                            <li>Designing for Behavior Change framework materials</li>
+                            <li>Case studies and examples</li>
+                            <li>Digital access to all workshop slides and additional resources</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Build Your Barrier Analysis Skills?</h2>
+            <p>Whether you're looking for training materials, workshops, or personalized support, we're here to help you implement Barrier Analysis effectively.</p>
+            <div class="cta-buttons">
+                <a href="contact.html#training" class="btn">Request a Training</a>
+                <a href="tools.html" class="btn">Explore Implementation Tools</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="about.html">What is Barrier Analysis</a></li>
+                        <li><a href="about.html#history">History</a></li>
+                        <li><a href="about.html#determinants">The 12 Determinants</a></li>
+                        <li><a href="about.html#process">Process</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="training.html">Training Manuals</a></li>
+                        <li><a href="tools.html">Implementation Tools</a></li>
+                        <li><a href="research.html">Research & Evidence</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="contact.html#training">Request Training</a></li>
+                        <li><a href="contact.html#consulting">Consulting Services</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 BarrierAnalysis.org. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                content.classList.toggle('active');
+                
+                if (content.classList.contains('active')) {
+                    header.querySelector('span').textContent = '-';
+                } else {
+                    header.querySelector('span').textContent = '+';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

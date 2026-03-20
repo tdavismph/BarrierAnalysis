@@ -355,32 +355,37 @@
                 <div class="contact-card">
                     <div class="contact-icon">📧</div>
                     <h3 class="contact-title">Email</h3>
-                    <p class="contact-info">tdavismph@gmail.com</p>
-
+                    <p class="contact-info"><a href="mailto:tdavismph@gmail.com">tdavismph@gmail.com</a></p>
                 </div>
                 
                 
                 <div class="contact-card">
                     <div class="contact-icon">🌐</div>
                     <h3 class="contact-title">Social Media</h3>
-                    <p class="contact-info">Connect with me on social media for updates, resources, and events</p>
+                    <p class="contact-info">Connect with Tom Davis on LinkedIn for updates, resources, and events</p>
+                    <p class="contact-info" style="margin-top: 10px;">
+                        <a href="https://www.linkedin.com/in/tdavismph/" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background-color: #0077B5; color: white; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: 600;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            LinkedIn
+                        </a>
+                    </p>
                 </div>
             </div>
             
             <div class="section-title">
-                <h2>Send Us a Message</h2>
-                <p>Fill out the form below and we'll get back to you as soon as possible</p>
+                <h2>Send a Message</h2>
+                <p>Fill out the form below — clicking Submit will open your email client with your message pre-addressed to Tom Davis.</p>
             </div>
             
             <div class="form-container">
-                <form action="#" method="POST">
+                <form id="contact-form">
                     <div class="form-group">
                         <label for="name" class="form-label">Name</label>
                         <input type="text" id="name" name="name" class="form-input" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="email" class="form-label">Email</label>
+                        <label for="email" class="form-label">Your Email Address</label>
                         <input type="email" id="email" name="email" class="form-input" required>
                     </div>
                     
@@ -393,11 +398,11 @@
                         <label for="inquiry-type" class="form-label">Inquiry Type</label>
                         <select id="inquiry-type" name="inquiry-type" class="form-select" required>
                             <option value="" selected disabled>Please select</option>
-                            <option value="general">General Question</option>
-                            <option value="training">Training Request</option>
-                            <option value="consulting">Consulting Services</option>
-                            <option value="resources">Resource Access</option>
-                            <option value="other">Other</option>
+                            <option value="General Question">General Question</option>
+                            <option value="Training Request">Training Request</option>
+                            <option value="Consulting Services">Consulting Services</option>
+                            <option value="Resource Access">Resource Access</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
                     
@@ -410,19 +415,19 @@
                         <label class="form-label">Areas of Interest</label>
                         <div class="checkbox-group">
                             <label class="checkbox-label">
-                                <input type="checkbox" name="interests" value="health" class="checkbox-input">
-                                Health & Nutrition
+                                <input type="checkbox" name="interests" value="Health &amp; Nutrition" class="checkbox-input">
+                                Health &amp; Nutrition
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" name="interests" value="agriculture" class="checkbox-input">
-                                Agriculture & Food Security
+                                <input type="checkbox" name="interests" value="Agriculture &amp; Food Security" class="checkbox-input">
+                                Agriculture &amp; Food Security
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" name="interests" value="wash" class="checkbox-input">
-                                WASH (Water, Sanitation & Hygiene)
+                                <input type="checkbox" name="interests" value="WASH" class="checkbox-input">
+                                WASH (Water, Sanitation &amp; Hygiene)
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" name="interests" value="other" class="checkbox-input">
+                                <input type="checkbox" name="interests" value="Other" class="checkbox-input">
                                 Other (Please specify in message)
                             </label>
                         </div>
@@ -444,7 +449,7 @@
             <div class="faqs">
                 <div class="faq-item">
                     <h3 class="faq-question">How can I request a Barrier Analysis training for my organization?</h3>
-                    <p class="faq-answer">To request a training for your organization, please fill out the contact form above and select "Training Request" as the inquiry type. Please include the following details in your message:</p>
+                    <p class="faq-answer">To request a training for your organization, please use the contact form on this page or email <a href="mailto:tdavismph@gmail.com">tdavismph@gmail.com</a> directly. Please include the following details in your message:</p>
                     <ul style="margin-top: 10px; margin-left: 20px; color: var(--gray);">
                         <li>Approximate number of participants</li>
                         <li>Preferred training format (in-person or virtual)</li>
@@ -507,7 +512,7 @@
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="contact.html#training">Request Training</a></li>
                         <li><a href="contact.html#consulting">Consulting Services</a></li>
-                    </ul>
+                                     </ul>
                 </div>
             </div>
             
@@ -516,5 +521,34 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name         = document.getElementById('name').value.trim();
+            const email        = document.getElementById('email').value.trim();
+            const organization = document.getElementById('organization').value.trim();
+            const inquiryType  = document.getElementById('inquiry-type').value;
+            const message      = document.getElementById('message').value.trim();
+
+            const interests = Array.from(
+                document.querySelectorAll('input[name="interests"]:checked')
+            ).map(cb => cb.value).join(', ') || 'None selected';
+
+            const subject = encodeURIComponent('BA Website Inquiry: ' + inquiryType);
+
+            const body = encodeURIComponent(
+                'Name: ' + name + '\n' +
+                'Email: ' + email + '\n' +
+                'Organization: ' + (organization || 'Not provided') + '\n' +
+                'Inquiry Type: ' + inquiryType + '\n' +
+                'Areas of Interest: ' + interests + '\n\n' +
+                'Message:\n' + message
+            );
+
+            window.location.href = 'mailto:tdavismph@gmail.com?subject=' + subject + '&body=' + body;
+        });
+    </script>
 </body>
 </html>

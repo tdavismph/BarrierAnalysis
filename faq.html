@@ -494,15 +494,16 @@
             </div>
             
             <div class="faq-categories">
-                <button class="category-button active">All</button>
-                <button class="category-button">Methodology</button>
-                <button class="category-button">Implementation</button>
-                <button class="category-button">Analysis</button>
-                <button class="category-button">Application</button>
-                <button class="category-button">Training</button>
+                <button class="category-button active" data-filter="all">All</button>
+                <button class="category-button" data-filter="methodology">Methodology</button>
+                <button class="category-button" data-filter="implementation">Implementation</button>
+                <button class="category-button" data-filter="analysis">Analysis</button>
+                <button class="category-button" data-filter="application">Application</button>
+                <button class="category-button" data-filter="training">Training</button>
             </div>
             
             <div class="faq-container">
+                <div class="faq-section" data-category="methodology">
                 <div class="section-title">
                     <h2>Methodology Questions</h2>
                 </div>
@@ -560,6 +561,9 @@
                     </div>
                 </div>
                 
+                </div><!-- end .faq-section methodology -->
+                
+                <div class="faq-section" data-category="implementation">
                 <div class="section-title">
                     <h2>Implementation Questions</h2>
                 </div>
@@ -606,6 +610,9 @@
                     </div>
                 </div>
                 
+                </div><!-- end .faq-section implementation -->
+                
+                <div class="faq-section" data-category="analysis">
                 <div class="section-title">
                     <h2>Analysis Questions</h2>
                 </div>
@@ -641,6 +648,9 @@
                     </div>
                 </div>
                 
+                </div><!-- end .faq-section analysis -->
+                
+                <div class="faq-section" data-category="application">
                 <div class="section-title">
                     <h2>Application Questions</h2>
                 </div>
@@ -699,6 +709,9 @@
                     </div>
                 </div>
                 
+                </div><!-- end .faq-section application -->
+                
+                <div class="faq-section" data-category="training">
                 <div class="section-title">
                     <h2>Training Questions</h2>
                 </div>
@@ -728,10 +741,10 @@
                                 <li><strong>Self-study:</strong> The <em>Practical Guide to Conducting a Barrier Analysis</em> (Kittle, 2017) is available for free download on the <a href="training.html">Training page</a> and provides comprehensive self-study materials.</li>
                                 <li><strong>Consulting support:</strong> Mentored support during questionnaire development, interviewer training, and data analysis is available for teams conducting their first BA study.</li>
                             </ul>
-                            <p>To inquire about training availability, costs, and scheduling, please contact <strong>Tom Davis, MPH</strong> — the developer of the Barrier Analysis methodology — directly at <a href="mailto:tdavismph@gmail.com">tdavismph@gmail.com</a>.</p>
+                            <p>To inquire about training availability, costs, and scheduling, please contact <strong>Tom Davis, MPH</strong> — the developer of the Barrier Analysis methodology — directly at <a href="/cdn-cgi/l/email-protection#77031316011e041a071f37101a161e1b5914181a"><span class="__cf_email__" data-cfemail="295d4d485f405a445941694e44484045074a4644">[email&#160;protected]</span></a>.</p>
                         </div>
                     </div>
-                </div>
+                </div><!-- end .faq-section training -->
             </div>
         </div>
     </section>
@@ -783,7 +796,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Accordion functionality
         document.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', () => {
@@ -805,12 +818,21 @@
         });
 
         // Category filter buttons
-        document.querySelectorAll('.faq-categories .filter-button').forEach(button => {
+        document.querySelectorAll('.faq-categories .category-button').forEach(button => {
             button.addEventListener('click', () => {
-                document.querySelectorAll('.faq-categories .filter-button').forEach(btn => {
+                document.querySelectorAll('.faq-categories .category-button').forEach(btn => {
                     btn.classList.remove('active');
                 });
                 button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+                document.querySelectorAll('.faq-section').forEach(section => {
+                    if (filter === 'all' || section.getAttribute('data-category') === filter) {
+                        section.style.display = '';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
             });
         });
 
@@ -838,13 +860,4 @@
                 navLinks.classList.toggle('open');
             });
             // Close menu when a link is clicked
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    hamburger.classList.remove('open');
-                    navLinks.classList.remove('open');
-                });
-            });
-        }
-    </script>
-</body>
-</html>
+            navLinks.querySelectorAll('a').forEach(link => 

@@ -441,6 +441,8 @@
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body>
+    <!-- Spacer so Google Translate bar does not cover the nav -->
+    <div style="height:45px;background:white;width:100%;"></div>
     <header>
         <div class="container">
             <nav>
@@ -478,7 +480,7 @@
                 <div class="contact-card">
                     <div class="contact-icon">📧</div>
                     <h3 class="contact-title">Email</h3>
-                    <p class="contact-info"><a href="mailto:tdavismph@gmail.com">tdavismph@gmail.com</a></p>
+                    <p class="contact-info"><a href="/cdn-cgi/l/email-protection#f98d9d988f908a948991b99e94989095d79a9694"><span class="__cf_email__" data-cfemail="186c7c796e716b756870587f75797174367b7775">[email&#160;protected]</span></a></p>
                 </div>
                 
                 
@@ -572,7 +574,7 @@
             <div class="faqs">
                 <div class="faq-item">
                     <h3 class="faq-question">How can I request a Barrier Analysis training for my organization?</h3>
-                    <p class="faq-answer">To request a training for your organization, please use the contact form on this page or email <a href="mailto:tdavismph@gmail.com">tdavismph@gmail.com</a> directly. Please include the following details in your message:</p>
+                    <p class="faq-answer">To request a training for your organization, please use the contact form on this page or email <a href="/cdn-cgi/l/email-protection#f08494918699839d8098b0979d91999cde939f9d"><span class="__cf_email__" data-cfemail="d8acbcb9aeb1abb5a8b098bfb5b9b1b4f6bbb7b5">[email&#160;protected]</span></a> directly. Please include the following details in your message:</p>
                     <ul style="margin-top: 10px; margin-left: 20px; color: var(--gray);">
                         <li>Approximate number of participants</li>
                         <li>Preferred training format (in-person or virtual)</li>
@@ -645,7 +647,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
 
@@ -681,16 +683,4 @@
         if (hamburger && navLinks) {
             hamburger.addEventListener('click', () => {
                 hamburger.classList.toggle('open');
-                navLinks.classList.toggle('open');
-            });
-            // Close menu when a link is clicked
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    hamburger.classList.remove('open');
-                    navLinks.classList.remove('open');
-                });
-            });
-        }
-    </script>
-</body>
-</html>
+                navLinks.classList.toggle

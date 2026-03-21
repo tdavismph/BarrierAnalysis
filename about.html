@@ -43,6 +43,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            position: relative;
         }
         
         .container {
@@ -380,9 +381,7 @@
         }
         
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
+            /* nav handled by hamburger menu */
             
             .page-header h1 {
                 font-size: 32px;
@@ -406,6 +405,79 @@
                 left: 0;
             }
         }
+
+        /* Hamburger menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            z-index: 200;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--dark);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(8.5px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-8.5px) rotate(-45deg);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: white;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                padding: 16px 0;
+                z-index: 150;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0;
+                border-bottom: 1px solid #f1f3f4;
+            }
+
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 14px 24px;
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -421,6 +493,11 @@
                     <li><a href="faq.html">FAQ</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
+                <button class="hamburger" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </nav>
         </div>
     </header>
@@ -638,7 +715,7 @@
                 <div class="timeline-item timeline-right">
                     <div class="timeline-content">
                         <h3>2010</h3>
-                        <p>Integration with the Designing for Behavior Change (DBC) Framework, enhancing its practical application in program design.</p>
+                        <p>Integration with the Designing for Behavior Change (DBC) Framework, enhancing its practical application in program design. Bonnie Kittle, MPH, begins popularizing the method with Davis.</p>
                     </div>
                 </div>
                 
@@ -705,5 +782,24 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('open');
+                navLinks.classList.toggle('open');
+            });
+            // Close menu when a link is clicked
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('open');
+                    navLinks.classList.remove('open');
+                });
+            });
+        }
+    </script>
 </body>
 </html>

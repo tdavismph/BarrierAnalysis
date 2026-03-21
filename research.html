@@ -43,6 +43,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            position: relative;
         }
         
         .container {
@@ -412,9 +413,7 @@
         }
         
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
+            /* nav handled by hamburger menu */
             
             .page-header h1 {
                 font-size: 32px;
@@ -422,6 +421,79 @@
             
             .case-studies-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        /* Hamburger menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            z-index: 200;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--dark);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(8.5px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-8.5px) rotate(-45deg);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: white;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                padding: 16px 0;
+                z-index: 150;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0;
+                border-bottom: 1px solid #f1f3f4;
+            }
+
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 14px 24px;
+                font-size: 16px;
             }
         }
     </style>
@@ -439,6 +511,11 @@
                     <li><a href="faq.html">FAQ</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
+                <button class="hamburger" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </nav>
         </div>
     </header>
@@ -467,7 +544,7 @@
             
             <div class="publications-list">
 
-                <div class="publication-card" style="background-color: #E8F5E9; border-left: 4px solid #2E7D32;">
+                <div class="publication-card" style="background-color: #E8F5E9; border-left: 4px solid #2E7D32;" data-category="all">
                     <div class="publication-meta">
                         <span class="publication-tag" style="background-color: #2E7D32; color: white;">Literature Review</span>
                         <span class="publication-tag year">2025</span>
@@ -478,7 +555,7 @@
                     <a href="https://docs.google.com/document/d/1egAQ8SONKjebGS306fQa47vKiijQA3ha/edit?usp=sharing&ouid=101822260208793560054&rtpof=true&sd=true" class="publication-link" target="_blank">Read Literature Review →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="health">
                     <div class="publication-meta">
                         <span class="publication-tag health">Health</span>
                         <span class="publication-tag year">2025</span>
@@ -489,7 +566,7 @@
                     <a href="https://doi.org/10.3390/ijerph22020234" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="health">
                     <div class="publication-meta">
                         <span class="publication-tag health">Health</span>
                         <span class="publication-tag year">2024</span>
@@ -500,7 +577,7 @@
                     <a href="https://doi.org/10.51168/sjhrafrica.v5i3.1044" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="wash">
                     <div class="publication-meta">
                         <span class="publication-tag wash">WASH</span>
                         <span class="publication-tag year">2024</span>
@@ -511,7 +588,7 @@
                     <a href="https://doi.org/10.1080/27707571.2024.2322826" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="nutrition">
                     <div class="publication-meta">
                         <span class="publication-tag nutrition">Nutrition</span>
                         <span class="publication-tag year">2023</span>
@@ -522,7 +599,7 @@
                     <a href="https://doi.org/10.18295/squmj.5.2022.038" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="health">
                     <div class="publication-meta">
                         <span class="publication-tag health">Health</span>
                         <span class="publication-tag year">2023</span>
@@ -533,7 +610,7 @@
                     <a href="https://doi.org/10.7365/JHPOR.2023.2.4" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="health">
                     <div class="publication-meta">
                         <span class="publication-tag health">Health</span>
                         <span class="publication-tag year">2023</span>
@@ -544,7 +621,7 @@
                     <a href="https://doi.org/10.3390/adolescents3030026" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="health">
                     <div class="publication-meta">
                         <span class="publication-tag health">Health</span>
                         <span class="publication-tag year">2023</span>
@@ -555,7 +632,7 @@
                     <a href="https://doi.org/10.1186/s12889-023-16106-8" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="nutrition">
                     <div class="publication-meta">
                         <span class="publication-tag nutrition">Nutrition</span>
                         <span class="publication-tag year">2023</span>
@@ -566,7 +643,7 @@
                     <a href="https://doi.org/10.1007/978-3-031-21472-1_6" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="health">
                     <div class="publication-meta">
                         <span class="publication-tag health">Health</span>
                         <span class="publication-tag year">2023</span>
@@ -577,7 +654,7 @@
                     <a href="https://doi.org/10.1093/inthealth/ihad009" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="health">
                     <div class="publication-meta">
                         <span class="publication-tag health">Health</span>
                         <span class="publication-tag year">2022</span>
@@ -588,7 +665,7 @@
                     <a href="https://doi.org/10.1080/21642850.2022.2074007" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="health">
                     <div class="publication-meta">
                         <span class="publication-tag health">Health</span>
                         <span class="publication-tag year">2022</span>
@@ -599,7 +676,7 @@
                     <a href="https://doi.org/10.3390/vaccines10020214" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="nutrition">
                     <div class="publication-meta">
                         <span class="publication-tag nutrition">Nutrition</span>
                         <span class="publication-tag year">2022</span>
@@ -610,7 +687,7 @@
                     <a href="https://www.ennonline.net/fex/68/en/state-palestine-investing-assessment-positively-impacted-programming-complementary" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="nutrition">
                     <div class="publication-meta">
                         <span class="publication-tag nutrition">Nutrition</span>
                         <span class="publication-tag year">2021</span>
@@ -621,7 +698,7 @@
                     <a href="https://doi.org/10.1016/j.gfs.2021.100586" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="wash">
                     <div class="publication-meta">
                         <span class="publication-tag wash">WASH</span>
                         <span class="publication-tag year">2021</span>
@@ -632,7 +709,7 @@
                     <a href="https://doi.org/10.2166/washdev.2021.070" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="wash">
                     <div class="publication-meta">
                         <span class="publication-tag wash">WASH</span>
                         <span class="publication-tag year">2020</span>
@@ -643,9 +720,9 @@
                     <a href="https://doi.org/10.1371/journal.pone.0231694" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="nutrition">
                     <div class="publication-meta">
-                        <span class="publication-tag health">Health</span>
+                        <span class="publication-tag nutrition">Nutrition</span>
                         <span class="publication-tag year">2020</span>
                     </div>
                     <h3 class="publication-title">Barriers of Dietary Salt Reduction Among Hypertensive Patients</h3>
@@ -654,7 +731,7 @@
                     <a href="https://doi.org/10.18203/2394-6040.ijcmph20203907" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="nutrition">
                     <div class="publication-meta">
                         <span class="publication-tag nutrition">Nutrition</span>
                         <span class="publication-tag year">2020</span>
@@ -665,7 +742,7 @@
                     <a href="https://doi.org/10.26596/wn.202011312-21" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="nutrition">
                     <div class="publication-meta">
                         <span class="publication-tag nutrition">Nutrition</span>
                         <span class="publication-tag year">2019</span>
@@ -676,7 +753,7 @@
                     <a href="https://www.ennonline.net/fex/59/en/barrier-analysis-of-infant-and-young-child-feeding" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="health">
                     <div class="publication-meta">
                         <span class="publication-tag health">Health</span>
                         <span class="publication-tag year">2018</span>
@@ -687,7 +764,7 @@
                     <a href="https://doi.org/10.1186/s12879-018-3129-2" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="health">
                     <div class="publication-meta">
                         <span class="publication-tag health">Health</span>
                         <span class="publication-tag year">2018</span>
@@ -698,7 +775,7 @@
                     <a href="https://open.bu.edu/items/8e3b0439-33d5-4333-99a5-30e0b95513d0" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="agriculture">
                     <div class="publication-meta">
                         <span class="publication-tag agriculture">Agriculture</span>
                         <span class="publication-tag year">2018</span>
@@ -709,7 +786,7 @@
                     <a href="https://doi.org/10.5191/jiaee.2018.25201" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="wash">
                     <div class="publication-meta">
                         <span class="publication-tag wash">WASH</span>
                         <span class="publication-tag year">2017</span>
@@ -720,7 +797,7 @@
                     <a href="https://doi.org/10.18203/2394-6040.ijcmph20170292" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="health">
                     <div class="publication-meta">
                         <span class="publication-tag health">Health</span>
                         <span class="publication-tag year">2016</span>
@@ -731,7 +808,7 @@
                     <a href="https://doi.org/10.1016/j.ajog.2015.10.122" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="health">
                     <div class="publication-meta">
                         <span class="publication-tag health">Health</span>
                         <span class="publication-tag year">2016</span>
@@ -742,7 +819,7 @@
                     <a href="https://doi.org/10.1016/j.aogh.2016.04.625" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="health">
                     <div class="publication-meta">
                         <span class="publication-tag health">Health</span>
                         <span class="publication-tag year">2015</span>
@@ -753,49 +830,51 @@
                     <a href="https://doi.org/10.1016/j.evalprogplan.2014.11.008" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="nutrition">
                     <div class="publication-meta">
                         <span class="publication-tag nutrition">Nutrition</span>
-                        <span class="publication-tag year">n.d.</span>
+                        <span class="publication-tag year">2016</span>
                     </div>
                     <h3 class="publication-title">Consumption of Iron-Rich Foods Among Adolescent Girls in Nepal: Identifying Behavioural Determinants</h3>
-                    <p class="publication-authors">Acharya, A., Rana, P.P., Pun, B.K., &amp; Thapa, B. (n.d.).</p>
+                    <p class="publication-authors">Acharya, A., Rana, P.P., Pun, B.K., &amp; Thapa, B. (2016).</p>
                     <p class="publication-abstract">Identified behavioral determinants affecting iron-rich food consumption among adolescent girls in Nepal using BA, contributing evidence to address micronutrient deficiency through targeted behavior change communication.</p>
+                    <a href="https://www.ennonline.net/fex/57/en/consumption-iron-rich-foods-among-adolescent-girls-nepal-identifying-behavioural" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="health">
                     <div class="publication-meta">
                         <span class="publication-tag health">Health</span>
-                        <span class="publication-tag year">n.d.</span>
+                        <span class="publication-tag year">2013</span>
                     </div>
                     <h3 class="publication-title">Explosive Ordnance Risk Education and Barrier Analysis</h3>
-                    <p class="publication-authors">Fletcher, K., &amp; McGrath, I. (n.d.). Geneva International Centre for Humanitarian Demining (GICHD).</p>
+                    <p class="publication-authors">Fletcher, K., &amp; McGrath, I. (2013). Geneva International Centre for Humanitarian Demining (GICHD).</p>
                     <p class="publication-abstract">Demonstrated the application of BA to improve Explosive Ordnance Risk Education (EORE), identifying behavioral determinants of safe practices in mine-affected communities and providing a framework for evidence-based risk education programming.</p>
                     <a href="https://www.gichd.org/fileadmin/uploads/gichd/migration/fileadmin/GICHD-resources/info-documents/EORE_Advisory_Group/Barrier_Analysis_Paper_01.pdf" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="nutrition">
                     <div class="publication-meta">
                         <span class="publication-tag nutrition">Nutrition</span>
-                        <span class="publication-tag year">n.d.</span>
+                        <span class="publication-tag year">2010</span>
                     </div>
                     <h3 class="publication-title">Barrier Analysis of Exclusive Breastfeeding in Ruyigi and Cancuzo Provinces, Burundi</h3>
-                    <p class="publication-authors">Francisco, J.E.V. (n.d.).</p>
+                    <p class="publication-authors">Francisco, J.E.V. (2010).</p>
                     <p class="publication-abstract">Conducted BA to identify behavioral determinants of exclusive breastfeeding in two provinces of Burundi, providing evidence to inform community-based lactation support and behavior change programming.</p>
+                    <a href="https://docs.google.com/document/d/1SJKXStcQX5gSPv3fNLCs1fxygBTXclJT/edit?usp=sharing&ouid=101822260208793560054&rtpof=true&sd=true" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="nutrition">
                     <div class="publication-meta">
                         <span class="publication-tag nutrition">Nutrition</span>
-                        <span class="publication-tag year">n.d.</span>
+                        <span class="publication-tag year">2023</span>
                     </div>
                     <h3 class="publication-title">Use of the Designing for Behaviour Change Framework to Address Barriers to Animal Source Feeding in Children 8–23 Months in Bangladesh</h3>
-                    <p class="publication-authors">Kalam, M.A., Asif, C.A.A., Stormer, A., et al. (n.d.). <em>Maternal &amp; Child Nutrition</em>, e13472.</p>
+                    <p class="publication-authors">Kalam, M.A., Asif, C.A.A., Stormer, A., et al. (2023). <em>Maternal &amp; Child Nutrition</em>, e13472.</p>
                     <p class="publication-abstract">Applied the DBC framework and BA to identify barriers to and enablers of animal source food feeding to young children in the Bandarban Hill District of Bangladesh, with implications for nutrition-sensitive agriculture programming.</p>
                     <a href="https://doi.org/10.1111/mcn.13472" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="health">
                     <div class="publication-meta">
                         <span class="publication-tag health">Health</span>
                         <span class="publication-tag year">n.d.</span>
@@ -805,66 +884,17 @@
                     <p class="publication-abstract">Used BA to identify behavioral determinants of modern family planning method adoption in the Northwestern Highlands of Guatemala, contributing to the evidence base for reproductive health programming in indigenous communities.</p>
                 </div>
 
-                <div class="publication-card">
+                <div class="publication-card" data-category="nutrition">
                     <div class="publication-meta">
                         <span class="publication-tag nutrition">Nutrition</span>
-                        <span class="publication-tag year">n.d.</span>
+                        <span class="publication-tag year">2021</span>
                     </div>
                     <h3 class="publication-title">A Qualitative Analysis of Facilitators and Barriers to Breastfeeding Among Black Mothers in the Greater New Haven Area</h3>
-                    <p class="publication-authors">Tran, V.D-V. (n.d.).</p>
+                    <p class="publication-authors">Tran, V.D-V. (2021).</p>
                     <p class="publication-abstract">Applied BA framework to identify facilitators and barriers to breastfeeding among Black mothers in the United States, addressing health equity gaps and informing culturally responsive lactation support programs.</p>
+                    <a href="https://elischolar.library.yale.edu/cgi/viewcontent.cgi?article=2096&context=ysphtdl" class="publication-link" target="_blank">View Publication →</a>
                 </div>
 
-            </div>
-        </div>
-    </section>
-    
-    <section class="case-studies-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Case Studies</h2>
-                <p>Real-world examples of Barrier Analysis implementation and impact</p>
-            </div>
-            
-            <div class="case-studies-grid">
-                <div class="case-study-card">
-                    <div class="case-study-image" style="background-color: #4285f4;">
-                        <div class="case-study-overlay">
-                            <div class="case-study-location">Nutrition</div>
-                        </div>
-                    </div>
-                    <div class="case-study-content">
-                        <h3 class="case-study-title">Improving child feeding and maternal nutrition behaviors</h3>
-                        <p class="case-study-description">Barrier Analysis was used to identify key determinants affecting child feeding and maternal nutrition practices. Findings informed targeted behavior change interventions that led to measurable improvements in nutritional outcomes.</p>
-                        <a href="https://www.ennonline.net/sites/default/files/FEX_59_web_060219_20-22.pdf" class="publication-link" target="_blank">Read Case Study →</a>
-                    </div>
-                </div>
-                
-                <div class="case-study-card">
-                    <div class="case-study-image" style="background-color: #34a853;">
-                        <div class="case-study-overlay">
-                            <div class="case-study-location">WASH</div>
-                        </div>
-                    </div>
-                    <div class="case-study-content">
-                        <h3 class="case-study-title">Handwashing with Soap</h3>
-                        <p class="case-study-description">Barrier Analysis was applied to explore behavioral determinants of handwashing with soap, identifying key factors that distinguish those who practice the behavior from those who do not, informing targeted interventions.</p>
-                        <a href="https://iwaponline.com/washdev/article/11/6/1006/84509/Exploring-behavioral-determinants-of-handwashing" class="publication-link" target="_blank">Read Case Study →</a>
-                    </div>
-                </div>
-                
-                <div class="case-study-card">
-                    <div class="case-study-image" style="background-color: #fbbc05;">
-                        <div class="case-study-overlay">
-                            <div class="case-study-location">BA in Conflict Settings</div>
-                        </div>
-                    </div>
-                    <div class="case-study-content">
-                        <h3 class="case-study-title">Improving Explosive Ordnance Risk Education using BA</h3>
-                        <p class="case-study-description">Barrier Analysis was applied to improve Explosive Ordnance Risk Education (EORE), identifying the behavioral determinants that influence safe behaviors in mine-affected communities and informing more effective risk education programming.</p>
-                        <a href="https://www.gichd.org/fileadmin/uploads/gichd/migration/fileadmin/GICHD-resources/info-documents/EORE_Advisory_Group/Barrier_Analysis_Paper_01.pdf" class="publication-link" target="_blank">Read Case Study →</a>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -883,18 +913,13 @@
                 </div>
                 
                 <div class="metric-card">
-                    <div class="metric-number">1,000+</div>
+                    <div class="metric-number">200+</div>
                     <div class="metric-label">Behavior change projects informed by Barrier Analysis</div>
                 </div>
                 
                 <div class="metric-card">
                     <div class="metric-number">30+</div>
                     <div class="metric-label">International organizations using Barrier Analysis</div>
-                </div>
-                
-                <div class="metric-card">
-                    <div class="metric-number">35%</div>
-                    <div class="metric-label">Average increase in positive behavior adoption</div>
                 </div>
             </div>
         </div>
@@ -948,18 +973,43 @@
     </footer>
     
     <script>
-        // Simple filter functionality (just visual for demo)
         document.querySelectorAll('.filter-button').forEach(button => {
             button.addEventListener('click', () => {
-                document.querySelectorAll('.filter-button').forEach(btn => {
-                    btn.classList.remove('active');
-                });
+                // Update active button
+                document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
-                
-                // In a real implementation, this would filter the publications
-                // For now, it's just a visual demonstration
+
+                const filter = button.textContent.trim().toLowerCase();
+
+                document.querySelectorAll('.publication-card').forEach(card => {
+                    const category = (card.getAttribute('data-category') || '').toLowerCase();
+                    if (filter === 'all' || category === 'all' || category === filter) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
             });
         });
+    </script>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('open');
+                navLinks.classList.toggle('open');
+            });
+            // Close menu when a link is clicked
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('open');
+                    navLinks.classList.remove('open');
+                });
+            });
+        }
     </script>
 </body>
 </html>

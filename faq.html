@@ -428,10 +428,14 @@
             margin-left: 20px;
         }
         /* Hide Google Translate top banner and prevent body offset */
-        .goog-te-banner-frame { display: none !important; }
+        .goog-te-banner-frame,
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
         body { top: 0 !important; }
-        /* Extra: prevent the translated-ltr/rtl html offset */
-        html body { top: 0 !important; position: static !important; }
+        /* Target the class Google adds to <html> when translation is active */
+        html.translated-ltr body,
+        html.translated-rtl body { top: 0 !important; margin-top: 0 !important; }
+        /* Keep header always on top */
+        header { position: sticky !important; top: 0 !important; z-index: 100; }
 
         @media (max-width: 768px) {
             .translate-wrapper {
@@ -801,27 +805,39 @@
     <!-- Fix Google Translate body offset -->
     <script>
         (function() {
-            function resetBodyTop() {
-                if (document.body.style.top && document.body.style.top !== '0px') {
-                    document.body.style.top = '0';
-                }
-            }
-            // Watch for Google Translate setting body.top to a negative value
-            var observer = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mutation) {
-                    if (mutation.attributeName === 'style') {
-                        resetBodyTop();
-                    }
-                });
-            });
-            observer.observe(document.body, { attributes: true, attributeFilter: ['style'] });
-            // Also hide the banner frame if it appears dynamically
-            var frameObserver = new MutationObserver(function() {
+            function fixTranslateOffset() {
+                // Reset body top offset
+                document.body.style.setProperty('top', '0', 'important');
+                document.body.style.setProperty('margin-top', '0', 'important');
+                // Hide the floating banner iframe
                 var banner = document.querySelector('.goog-te-banner-frame');
-                if (banner) { banner.style.display = 'none'; }
-                resetBodyTop();
-            });
-            frameObserver.observe(document.documentElement, { childList: true, subtree: true });
+                if (banner) { banner.style.setProperty('display', 'none', 'important'); }
+                // Also hide by id that Translate sometimes uses
+                var bannerById = document.getElementById(':1.container');
+                if (bannerById) { bannerById.style.setProperty('display', 'none', 'important'); }
+            }
+
+            // Run immediately and on DOM changes
+            fixTranslateOffset();
+
+            // Watch body style attribute (fires when Translate sets top: -40px)
+            var bodyObserver = new MutationObserver(fixTranslateOffset);
+            bodyObserver.observe(document.body, { attributes: true, attributeFilter: ['style'] });
+
+            // Watch <html> class changes (fires when translated-ltr is added)
+            var htmlObserver = new MutationObserver(fixTranslateOffset);
+            htmlObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'style'] });
+
+            // Watch for the banner iframe being injected into the DOM
+            var domObserver = new MutationObserver(fixTranslateOffset);
+            domObserver.observe(document.documentElement, { childList: true, subtree: false });
+
+            // Fallback: poll for 5 seconds after page load in case Translate loads late
+            var checks = 0;
+            var interval = setInterval(function() {
+                fixTranslateOffset();
+                if (++checks >= 10) clearInterval(interval);
+            }, 500);
         })();
     </script>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>

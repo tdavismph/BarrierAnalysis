@@ -478,7 +478,66 @@
                 font-size: 16px;
             }
         }
+
+        @media (max-width: 768px) {
+        }
+
+        /* Google Translate dropdown */
+        .translate-wrapper {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        #google_translate_element .goog-te-gadget-simple {
+            background-color: transparent !important;
+            border: 1px solid #bbb !important;
+            border-radius: 20px !important;
+            padding: 5px 12px !important;
+            font-size: 13px !important;
+            cursor: pointer;
+        }
+
+        #google_translate_element .goog-te-gadget-simple:hover {
+            border-color: var(--primary) !important;
+        }
+
+        #google_translate_element .goog-te-gadget-simple span {
+            color: var(--dark) !important;
+        }
+
+        #google_translate_element .goog-te-gadget-simple img {
+            display: none !important;
+        }
+
+        /* Hide Google toolbar */
+        .goog-te-banner-frame,
+        iframe.skiptranslate {
+            display: none !important;
+        }
+
+        body { top: 0 !important; }
+
+        @media (max-width: 768px) {
+            .translate-wrapper {
+                margin-left: 0;
+                padding: 10px 24px;
+                border-top: 1px solid #f1f3f4;
+                justify-content: flex-start;
+            }
+        }
     </style>
+    <!-- Google Translate (all languages) -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body>
     <header>
@@ -498,6 +557,9 @@
                     <span></span>
                     <span></span>
                 </button>
+                <div class="translate-wrapper">
+                    <div id="google_translate_element"></div>
+                </div>
             </nav>
         </div>
     </header>

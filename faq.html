@@ -427,9 +427,11 @@
             align-items: center;
             margin-left: 20px;
         }
-        /* Hide Google top banner only */
+        /* Hide Google Translate top banner and prevent body offset */
         .goog-te-banner-frame { display: none !important; }
         body { top: 0 !important; }
+        /* Extra: prevent the translated-ltr/rtl html offset */
+        html body { top: 0 !important; position: static !important; }
 
         @media (max-width: 768px) {
             .translate-wrapper {
@@ -796,6 +798,32 @@
         </div>
     </footer>
 
+    <!-- Fix Google Translate body offset -->
+    <script>
+        (function() {
+            function resetBodyTop() {
+                if (document.body.style.top && document.body.style.top !== '0px') {
+                    document.body.style.top = '0';
+                }
+            }
+            // Watch for Google Translate setting body.top to a negative value
+            var observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.attributeName === 'style') {
+                        resetBodyTop();
+                    }
+                });
+            });
+            observer.observe(document.body, { attributes: true, attributeFilter: ['style'] });
+            // Also hide the banner frame if it appears dynamically
+            var frameObserver = new MutationObserver(function() {
+                var banner = document.querySelector('.goog-te-banner-frame');
+                if (banner) { banner.style.display = 'none'; }
+                resetBodyTop();
+            });
+            frameObserver.observe(document.documentElement, { childList: true, subtree: true });
+        })();
+    </script>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Accordion functionality
         document.querySelectorAll('.accordion-header').forEach(header => {

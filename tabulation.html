@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barrier Analysis Survey Online Tabulation Tool</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+:root{--primary:#1a73e8;--dark:#202124;--light:#f8f9fa;--gray:#70757a;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
+body{background:var(--light);color:var(--dark);line-height:1.6;}
+header{background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.1);position:sticky;top:0;z-index:100;}
+.container{max-width:1200px;margin:0 auto;padding:0 20px;}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0;}
+.logo{font-size:24px;font-weight:700;color:var(--primary);text-decoration:none;}
+.nav-links{display:flex;list-style:none;}
+.nav-links li{margin-left:30px;}
+.nav-links a{text-decoration:none;color:var(--dark);font-weight:500;}
+.nav-links a:hover{color:var(--primary);}
+.page-header{background:linear-gradient(135deg,#f5f7fa 0%,#c3cfe2 100%);padding:50px 0 40px;text-align:center;}
+.page-header h1{font-size:36px;margin-bottom:10px;}
+.page-header p{color:var(--gray);max-width:760px;margin:0 auto;}
+.card{background:#fff;border-radius:8px;box-shadow:0 4px 6px rgba(0,0,0,.08);padding:30px;margin:30px 0;}
+.card h2{font-size:22px;margin-bottom:6px;}
+.card .hint{color:var(--gray);font-size:14px;margin-bottom:18px;}
+.stepnum{display:inline-flex;align-items:center;justify-content:center;background:var(--primary);color:#fff;width:30px;height:30px;border-radius:50%;font-weight:700;margin-right:10px;font-size:15px;}
+label{font-weight:600;font-size:14px;display:block;margin-bottom:4px;}
+input[type=file],input[type=text],input[type=number],select{padding:9px 12px;border:1px solid #ccc;border-radius:4px;font-size:15px;}
+input[type=number]{width:110px;}
+.row{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;margin-bottom:10px;}
+.btn{display:inline-block;background:var(--primary);color:#fff;padding:11px 26px;border-radius:4px;border:none;font-weight:600;font-size:15px;cursor:pointer;}
+.btn:hover{background:#0d5bbc;}
+.btn.secondary{background:#fff;color:var(--primary);border:2px solid var(--primary);}
+.btn.small{padding:6px 14px;font-size:13px;}
+.group{border:1px solid #c9d6ea;border-radius:8px;padding:16px;margin-bottom:6px;background:#fafbfd;}
+.group-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.group-head b{color:var(--primary);font-size:15px;}
+.orlabel{text-align:center;font-weight:800;color:#b06000;margin:10px 0;letter-spacing:2px;}
+.cond{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:10px;background:var(--light);padding:10px;border-radius:6px;}
+.cond select,.cond input{font-size:14px;}
+.quotenote{background:#eef7ee;border-left:4px solid #34a853;padding:10px 16px;border-radius:0 6px 6px 0;font-size:14px;color:#444;margin:0 0 16px;}
+.logicnote{background:#e8f0fe;border-left:4px solid var(--primary);padding:10px 16px;border-radius:0 6px 6px 0;font-size:14px;color:#444;margin:0 0 16px;}
+.pill{background:#e8f0fe;color:var(--primary);padding:4px 14px;border-radius:20px;font-size:13px;font-weight:600;display:inline-block;margin:4px 6px 0 0;}
+.pill.red{background:#fde8e8;color:#b91c1c;}
+.pill.grayp{background:#eee;color:var(--gray);}
+.pill.warn{background:#fff3cd;color:#92400e;}
+table.results{width:100%;border-collapse:collapse;font-size:14px;margin-top:14px;}
+table.results th{background:var(--primary);color:#fff;padding:10px 8px;text-align:left;}
+table.results td{padding:8px;border-bottom:1px solid #eee;vertical-align:top;}
+table.results td.qcol{max-width:200px;}
+table.results td.interp{font-size:13px;color:#333;min-width:240px;}
+tr.enabler td.err{color:#137333;font-weight:700;}
+tr.barrier td.err{color:#b91c1c;font-weight:700;}
+.note{background:#fffbe6;border-left:4px solid #fbbc05;padding:14px 18px;border-radius:0 6px 6px 0;font-size:14px;color:#555;margin-top:16px;}
+.hidden{display:none;}
+.radio-line{margin:6px 0;font-size:15px;}
+footer{background:var(--dark);color:#b0b0b0;text-align:center;padding:25px 0;margin-top:50px;font-size:14px;}
+@media(max-width:768px){.nav-links{display:none;}}
+</style>
+</head>
+<body>
+<header><div class="container"><nav>
+<a href="index.html" class="logo">BarrierAnalysis.org</a>
+<ul class="nav-links">
+<li><a href="about.html">About</a></li><li><a href="training.html">Training</a></li>
+<li><a href="research.html">Research</a></li><li><a href="tools.html">Tools</a></li>
+<li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li>
+</ul></nav></div></header>
+
+<div class="page-header"><div class="container">
+<h1>Barrier Analysis Survey Online Tabulation Tool</h1>
+<p>Upload your Barrier Analysis data (CSV or Excel), define Doers and Non-Doers according to responses given for particular BA questions (the field names in the column headers of your spreadsheet), and get responses ranked by Estimated Relative Risk — replicating the automated BA Tabulation Table.</p>
+</div></div>
+
+<div class="container">
+
+<div class="card">
+<h2><span class="stepnum">1</span>Upload your data file</h2>
+<p class="hint">One row per respondent, one column per question/response, with column headers in the first row. CSV, .xlsx, .xls and .xlsm accepted (only the data is read — macros are ignored).</p>
+<div class="row">
+<div><label>Data file</label><input type="file" id="fileInput" accept=".csv,.xlsx,.xls,.xlsm"></div>
+<div id="sheetPickWrap" class="hidden"><label>Worksheet</label><select id="sheetPick"></select></div>
+</div>
+<div id="fileSummary" class="hint"></div>
+</div>
+
+<div class="card hidden" id="step2">
+<h2><span class="stepnum">2</span>Define a Doer</h2>
+<div class="quotenote"><b>How to type values:</b> enter the value exactly as it appears in your spreadsheet cells, <b>without quotation marks</b> — type <b>ALL</b>, not "ALL". Matching ignores capitalization and extra spaces, so <i>all</i>, <i>All</i> and <i>ALL </i> are all treated the same.</div>
+<div class="logicnote"><b>Combining AND and OR:</b> within a group, <b>every</b> condition must be true (AND). A respondent is a Doer if they match <b>any one group</b> (OR). Example — <i>"#1 = Yes AND #3 = No AND (#4 = Sometimes OR #5 = Always)"</i> becomes <b>Group 1:</b> #1 = Yes, #3 = No, #4 = Sometimes; <b>Group 2:</b> #1 = Yes, #3 = No, #5 = Always.</div>
+<div id="doerGroups"></div>
+<button class="btn small secondary" onclick="addGroup('doerGroups')">+ Add OR group</button>
+
+<h2 style="margin-top:28px"><span class="stepnum">3</span>Define a Non-Doer</h2>
+<div class="radio-line"><label style="font-weight:400"><input type="radio" name="ndMode" value="auto" checked> Anyone who <b>answered all of the questions used above</b> (no blanks) but does <b>not</b> qualify as a Doer — the standard BA approach</label></div>
+<div class="radio-line"><label style="font-weight:400"><input type="radio" name="ndMode" value="custom"> Use my own conditions (same group logic as above):</label></div>
+<div id="ndCustomWrap" class="hidden" style="margin-left:24px">
+<div id="ndGroups"></div>
+<button class="btn small secondary" onclick="addGroup('ndGroups')">+ Add OR group</button>
+</div>
+<p class="hint" style="margin-top:10px">Respondents who are neither Doers nor Non-Doers are excluded from the analysis (as on the tabulation sheet).</p>
+</div>
+
+<div class="card hidden" id="step4">
+<h2><span class="stepnum">4</span>Analysis settings</h2>
+<div class="row">
+<div><label>Significance level (p &lt;)</label><input type="number" id="pThresh" value="0.05" step="0.001" min="0.0001" max="1"></div>
+<div><label>Estimated prevalence of the behavior (%)</label><input type="number" id="prev" value="50" step="1" min="1" max="99"></div>
+<div><label>Statistical test</label><select id="testSel">
+<option value="auto" selected>Recommended: N−1 chi-square (Fisher's exact when an expected count &lt; 1)</option>
+<option value="fisher">Fisher's exact, two-tailed</option>
+<option value="wald">Wald test on log odds ratio (matches ABATT spreadsheet)</option>
+<option value="chisq">Pearson chi-square, uncorrected</option>
+</select></div>
+<div><label>Blank cells are…</label><select id="blankMode">
+<option value="notmentioned">"Not mentioned" (coded multi-response data)</option>
+<option value="exclude">Missing — exclude from that question</option>
+</select></div>
+</div>
+<button class="btn" onclick="runAnalysis()">Run Analysis</button>
+<span id="classSummary" style="margin-left:14px"></span>
+</div>
+
+<div class="card hidden" id="resultsCard">
+<h2>Results</h2>
+<div id="resHeadline"></div>
+<div class="row" style="margin-top:10px">
+<label style="font-weight:400"><input type="checkbox" id="showAll" onchange="renderResults()"> Show all responses (not just significant ones)</label>
+<button class="btn small secondary" onclick="exportCSV()">Download results as CSV</button>
+</div>
+<div style="overflow-x:auto"><table class="results" id="resTable"></table></div>
+<div id="zeronoteWrap"></div>
+<div class="note"><b>How this is calculated:</b> for each response a 2×2 table is built — Doers giving / not giving the response, and Non-Doers giving / not giving. The <b>p-value</b> tests whether Doers and Non-Doers differ (default: N−1 chi-square, switching to Fisher's exact when an expected count falls below 1; other tests, including the ABATT-matching Wald test on the log odds ratio, are selectable above). The <b>Estimated Relative Risk (ERR)</b> is the prevalence-adjusted relative risk of <i>being a Doer</i>: using your estimated prevalence P, it compares P(Doer | gave the response) with P(Doer | did not), which is the appropriate adjustment for BA's fixed Doer / Non-Doer sampling design. ERR &gt; 1 (green) = response associated with Doers (potential enabler); ERR &lt; 1 (red) = associated with Non-Doers (potential barrier). The <b>Interpretation</b> column restates each statistically significant finding in plain language (always as a number greater than 1). The Odds Ratio is shown for reference. Columns used to classify Doers/Non-Doers are excluded automatically.</div>
+</div>
+
+</div>
+
+<footer><div class="container">&copy; 2025 BarrierAnalysis.org</div></footer>
+
+<script>
+let headers=[], rows=[], workbook=null, results=[];
+
+document.getElementById('fileInput').addEventListener('change', e=>{
+  const f=e.target.files[0]; if(!f) return;
+  const reader=new FileReader();
+  reader.onload=ev=>{
+    workbook=XLSX.read(ev.target.result,{type:'array'});
+    const sp=document.getElementById('sheetPick');
+    sp.innerHTML=workbook.SheetNames.map(n=>`<option>${n}</option>`).join('');
+    document.getElementById('sheetPickWrap').classList.toggle('hidden', workbook.SheetNames.length<2);
+    loadSheet(workbook.SheetNames[0]);
+  };
+  reader.readAsArrayBuffer(f);
+});
+document.getElementById('sheetPick').addEventListener('change',e=>loadSheet(e.target.value));
+document.querySelectorAll('input[name=ndMode]').forEach(r=>r.addEventListener('change',()=>{
+  document.getElementById('ndCustomWrap').classList.toggle('hidden',
+    document.querySelector('input[name=ndMode]:checked').value!=='custom');
+}));
+
+function loadSheet(name){
+  const data=XLSX.utils.sheet_to_json(workbook.Sheets[name],{header:1,defval:''});
+  if(!data.length){alert('That sheet appears to be empty.');return;}
+  headers=data[0].map(h=>String(h).trim());
+  rows=data.slice(1).filter(r=>r.some(c=>String(c).trim()!==''))
+        .map(r=>headers.map((_,i)=>String(r[i]??'').trim()));
+  document.getElementById('fileSummary').innerHTML=
+    `Loaded <b>${rows.length}</b> respondents and <b>${headers.length}</b> columns from "<b>${name}</b>".`;
+  ['doerGroups','ndGroups'].forEach(id=>document.getElementById(id).innerHTML='');
+  addGroup('doerGroups');
+  document.getElementById('step2').classList.remove('hidden');
+  document.getElementById('step4').classList.remove('hidden');
+  document.getElementById('resultsCard').classList.add('hidden');
+}
+
+/* ---- rule builder: OR groups of AND conditions ---- */
+function addGroup(target){
+  const box=document.getElementById(target);
+  if(box.children.length) {
+    const or=document.createElement('div');or.className='orlabel';or.textContent='— OR —';
+    box.appendChild(or);
+  }
+  const g=document.createElement('div'); g.className='group';
+  g.innerHTML=`<div class="group-head"><b>Group ${box.querySelectorAll('.group').length+1} — ALL of these must be true:</b>
+   <button class="btn small secondary" onclick="removeGroup(this)">Remove group</button></div>
+   <div class="conds"></div>
+   <button class="btn small secondary" onclick="addCondTo(this)">+ Add condition (AND)</button>`;
+  box.appendChild(g);
+  addCondTo(g.querySelector('button:last-child'));
+}
+function removeGroup(btn){
+  const g=btn.closest('.group'), box=g.parentNode;
+  const prev=g.previousElementSibling, next=g.nextElementSibling;
+  if(prev&&prev.className==='orlabel')prev.remove();
+  else if(next&&next.className==='orlabel')next.remove();
+  g.remove();
+  renumber(box);
+}
+function renumber(box){
+  box.querySelectorAll('.group').forEach((g,i)=>{
+    g.querySelector('.group-head b').textContent=`Group ${i+1} — ALL of these must be true:`;
+  });
+}
+function addCondTo(btn){
+  const conds=btn.closest('.group').querySelector('.conds');
+  const d=document.createElement('div'); d.className='cond';
+  d.innerHTML=`<span>Field</span>
+   <select class="c-col">${headers.map((h,i)=>`<option value="${i}">${h||'(column '+(i+1)+')'}</option>`).join('')}</select>
+   <select class="c-op"><option value="eq">equals</option><option value="neq">does not equal</option>
+   <option value="in">is one of (comma-separated)</option><option value="nb">is not blank</option><option value="bl">is blank</option></select>
+   <input type="text" class="c-val" placeholder="e.g. ALL  (no quotes)" style="width:180px">
+   <button class="btn small secondary" onclick="this.parentNode.remove()">✕</button>`;
+  d.querySelector('.c-op').addEventListener('change',function(){
+    d.querySelector('.c-val').style.visibility=(this.value==='nb'||this.value==='bl')?'hidden':'visible';
+  });
+  conds.appendChild(d);
+}
+function getGroups(target){
+  return [...document.getElementById(target).querySelectorAll('.group')].map(g=>
+    [...g.querySelectorAll('.cond')].map(c=>({
+      col:+c.querySelector('.c-col').value,
+      op:c.querySelector('.c-op').value,
+      val:c.querySelector('.c-val').value.trim().replace(/^["']|["']$/g,'').toLowerCase()
+    }))
+  ).filter(g=>g.length);
+}
+const norm=s=>String(s).trim().toLowerCase();
+function condTrue(r,c){
+  const v=norm(r[c.col]);
+  if(c.op==='eq')return v===c.val;
+  if(c.op==='neq')return v!==c.val && v!=='';
+  if(c.op==='in')return c.val.split(',').map(x=>x.trim()).includes(v);
+  if(c.op==='nb')return v!=='';
+  if(c.op==='bl')return v==='';
+}
+function matchGroups(r,groups){
+  return groups.some(g=>g.every(c=>condTrue(r,c)));
+}
+
+/* ---- statistics ----
+   2x2 cells:  A = Doers giving response      B = Non-Doers giving response
+               C = Doers NOT giving response  D = Non-Doers NOT giving response  */
+function erfc(x){const t=1/(1+.3275911*x);
+  const y=t*(.254829592+t*(-.284496736+t*(1.421413741+t*(-1.453152027+t*1.061405429))));
+  return y*Math.exp(-x*x);}
+const lf=[0];for(let i=1;i<5000;i++)lf[i]=lf[i-1]+Math.log(i);
+function hyp(a,b,c,d){return Math.exp(lf[a+b]+lf[c+d]+lf[a+c]+lf[b+d]-lf[a+b+c+d]-lf[a]-lf[b]-lf[c]-lf[d]);}
+function fisherP(a,b,c,d){
+  const r1=a+b,c1=a+c,n=a+b+c+d,p0=hyp(a,b,c,d);let p=0;
+  for(let x=Math.max(0,r1+c1-n);x<=Math.min(r1,c1);x++){
+    const pr=hyp(x,r1-x,c1-x,n-r1-c1+x);
+    if(pr<=p0*1.0000001)p+=pr;
+  }
+  return Math.min(p,1);
+}
+function chi2val(A,B,C,D){
+  const N=A+B+C+D,r1=A+B,r2=C+D,c1=A+C,c2=B+D;
+  if(!r1||!r2||!c1||!c2)return 0;
+  return N*Math.pow(A*D-B*C,2)/(r1*r2*c1*c2);
+}
+function pChi1(chi){return Math.min(erfc(Math.sqrt(chi/2)),1);} /* df=1 upper tail */
+function expectedMin(A,B,C,D){
+  const N=A+B+C+D;
+  return Math.min((A+B)*(A+C),(A+B)*(B+D),(C+D)*(A+C),(C+D)*(B+D))/N;
+}
+function computeOR(A,B,C,D){
+  const z0=(A===0||B===0||C===0||D===0);
+  return z0?((0.5+A)*(0.5+D))/((0.5+C)*(0.5+B)):(A*D)/(C*B);
+}
+function computeP(test,A,B,C,D){
+  const N=A+B+C+D;
+  if(test==='fisher')return fisherP(A,B,C,D);
+  if(test==='wald'){
+    const z0=(A===0||B===0||C===0||D===0);
+    const OR=computeOR(A,B,C,D);
+    const SE=z0?Math.sqrt(1/(A+0.5)+1/(C+0.5)+1/(B+0.5)+1/(D+0.5))
+              :Math.sqrt(1/A+1/C+1/B+1/D);
+    const z=Math.abs(Math.log(OR))/SE;
+    return Math.min(erfc(z/Math.SQRT2),1); /* two-tailed normal */
+  }
+  const chi=chi2val(A,B,C,D);
+  if(test==='chisq')return pChi1(chi);
+  /* auto: N-1 chi-square, Fisher when an expected count < 1 */
+  if(test==='auto'&&expectedMin(A,B,C,D)<1)return fisherP(A,B,C,D);
+  return pChi1(chi*(N-1)/N);
+}
+function computeERR(A,B,C,D,P){
+  const td=A+C, tnd=B+D;
+  if(td===0||tnd===0)return null;
+  const rd=A/td, rnd=B/tnd;
+  const numDen=P*rd+(1-P)*rnd, denDen=P*(1-rd)+(1-P)*(1-rnd);
+  if(numDen===0||denDen===0)return null;
+  const NUM=P*rd/numDen, DEN=P*(1-rd)/denDen;
+  if(DEN===0)return null;
+  const err=NUM/DEN;
+  if(!isFinite(err))return null;
+  return {err, zero:(A===0||B===0||C===0||D===0)};
+}
+function interpret(ERR){
+  if(ERR>=1) return {who:'Doers',other:'Non-Doers',factor:ERR};
+  return {who:'Non-Doers',other:'Doers',factor:ERR>0?1/ERR:Infinity};
+}
+function interpText(ERR){
+  const o=interpret(ERR);
+  if(!isFinite(o.factor)||o.factor<=0)
+    return `${o.who} are more likely to give this response than ${o.other}.`;
+  return `${o.who} are ${o.factor.toFixed(1)} times more likely to give this response than ${o.other}.`;
+}
+
+function runAnalysis(){
+  const doerG=getGroups('doerGroups');
+  if(!doerG.length){alert('Add at least one Doer condition.');return;}
+  const ndChoice=document.querySelector('input[name=ndMode]:checked').value;
+  const ndG=getGroups('ndGroups');
+  const doerCols=[...new Set(doerG.flat().map(c=>c.col))];
+  const classCols=new Set(doerCols.concat(ndChoice==='custom'?ndG.flat().map(c=>c.col):[]));
+  const doers=[],nds=[];
+  rows.forEach(r=>{
+    if(matchGroups(r,doerG))doers.push(r);
+    else if(ndChoice==='auto'){
+      if(doerCols.every(col=>norm(r[col])!=='')) nds.push(r);
+    }else if(ndG.length&&matchGroups(r,ndG))nds.push(r);
+  });
+  let summary=`<span class="pill">${doers.length} Doers</span><span class="pill red">${nds.length} Non-Doers</span><span class="pill grayp">${rows.length-doers.length-nds.length} excluded</span>`;
+  if(doers.length===0)summary+=`<span class="pill warn">No Doers found — check your conditions and group setup</span>`;
+  document.getElementById('classSummary').innerHTML=summary;
+  if(doers.length<2||nds.length<2){return;}
+
+  const prev=(+document.getElementById('prev').value||50)/100;
+  const test=document.getElementById('testSel').value;
+  const blankNM=document.getElementById('blankMode').value==='notmentioned';
+  results=[];
+  headers.forEach((h,i)=>{
+    if(classCols.has(i))return;
+    const vals=new Set();
+    doers.concat(nds).forEach(r=>{if(norm(r[i])!=='')vals.add(norm(r[i]));});
+    if(!vals.size||vals.size>40)return; /* skip empty or free-text/ID columns */
+    vals.forEach(v=>{
+      const dIn=blankNM?doers:doers.filter(r=>norm(r[i])!=='');
+      const nIn=blankNM?nds:nds.filter(r=>norm(r[i])!=='');
+      const A=dIn.filter(r=>norm(r[i])===v).length, B=nIn.filter(r=>norm(r[i])===v).length;
+      const C=dIn.length-A, D=nIn.length-B;
+      if(A+B===0||(A+B===dIn.length+nIn.length))return;
+      const errObj=computeERR(A,B,C,D,prev);
+      if(errObj===null)return;
+      const p=computeP(test,A,B,C,D);
+      const OR=computeOR(A,B,C,D);
+      results.push({q:h,resp:v.toUpperCase(),A,B,
+        pd:100*A/dIn.length,pn:100*B/nIn.length,p,OR,ERR:errObj.err,zero:errObj.zero});
+    });
+  });
+  results.sort((x,y)=>y.ERR-x.ERR);
+  document.getElementById('resultsCard').classList.remove('hidden');
+  renderResults();
+}
+
+function fmtP(p){return p<0.0001?'<0.0001':p.toFixed(4);}
+
+function renderResults(){
+  const th=+document.getElementById('pThresh').value||0.05;
+  const all=document.getElementById('showAll').checked;
+  const sig=results.filter(r=>r.p<th);
+  const show=all?results:sig;
+  document.getElementById('resHeadline').innerHTML=
+    `<b>${sig.length}</b> response(s) significant at p &lt; ${th}, ranked by Estimated Relative Risk (highest → lowest). ERR &gt; 1 = enabler · ERR &lt; 1 = barrier.`;
+  let html=`<tr><th>#</th><th>Question (Field)</th><th>Response</th><th>% Doers</th><th>% Non-Doers</th><th>Diff</th><th>Odds Ratio</th><th>p-value</th><th>ERR</th><th>Interpretation</th></tr>`;
+  show.forEach((r,idx)=>{
+    const isSig=r.p<th;
+    html+=`<tr class="${r.ERR>=1?'enabler':'barrier'}" ${isSig?'':'style="opacity:.45"'}>
+    <td>${idx+1}</td><td class="qcol">${r.q}</td><td>${r.resp}</td>
+    <td>${r.pd.toFixed(1)}% (${r.A})</td><td>${r.pn.toFixed(1)}% (${r.B})</td>
+    <td>${(r.pd-r.pn).toFixed(1)}</td>
+    <td>${r.OR.toFixed(2)}</td>
+    <td>${fmtP(r.p)}</td>
+    <td class="err">${r.ERR.toFixed(2)}${r.zero?'<span title="zero-cell estimate">&nbsp;†</span>':''}</td>
+    <td class="interp">${isSig?interpText(r.ERR):'<span style="color:#bbb">—</span>'}</td></tr>`;
+  });
+  document.getElementById('resTable').innerHTML=html;
+  document.getElementById('zeronoteWrap').innerHTML =
+    show.some(r=>r.zero && r.p<th)
+    ? '<p style="font-size:13px;color:#777;margin-top:10px">† Based on a zero cell (e.g. no Non-Doers gave this response); the association is real but the exact value is unstable — interpret the ranking, not the precise number.</p>'
+    : '';
+}
+
+function exportCSV(){
+  const th=+document.getElementById('pThresh').value||0.05;
+  let csv='Question (Field),Response,% Doers,N Doers,% Non-Doers,N Non-Doers,Difference,Odds Ratio,p-value,Estimated Relative Risk,Zero-cell estimate,Interpretation,Significant\n';
+  results.forEach(r=>{
+    const interp=r.p<th?interpText(r.ERR):'';
+    csv+=`"${r.q}","${r.resp}",${r.pd.toFixed(1)},${r.A},${r.pn.toFixed(1)},${r.B},${(r.pd-r.pn).toFixed(1)},${r.OR.toFixed(3)},${r.p.toFixed(4)},${r.ERR.toFixed(3)},${r.zero?'YES':'no'},"${interp}",${r.p<th?'YES':'no'}\n`;
+  });
+  const blob=new Blob([csv],{type:'text/csv'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='BA_results.csv';
+  a.click();
+}
+</script>
+</body>
+</html>

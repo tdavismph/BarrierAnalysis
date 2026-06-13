@@ -444,10 +444,20 @@
         .goog-te-banner-frame { display: none !important; }
         body { top: 0 !important; }
 
-        @media (max-width: 768px) {
+      @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                align-items: center;
+            }
+            .hamburger {
+                order: 2;
+                margin-left: auto;
+            }
             .translate-wrapper {
+                order: 3;
                 margin-left: 0;
-                padding: 10px 24px;
+                width: 100%;
+                padding: 10px 0 0;
                 border-top: 1px solid #f1f3f4;
                 justify-content: flex-start;
             }

@@ -56,7 +56,41 @@ tr.barrier td.err{color:#b91c1c;font-weight:700;}
 .radio-line{margin:6px 0;font-size:15px;}
 footer{background:var(--dark);color:#b0b0b0;text-align:center;padding:25px 0;margin-top:50px;font-size:14px;}
 @media(max-width:768px){.nav-links{display:none;}}
+.translate-wrapper{display:flex;align-items:center;margin-left:20px;}
+.goog-te-banner-frame{display:none !important;}
+body{top:0 !important;}
+@media(max-width:768px){
+  nav{flex-wrap:wrap;align-items:center;}
+  .menu-toggle{order:2;margin-left:auto;}
+  .translate-wrapper{order:3;margin-left:0;width:100%;padding:10px 0 0;border-top:1px solid #f1f3f4;justify-content:flex-start;}
+}
+.translate-wrapper{display:flex;align-items:center;margin-left:20px;}
+.goog-te-banner-frame{display:none !important;}
+body{top:0 !important;}
+.hamburger{display:none;flex-direction:column;justify-content:space-between;width:28px;height:20px;cursor:pointer;background:none;border:none;padding:0;z-index:200;}
+.hamburger span{display:block;width:100%;height:3px;background-color:var(--dark);border-radius:3px;transition:all 0.3s ease;}
+.hamburger.open span:nth-child(1){transform:translateY(8.5px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-8.5px) rotate(-45deg);}
+@media(max-width:768px){
+  .nav-links{display:none;flex-direction:column;width:100%;margin-top:10px;}
+  .nav-links.open{display:flex;}
+  .nav-links li{margin:0;padding:8px 0;border-top:1px solid #eee;}
+  .hamburger{display:flex;order:2;margin-left:auto;}
+  nav{flex-wrap:wrap;align-items:center;}
+  .translate-wrapper{order:3;margin-left:0;width:100%;padding:10px 0 0;border-top:1px solid #f1f3f4;justify-content:flex-start;}
+}  
 </style>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+    autoDisplay: false
+  }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>  
 </head>
 <body>
 <header><div class="container"><nav>
@@ -65,7 +99,7 @@ footer{background:var(--dark);color:#b0b0b0;text-align:center;padding:25px 0;mar
 <li><a href="about.html">About</a></li><li><a href="training.html">Training</a></li>
 <li><a href="research.html">Research</a></li><li><a href="tools.html">Tools</a></li>
 <li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li>
-</ul></nav></div></header>
+</ul><div class="translate-wrapper"><div id="google_translate_element"></div></div></nav></div></header>
 
 <div class="page-header"><div class="container">
 <h1>Barrier Analysis Survey Online Tabulation Tool</h1>

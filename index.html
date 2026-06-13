@@ -578,31 +578,5 @@
             });
         }
     </script>
-    <!-- Mobile menu — paste once, just before </body> -->
-<script>
-(function(){
-  var css = document.createElement('style');
-  css.textContent =
-    '.menu-toggle{display:none;background:none;border:none;font-size:28px;color:#1a73e8;cursor:pointer;line-height:1;}'+
-    '@media(max-width:768px){'+
-      '.menu-toggle{display:block;}'+
-      'nav{flex-wrap:wrap;}'+
-      '.nav-links{display:none !important;flex-direction:column;width:100%;margin-top:10px;}'+
-      '.nav-links.open{display:flex !important;}'+
-      '.nav-links li{margin:0;padding:8px 0;border-top:1px solid #eee;}'+
-    '}';
-  document.head.appendChild(css);
-  document.querySelectorAll('nav').forEach(function(nav){
-    var links = nav.querySelector('.nav-links');
-    if(!links || nav.querySelector('.menu-toggle')) return;
-    var btn = document.createElement('button');
-    btn.className = 'menu-toggle';
-    btn.setAttribute('aria-label','Open menu');
-    btn.innerHTML = '&#9776;';
-    nav.insertBefore(btn, links);
-    btn.addEventListener('click', function(){ links.classList.toggle('open'); });
-  });
-})();
-</script>
 </body>
 </html>

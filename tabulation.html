@@ -110,6 +110,14 @@ body{top:0 !important;}
 .progress-bar div{height:100%;background:#34a853;}
 .okmsg{background:#e6f4ea;border-left:4px solid #34a853;padding:10px 16px;border-radius:0 6px 6px 0;font-size:14px;margin-top:12px;}
 .okmsg ul{margin:6px 0 0 18px;}
+.restore{background:#e8f0fe;border-left:4px solid var(--primary);padding:10px 16px;border-radius:0 6px 6px 0;font-size:14px;margin:0 0 14px;}
+.restore .btn{margin:8px 8px 0 0;}
+.cbbox{border:1px dashed #c6d2e3;border-radius:6px;padding:10px 14px;margin:6px 0 14px;font-size:14px;}
+.savestat{font-size:13px;color:var(--gray);margin-top:10px;}
+.savestat.bad{color:#b3261e;}
+details.inc{font-size:12px;color:var(--gray);margin-top:3px;}
+details.inc summary{cursor:pointer;}
+details.inc div{padding:1px 0 1px 10px;}
 .card h3,#codeArea{scroll-margin-top:100px;}
 .qbanner{scroll-margin-top:100px;background:#e8f0fe;border:1px solid #c6dafc;border-left:6px solid var(--primary);border-radius:8px;padding:14px 18px;margin-top:8px;}
 .qbanner-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;}
@@ -168,10 +176,15 @@ function googleTranslateElementInit() {
 <div class="card hidden" id="step1b">
 <h2><span class="stepnum" style="width:38px;border-radius:15px">1b</span>Code open-ended answers <span style="font-weight:400;font-size:15px;color:var(--gray)">(skip if your answers are already coded)</span></h2>
 <p class="hint">Use this step if your file holds the raw text answers to open-ended questions such as “What makes it difficult…?”, “What makes it easier…?”, “Who approves…?” or “What are the advantages…?”. You group answers that mean the same thing into one category (for example, “time”, “enough time” and “having enough time” into <i>Lack of time</i>). Each category is then analysed like a pre-coded response.</p>
+<div id="oeRestore"></div>
 <button class="btn small secondary" id="oeToggle" onclick="toggleOE()">Show coding step</button>
 <div id="oeBody" class="hidden">
 
 <h3 style="margin:22px 0 6px">A. Choose the questions to code</h3>
+<div class="cbbox"><label style="margin:0">Reuse a saved codebook <span style="font-weight:400">(optional)</span></label>
+<input type="file" id="oeCbFile" accept=".json,application/json" style="margin:6px 0">
+<div class="hint" style="margin:0">If you coded an earlier file from the same questionnaire, load the codebook you downloaded then (a .json file). The tool finds each question by its column headers and puts every answer it has seen before into the same category. Answers it has not seen before are left for you to code.</div>
+<div id="oeCbMsg"></div></div>
 <p class="hint">Answers to one question are often spread over several columns: the question itself, then “What else? (#2)”, “What else? (#3)” and so on. The tool has grouped those columns. Tick the questions you want to code, shorten each name if you wish (the name becomes the question label in the results), and say how answers are separated when one cell holds more than one.</p>
 <div id="oeQList"></div>
 <div class="row" style="margin-top:10px">
@@ -189,6 +202,7 @@ function googleTranslateElementInit() {
 <button class="btn small" id="oeNext" onclick="stepQ(1)">Next question →</button></span></div>
 <div id="oeQTitle" class="qtitle"></div>
 <div id="oeProgress" style="font-size:14px"></div>
+<div id="oeSaveShort" class="savestat" style="margin-top:4px"></div>
 <div style="margin-top:8px;font-size:13px">Jump to question: <select id="oeQSel" style="max-width:100%;font-size:13px;padding:4px 6px"></select></div>
 </div>
 <div class="panel sugg-panel">
@@ -235,9 +249,14 @@ function googleTranslateElementInit() {
 </div>
 
 <h3 style="margin:28px 0 6px">C. Apply the codes</h3>
-<p class="hint">“Apply codes” adds one Yes/No column per category, named “Question: Category”, and removes the original text columns from the analysis. Answers you leave uncoded are analysed one by one under their own wording and marked “uncoded” in the results. Respondents who gave no answer to a question, or only answers marked not codeable, are handled by the “Blank cells are…” setting in Step 4. Your coding is kept only while this page is open, so download the coded data to keep it.</p>
+<p class="hint">“Apply codes” adds one Yes/No column per category, named “Question: Category”, and removes the original text columns from the analysis. Answers you leave uncoded are analysed one by one under their own wording and marked “uncoded” in the results. Respondents who gave no answer to a question, or only answers marked not codeable, are handled by the “Blank cells are…” setting in Step 4.</p>
+<p class="hint">Your coding is saved automatically in this browser on this computer. If you close the page, load the same file again and the tool offers to restore it. To keep a copy, to carry on from another computer, or to code a later file from the same questionnaire, download the codebook and load it in part A. The coded data file also lists the codebook on a second sheet.</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
 <button class="btn" onclick="applyCodes()">Apply codes</button>
-<button class="btn secondary" style="margin-left:8px" onclick="downloadCoded()">Download coded data (.xlsx)</button>
+<button class="btn secondary" onclick="downloadCoded()">Download coded data (.xlsx)</button>
+<button class="btn secondary" onclick="downloadCodebook()">Download codebook (.json)</button>
+</div>
+<div id="oeSaveStatus" class="savestat"></div>
 <div id="oeApplyMsg"></div>
 </div>
 </div>
@@ -303,9 +322,12 @@ let headers=[], rows=[], workbook=null, results=[];
 /* Step 1b state */
 let origCols=0, displayRows=[], oeQuestions=[], oeCur=null, oeTicked=new Set(), oeShown=[],
     colMeta={}, excludedCols=new Set(), oeDirty=false, oeApplied=false, oeNameTouched=false, oeSeq=0, oeCatSeq=0;
+/* Phase 3: file name, automatic save in this browser, pending restore offer */
+let oeFileName='', oeSaveTimer=null, oeSaveOK=true, oeSaveAt=null, oeRestorePending=null;
 
 document.getElementById('fileInput').addEventListener('change', e=>{
   const f=e.target.files[0]; if(!f) return;
+  oeFileName=f.name;
   const reader=new FileReader();
   reader.onload=ev=>{
     workbook=XLSX.read(ev.target.result,{type:'array'});
@@ -327,6 +349,7 @@ document.querySelectorAll('input[name=ndMode]').forEach(r=>r.addEventListener('c
 function loadSheet(name){
   const data=XLSX.utils.sheet_to_json(workbook.Sheets[name],{header:1,defval:''});
   if(!data.length){alert('That sheet appears to be empty.');return;}
+  flushAutosave(); /* save coding for the previous file/sheet before its headers are replaced */
   headers=data[0].map(h=>String(h).trim());
   /* formatted copy of the same rows (dates as dates), used only for the coded-data download */
   const disp=XLSX.utils.sheet_to_json(workbook.Sheets[name],{header:1,defval:'',raw:false});
@@ -345,6 +368,7 @@ function loadSheet(name){
   document.getElementById('step2').classList.remove('hidden');
   document.getElementById('step4').classList.remove('hidden');
   document.getElementById('resultsCard').classList.add('hidden');
+  offerRestore();
 }
 
 /* ==== Step 1b: coding open-ended answers ==== */
@@ -363,6 +387,8 @@ function shortName(h){
 function resetCoding(){
   oeQuestions=[];oeCur=null;oeTicked.clear();oeShown=[];colMeta={};excludedCols=new Set();
   oeDirty=false;oeApplied=false;oeNameTouched=false;oeLang=null;oeLangChosen=false;oeSuggShowAll=false;
+  oeSaveOK=true;oeSaveAt=null;oeRestorePending=null;
+  document.getElementById('oeRestore').innerHTML='';document.getElementById('oeCbMsg').innerHTML='';renderSaveStatus();
   detectOE();renderOEQList();
   document.getElementById('oeAddCol').innerHTML=headers.map((h,i)=>`<option value="${i}">${esc(shortName(h)||'(column '+(i+1)+')')}</option>`).join('');
   document.getElementById('codeArea').classList.add('hidden');
@@ -370,7 +396,8 @@ function resetCoding(){
 }
 function newQuestion(cols){
   return {id:++oeSeq,cols,name:shortName(headers[cols[0]])||('Column '+(cols[0]+1)),sep:';',include:true,built:false,
-          cats:[],nc:new Set(),dismissed:new Set(),answers:new Map(),keyList:[],idx:new Map(),resp:[]};
+          cats:[],nc:new Set(),dismissed:new Set(),answers:new Map(),keyList:[],idx:new Map(),resp:[],
+          texts:new Map()}; /* texts: wording for every coded answer, including answers from a codebook that are not in this file */
 }
 function detectOE(){
   for(let i=0;i<origCols;i++){
@@ -383,7 +410,7 @@ function detectOE(){
   }
 }
 function oeHasWork(){return oeQuestions.some(q=>q.cats.length||q.nc.size);}
-function markDirty(){oeDirty=true;}
+function markDirty(){oeDirty=true;scheduleAutosave();}
 function toggleOE(){
   const b=document.getElementById('oeBody'),open=b.classList.toggle('hidden');
   document.getElementById('oeToggle').textContent=open?'Show coding step':'Hide coding step';
@@ -405,7 +432,14 @@ function renameQ(qi,v){
 }
 function setSep(qi,v){
   const q=oeQuestions[qi];q.sep=v;markDirty();
-  if(q.built){buildAnswers(q);if(q===oeCur){oeTicked.clear();renderCoding();}}
+  if(q.built){
+    const before=new Set(q.answers.keys());buildAnswers(q);
+    /* drop codes for answers that the new separator has split up (codebook answers not in this file are kept) */
+    const gone=k=>before.has(k)&&!q.answers.has(k);
+    q.cats.forEach(c=>{for(const k of [...c.keys])if(gone(k))c.keys.delete(k);});
+    for(const k of [...q.nc])if(gone(k))q.nc.delete(k);
+    if(q===oeCur){oeTicked.clear();renderCoding();}
+  }
 }
 function removeOEQ(qi){
   const q=oeQuestions[qi];
@@ -434,9 +468,7 @@ function buildAnswers(q){
   })));
   q.answers.forEach(a=>{let best='',bn=-1;a.variants.forEach((n,t)=>{if(n>bn){bn=n;best=t;}});a.display=best;});
   q.keyList=[...q.answers.keys()];q.idx=new Map(q.keyList.map((k,i)=>[k,i]));
-  /* after a separator change, drop codes for answers that no longer exist */
-  q.cats.forEach(c=>{for(const k of [...c.keys])if(!q.answers.has(k))c.keys.delete(k);});
-  for(const k of [...q.nc])if(!q.answers.has(k))q.nc.delete(k);
+  q.answers.forEach((a,k)=>q.texts.set(k,a.display));
   q.built=true;
 }
 const isCoded=(q,k)=>q.nc.has(k)||q.cats.some(c=>c.keys.has(k));
@@ -450,16 +482,16 @@ function fillQSel(){
   const inc=oeQuestions.filter(q=>q.include);
   document.getElementById('oeQSel').innerHTML=inc.map(q=>`<option value="${q.id}" ${q===oeCur?'selected':''}>${esc(q.name)}</option>`).join('');
 }
-function startCoding(){
+function startCoding(noScroll){
   const inc=oeQuestions.filter(q=>q.include);
-  if(!inc.length){alert('Tick at least one question to code.');return;}
+  if(!inc.length){if(!noScroll)alert('Tick at least one question to code.');return;}
   inc.forEach(q=>{if(!q.built)buildAnswers(q);});
   if(!oeLangChosen)oeLang=detectLang();
   if(!oeCur||!oeCur.include)oeCur=inc[0];
   fillQSel();oeTicked.clear();
   document.getElementById('codeArea').classList.remove('hidden');
   renderCoding();
-  document.getElementById('codeArea').scrollIntoView({behavior:'smooth',block:'start'});
+  if(!noScroll)document.getElementById('codeArea').scrollIntoView({behavior:'smooth',block:'start'});
 }
 function renderCoding(){renderQBanner();renderProgress();renderSugg();renderAnswers();renderCats();updateTickUI();}
 function renderQBanner(){
@@ -515,11 +547,16 @@ function renderCats(){
       <span class="catbtns"><button class="btn small secondary" onclick="renameCat(${ci})">Rename</button>
       ${others?`<select onchange="mergeCat(${ci},this.value)"><option value="">Merge into…</option>${others}</select>`:''}
       <button class="btn small secondary" onclick="deleteCat(${ci})">Delete</button></span></div>
-      <details><summary>${c.keys.size} answer${c.keys.size===1?'':'s'}</summary>${items}</details></div>`;
+      <details><summary>${nAns(q,c)}</summary>${items}</details></div>`;
   }).join(''):'<p class="hint">No categories yet. Tick answers on the left, type a name and click “Create category”.</p>';
   const nc=[...q.nc].filter(k=>q.answers.has(k));
   document.getElementById('oeNC').innerHTML=nc.length?`<details style="margin-top:12px"><summary style="font-weight:600;font-size:14px">Marked not codeable (${nc.length})</summary>
     ${nc.map(k=>`<div style="padding:2px 0;font-size:14px">${esc(q.answers.get(k).display)} <span class="cnt">(${q.answers.get(k).rs.size})</span><button class="xbtn" title="Return to the answer list" onclick="restoreNC(${q.idx.get(k)})">↩</button></div>`).join('')}</details>`:'';
+}
+function nAns(q,c){
+  let here=0;c.keys.forEach(k=>{if(q.answers.has(k))here++;});
+  const away=c.keys.size-here;
+  return `${here} answer${here===1?'':'s'}`+(away?` <span title="Answers from the codebook that nobody gave in this file. They stay in the category for future files.">(+${away} from the codebook, not in this file)</span>`:'');
 }
 function tick(i,on){const k=oeCur.keyList[i];on?oeTicked.add(k):oeTicked.delete(k);updateTickUI();}
 function toggleTick(i){const k=oeCur.keyList[i];oeTicked.has(k)?oeTicked.delete(k):oeTicked.add(k);renderAnswers();updateTickUI();}
@@ -713,7 +750,7 @@ function renderSugg(){
   }).join(''):'<p class="hint">No suggestions for the answers that are left. Try “Loose”, or group the remaining answers by hand below.</p>';
   const more=[];
   if(oeSuggs.length>lim)more.push(`<button class="btn small secondary" onclick="oeSuggShowAll=!oeSuggShowAll;renderSugg()">${oeSuggShowAll?'Show fewer':'Show all '+oeSuggs.length+' suggestions'}</button>`);
-  if(oeCur.dismissed.size)more.push(`<button class="btn small secondary" onclick="oeCur.dismissed.clear();renderSugg()">Show ${oeCur.dismissed.size} dismissed suggestion${oeCur.dismissed.size===1?'':'s'} again</button>`);
+  if(oeCur.dismissed.size)more.push(`<button class="btn small secondary" onclick="oeCur.dismissed.clear();markDirty();renderSugg()">Show ${oeCur.dismissed.size} dismissed suggestion${oeCur.dismissed.size===1?'':'s'} again</button>`);
   document.getElementById('oeSuggMore').innerHTML=more.length?`<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">${more.join('')}</div>`:'';
 }
 function acceptSugg(i){
@@ -730,14 +767,14 @@ function editSugg(i){
   document.getElementById('oeSearch').value='';renderAnswers();updateTickUI();
   document.querySelector('.actionbar').scrollIntoView({behavior:'smooth',block:'center'});
 }
-function dismissSugg(i){const g=oeSuggs[i];if(g){oeCur.dismissed.add(g.sig);renderSugg();}}
+function dismissSugg(i){const g=oeSuggs[i];if(g){oeCur.dismissed.add(g.sig);markDirty();renderSugg();}}
 function toggleSugg(){
   const b=document.getElementById('oeSuggBody'),hidden=b.classList.toggle('hidden');
   document.getElementById('oeSuggToggle').textContent=hidden?'Show suggestions':'Hide suggestions';
 }
-document.getElementById('oeLang').addEventListener('change',e=>{oeLang=e.target.value;oeLangChosen=true;renderSugg();});
+document.getElementById('oeLang').addEventListener('change',e=>{oeLang=e.target.value;oeLangChosen=true;scheduleAutosave();renderSugg();});
 document.getElementById('oeStrict').addEventListener('change',()=>{oeSuggShowAll=false;renderSugg();});
-document.getElementById('oeSyn').addEventListener('input',e=>{oeSynText=e.target.value;clearTimeout(oeSynTimer);oeSynTimer=setTimeout(()=>{if(oeCur)renderSugg();},400);});
+document.getElementById('oeSyn').addEventListener('input',e=>{oeSynText=e.target.value;scheduleAutosave();clearTimeout(oeSynTimer);oeSynTimer=setTimeout(()=>{if(oeCur)renderSugg();},400);});
 
 function refreshFieldSelects(){
   const opts=headers.map((h,i)=>`<option value="${i}">${esc(h||'(column '+(i+1)+')')}</option>`).join('');
@@ -761,7 +798,10 @@ function applyCodes(){
     };
     let nc=0;
     q.cats.forEach(c=>{if(!catCount(q,c))return;nc++;
-      addCol(`${q.name}: ${c.name}`,{q:q.name,resp:c.name},ri=>[...q.resp[ri]].some(k=>c.keys.has(k)));});
+      /* the answers in this category that occur in this file, most frequent first, for the "includes" list in the results */
+      const includes=[...c.keys].filter(k=>q.answers.has(k)).map(k=>q.answers.get(k))
+        .sort((x,y)=>y.rs.size-x.rs.size||x.display.localeCompare(y.display)).map(a=>({t:a.display,n:a.rs.size}));
+      addCol(`${q.name}: ${c.name}`,{q:q.name,resp:c.name,includes},ri=>[...q.resp[ri]].some(k=>c.keys.has(k)));});
     const unc=q.keyList.filter(k=>!isCoded(q,k));
     unc.forEach(k=>{const a=q.answers.get(k);
       addCol(`${q.name}: ${a.display} (uncoded)`,{q:q.name,resp:a.display,uncoded:true},ri=>q.resp[ri].has(k));});
@@ -780,7 +820,158 @@ function downloadCoded(){
   rows.forEach((r,ri)=>aoa.push(r.map((v,i)=>i<origCols?displayRows[ri][i]:v)));
   const wb=XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(aoa),'Coded data');
+  /* second sheet: the codebook in readable form, one row per answer */
+  const cb=[['Question','Category','Answer','Respondents in this file']];
+  oeQuestions.filter(q=>q.include&&q.built&&q.cats.length).forEach(q=>{
+    const row=(cat,k)=>{const a=q.answers.get(k);cb.push([q.name,cat,a?a.display:(q.texts.get(k)||k),a?a.rs.size:0]);};
+    q.cats.forEach(c=>[...c.keys].forEach(k=>row(c.name,k)));
+    [...q.nc].forEach(k=>row('(not codeable)',k));
+    q.keyList.filter(k=>!isCoded(q,k)).forEach(k=>row('(uncoded)',k));
+  });
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(cb),'Codebook');
   XLSX.writeFile(wb,'BA_coded_data.xlsx');
+}
+
+/* ==== Codebook: save, load, and automatic save in this browser ==== */
+const answerText=(q,k)=>{const a=q.answers.get(k);return a?a.display:(q.texts.get(k)||k);};
+function codebookData(){
+  return {format:'BA-codebook',version:1,saved:new Date().toISOString(),sourceFile:oeFileName,
+    language:oeLang,languageChosen:oeLangChosen,synonyms:oeSynText,
+    questions:oeQuestions.map(q=>({name:q.name,columns:q.cols.map(c=>headers[c]),separator:q.sep,include:q.include,
+      categories:q.cats.map(c=>({name:c.name,answers:[...c.keys].map(k=>answerText(q,k))})),
+      notCodeable:[...q.nc].map(k=>answerText(q,k)),
+      dismissed:[...q.dismissed].map(s=>s.split('\u0001'))}))};
+}
+function cbStats(cb){
+  let nq=0,nc=0;(cb.questions||[]).forEach(q=>{const n=(q.categories||[]).length;if(n){nq++;nc+=n;}});
+  return `${nc} categor${nc===1?'y':'ies'} in ${nq} question${nq===1?'':'s'}`;
+}
+function downloadCodebook(){
+  if(!oeHasWork()){alert('There is no coding to save yet. Create at least one category first (part B).');return;}
+  const d=new Date(),ymd=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  const blob=new Blob([JSON.stringify(codebookData(),null,1)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`BA_codebook_${ymd}.json`;
+  document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+}
+/* put a codebook's coding onto the questions of the current file; returns a summary for the user */
+function applyCodebook(cb){
+  if(!cb||cb.format!=='BA-codebook'||!Array.isArray(cb.questions))throw new Error('not a codebook');
+  const H=headers.slice(0,origCols),hk=h=>keyOf(h);
+  const found=[],missing=[];
+  cb.questions.forEach(cq=>{
+    const cols=(cq.columns||[]).map(String);if(!cols.length)return;
+    let i=H.indexOf(cols[0].trim());
+    if(i<0)i=H.findIndex(h=>hk(h)===hk(cols[0]));
+    if(i<0){if((cq.categories||[]).length)missing.push(cq.name||cols[0]);return;}
+    let n=1;while(n<cols.length&&i+n<origCols&&hk(H[i+n])===hk(cols[n]))n++;
+    let q=oeQuestions.find(x=>x.cols[0]===i);
+    /* keep any extra "What else?" columns this file has beyond those in the codebook */
+    const end=Math.max(i+n-1,q?q.cols[q.cols.length-1]:i),newCols=[];for(let k=i;k<=end;k++)newCols.push(k);
+    if(!q){q=newQuestion(newCols);oeQuestions.push(q);}else q.cols=newCols;
+    if(cq.name)q.name=String(cq.name);
+    if(SEPS.some(s=>s[0]===cq.separator))q.sep=cq.separator;
+    q.include=cq.include!==false;
+    const keysOf=list=>{const s=new Set();(list||[]).forEach(t=>{const k=keyOf(t);if(k){s.add(k);if(!q.texts.has(k))q.texts.set(k,String(t));}});return s;};
+    q.cats=(cq.categories||[]).filter(c=>c&&c.name).map(c=>({id:++oeCatSeq,name:String(c.name),keys:keysOf(c.answers)}));
+    q.nc=keysOf(cq.notCodeable);
+    q.dismissed=new Set((cq.dismissed||[]).filter(Array.isArray).map(a=>a.join('\u0001')));
+    q.built=false;found.push(q);
+  });
+  oeQuestions.sort((x,y)=>x.cols[0]-y.cols[0]);
+  if(typeof cb.synonyms==='string'){oeSynText=cb.synonyms;document.getElementById('oeSyn').value=oeSynText;}
+  if(cb.languageChosen&&cb.language){oeLang=cb.language;oeLangChosen=true;}
+  /* how much of this file the codebook already covers */
+  found.forEach(q=>buildAnswers(q));
+  const coded=found.filter(q=>q.cats.length&&q.include);
+  let ans=0,cov=0;
+  coded.forEach(q=>q.keyList.forEach(k=>{ans++;if(isCoded(q,k))cov++;}));
+  oeCur=coded[0]||null;oeTicked.clear();oeDirty=true;oeApplied=false; /* open the first question that has coding */
+  document.getElementById('codeArea').classList.add('hidden');document.getElementById('oeApplyMsg').innerHTML='';
+  renderOEQList();openOE();startCoding(true);
+  let msg=`${coded.length} question${coded.length===1?'':'s'} with coding found in this file.`;
+  if(ans)msg+=` Of the ${ans} different answers to ${coded.length===1?'it':'them'} in this file, <b>${cov}</b> are already in a category or marked not codeable` +
+    (ans-cov?`; the other <b>${ans-cov}</b> are not yet coded and are waiting in part B.`:', so nothing is left to code.');
+  if(missing.length)msg+=`<br><span style="color:#92400e">Not found in this file (its column headers differ), so left out: ${missing.map(esc).join('; ')}.</span>`;
+  return msg;
+}
+function openOE(){if(document.getElementById('oeBody').classList.contains('hidden'))toggleOE();}
+document.getElementById('oeCbFile').addEventListener('change',e=>{
+  const f=e.target.files[0];e.target.value='';if(!f)return;
+  const box=document.getElementById('oeCbMsg');
+  if(!origCols){box.innerHTML='<div class="note">Load your data file in Step 1 first.</div>';return;}
+  const r=new FileReader();
+  r.onload=()=>{
+    let cb;try{cb=JSON.parse(r.result);}catch(err){cb=null;}
+    if(!cb||cb.format!=='BA-codebook'){box.innerHTML='<div class="note" style="border-left-color:#d93025">This file is not a Barrier Analysis codebook. Choose the .json file made by “Download codebook”.</div>';return;}
+    if(oeHasWork()&&!confirm('Loading this codebook replaces the coding you have done for the questions it covers. Continue?'))return;
+    oeRestorePending=null;document.getElementById('oeRestore').innerHTML='';
+    const when=cb.saved?new Date(cb.saved).toLocaleString([], {dateStyle:'medium',timeStyle:'short'}):'';
+    const msg=applyCodebook(cb);
+    box.innerHTML=`<div class="okmsg">Codebook loaded${cb.sourceFile?` (made from “${esc(cb.sourceFile)}”${when?', '+esc(when):''})`:''}. ${msg}</div>`;
+    autosave();
+  };
+  r.readAsText(f);
+});
+
+/* automatic save: one entry per questionnaire, identified by the file's column headers */
+const AS_PREFIX='ba-coding:';
+function fpKey(){
+  let h=2166136261;const s=headers.slice(0,origCols).join('\u0001');
+  for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}
+  return AS_PREFIX+(h>>>0).toString(36)+'-'+origCols;
+}
+function scheduleAutosave(){clearTimeout(oeSaveTimer);oeSaveTimer=setTimeout(autosave,600);}
+function flushAutosave(){if(oeSaveTimer){clearTimeout(oeSaveTimer);autosave();}}
+function autosave(){
+  oeSaveTimer=null;
+  if(!origCols||oeRestorePending){renderSaveStatus();return;} /* never overwrite saved coding the user has not yet restored or discarded */
+  try{
+    const k=fpKey();
+    if(oeHasWork()){
+      localStorage.setItem(k,JSON.stringify({saved:Date.now(),file:oeFileName,codebook:codebookData()}));
+      pruneAutosaves();
+    }else localStorage.removeItem(k);
+    oeSaveOK=true;oeSaveAt=oeHasWork()?new Date():null;
+  }catch(e){oeSaveOK=false;}
+  renderSaveStatus();
+}
+function pruneAutosaves(){ /* keep the 10 most recent */
+  const list=[];
+  for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith(AS_PREFIX)){let t=0;try{t=JSON.parse(localStorage.getItem(k)).saved||0;}catch(e){}list.push([k,t]);}}
+  list.sort((a,b)=>b[1]-a[1]).slice(10).forEach(([k])=>localStorage.removeItem(k));
+}
+function renderSaveStatus(){
+  const long=document.getElementById('oeSaveStatus'),short=document.getElementById('oeSaveShort');
+  let l='',s='',bad=false;
+  if(!oeSaveOK){bad=true;
+    l=s='This browser is not letting the page save your coding (a private window, or site storage is turned off). Download the codebook before you close the page.';}
+  else if(oeRestorePending&&oeHasWork()){bad=true;
+    l=s='New coding is not being saved until you choose “Restore” or “Discard” for the saved coding at the top of this step.';}
+  else if(oeSaveAt){const t=oeSaveAt.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+    s=`Saved in this browser at ${t}.`;l=`Coding saved in this browser at ${t}. Download the codebook to keep a copy or to use it on another computer.`;}
+  [long,short].forEach((el,i)=>{el.textContent=i?s:l;el.classList.toggle('bad',bad);});
+}
+function offerRestore(){
+  let s=null;
+  try{const raw=localStorage.getItem(fpKey());if(raw)s=JSON.parse(raw);}catch(e){s=null;}
+  if(!s||!s.codebook)return;
+  oeRestorePending=s;
+  const when=new Date(s.saved).toLocaleString([], {dateStyle:'medium',timeStyle:'short'});
+  document.getElementById('oeRestore').innerHTML=`<div class="restore"><b>This browser has saved coding for a file with these same columns</b>${s.file?` (“${esc(s.file)}”)`:''}, last changed ${esc(when)}: ${cbStats(s.codebook)}.
+    <div><button class="btn small" onclick="restoreSaved()">Restore it</button><button class="btn small secondary" onclick="discardSaved()">Discard it</button></div></div>`;
+}
+function restoreSaved(){
+  const s=oeRestorePending;if(!s)return;
+  oeRestorePending=null;
+  const msg=applyCodebook(s.codebook);
+  document.getElementById('oeRestore').innerHTML=`<div class="okmsg" style="margin:0 0 14px">Saved coding restored. ${msg}</div>`;
+  autosave();
+}
+function discardSaved(){
+  if(!confirm('Discard the saved coding? This cannot be undone. (A codebook you downloaded is not affected.)'))return;
+  try{localStorage.removeItem(fpKey());}catch(e){}
+  oeRestorePending=null;document.getElementById('oeRestore').innerHTML='';
+  autosave();
 }
 document.getElementById('oeQSel').addEventListener('change',e=>{
   switchQ(oeQuestions.find(q=>q.id===+e.target.value));
@@ -789,7 +980,12 @@ document.getElementById('oeQSel').addEventListener('change',e=>{
   const el=document.getElementById(id);el.addEventListener(id==='oeSearch'?'input':'change',()=>{if(oeCur)renderAnswers();});
 });
 document.getElementById('oeNewName').addEventListener('input',()=>{oeNameTouched=true;});
-window.addEventListener('beforeunload',e=>{if(oeHasWork()){e.preventDefault();e.returnValue='';}});
+window.addEventListener('beforeunload',e=>{
+  flushAutosave();
+  /* warn only when the coding could not be saved in this browser */
+  if(oeHasWork()&&(!oeSaveOK||oeRestorePending)){e.preventDefault();e.returnValue='';}
+});
+window.addEventListener('pagehide',flushAutosave);
 
 /* ---- rule builder: OR groups of AND conditions ---- */
 function addGroup(target){
@@ -985,7 +1181,7 @@ function runAnalysis(){
       if(errObj===null)return;
       const p=computeP(test,A,B,C,D);
       const OR=computeOR(A,B,C,D);
-      results.push({q:meta?meta.q:h,resp:meta?meta.resp:v.toUpperCase(),uncoded:!!(meta&&meta.uncoded),A,B,
+      results.push({q:meta?meta.q:h,resp:meta?meta.resp:v.toUpperCase(),uncoded:!!(meta&&meta.uncoded),includes:meta&&meta.includes||null,A,B,
         pd:100*A/dIn.length,pn:100*B/nIn.length,p,OR,ERR:errObj.err,zero:errObj.zero});
     });
   });
@@ -995,6 +1191,12 @@ function runAnalysis(){
 }
 
 function fmtP(p){return p<0.0001?'<0.0001':p.toFixed(4);}
+/* fold-out list of the answers grouped into a coded category */
+function incList(r){
+  if(!r.includes||!r.includes.length)return '';
+  const n=r.includes.length;
+  return `<details class="inc"><summary>includes ${n} answer${n===1?'':'s'}</summary>${r.includes.map(x=>`<div>${esc(x.t)} (${x.n})</div>`).join('')}<div style="font-style:italic">Numbers are respondents in the whole file who gave that answer.</div></details>`;
+}
 
 function renderResults(){
   const th=+document.getElementById('pThresh').value||0.05;
@@ -1007,7 +1209,7 @@ function renderResults(){
   show.forEach((r,idx)=>{
     const isSig=r.p<th;
     html+=`<tr class="${r.ERR>=1?'enabler':'barrier'}" ${isSig?'':'style="opacity:.45"'}>
-    <td>${idx+1}</td><td class="qcol">${esc(r.q)}</td><td>${esc(r.resp)}${r.uncoded?' <span class="cnt">(uncoded)</span>':''}</td>
+    <td>${idx+1}</td><td class="qcol">${esc(r.q)}</td><td>${esc(r.resp)}${r.uncoded?' <span class="cnt">(uncoded)</span>':''}${incList(r)}</td>
     <td>${r.pd.toFixed(1)}% (${r.A})</td><td>${r.pn.toFixed(1)}% (${r.B})</td>
     <td>${(r.pd-r.pn).toFixed(1)}</td>
     <td>${r.OR.toFixed(2)}</td>
@@ -1024,11 +1226,11 @@ function renderResults(){
 
 function exportCSV(){
   const th=+document.getElementById('pThresh').value||0.05;
-  let csv='Question (Field),Response,% Doers,N Doers,% Non-Doers,N Non-Doers,Difference,Odds Ratio,p-value,Estimated Relative Risk,Zero-cell estimate,Interpretation,Significant\n';
+  let csv='Question (Field),Response,% Doers,N Doers,% Non-Doers,N Non-Doers,Difference,Odds Ratio,p-value,Estimated Relative Risk,Zero-cell estimate,Interpretation,Significant,Answers included\n';
   results.forEach(r=>{
     const interp=r.p<th?interpText(r.ERR):'';
     const cq=s=>String(s).replace(/"/g,'""');
-    csv+=`"${cq(r.q)}","${cq(r.resp+(r.uncoded?' (uncoded)':''))}",${r.pd.toFixed(1)},${r.A},${r.pn.toFixed(1)},${r.B},${(r.pd-r.pn).toFixed(1)},${r.OR.toFixed(3)},${r.p.toFixed(4)},${r.ERR.toFixed(3)},${r.zero?'YES':'no'},"${interp}",${r.p<th?'YES':'no'}\n`;
+    csv+=`"${cq(r.q)}","${cq(r.resp+(r.uncoded?' (uncoded)':''))}",${r.pd.toFixed(1)},${r.A},${r.pn.toFixed(1)},${r.B},${(r.pd-r.pn).toFixed(1)},${r.OR.toFixed(3)},${r.p.toFixed(4)},${r.ERR.toFixed(3)},${r.zero?'YES':'no'},"${interp}",${r.p<th?'YES':'no'},"${r.includes?cq(r.includes.map(x=>x.t).join('; ')):''}"\n`;
   });
   const blob=new Blob([csv],{type:'text/csv'});
   const a=document.createElement('a');

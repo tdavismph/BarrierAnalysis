@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://barrieranalysis.org/research.html">
-    <meta name="description" content="Explore peer-reviewed publications, grey literature, and case studies documenting the application and effectiveness of Barrier Analysis across health, nutrition, WASH, and agriculture sectors.">
+    <meta name="description" content="A searchable list of about 100 peer-reviewed papers, reports, theses and guides that apply Barrier Analysis and its Doer/Non-Doer comparison across health, nutrition, WASH and agriculture.">
     <title>Barrier Analysis Research & Publications</title>
     <style>
         :root {
@@ -158,6 +158,28 @@
             margin: 0 auto;
         }
         
+        /* publication list built from the Barrier Analysis bibliography */
+        .pub-controls { max-width: 900px; margin: 10px auto 20px; }
+        .pub-controls input[type=search] { width: 100%; padding: 12px 16px; border: 1px solid #ccc; border-radius: 30px; font-size: 15px; margin-bottom: 16px; }
+        .pub-controls .filter-bar { margin-bottom: 10px; }
+        .pub-count { text-align: center; color: var(--gray); font-size: 14px; }
+        .pub-list { max-width: 900px; margin: 0 auto; }
+        .pub { background: white; border-radius: 8px; padding: 18px 22px; margin-bottom: 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+        .pub-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+        .pub-tag { background: var(--light); padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; color: var(--gray); }
+        .pub-tag.year { background: #fef3c7; color: #92400e; }
+        .pub-tag.type-peer { background: #d1e7dd; color: #0a3622; }
+        .pub-tag.type-gray { background: #e2e3e5; color: #41464b; }
+        .pub-tag.type-preprint, .pub-tag.type-thesis { background: #cfe2ff; color: #084298; }
+        .pub-tag.type-guide { background: #E8F5E9; color: #2E7D32; }
+        .pub-title { font-size: 17px; line-height: 1.4; margin-bottom: 4px; }
+        .pub-title a { color: var(--dark); text-decoration: none; }
+        .pub-title a:hover { color: var(--primary); text-decoration: underline; }
+        .pub-authors { font-size: 14px; color: var(--gray); margin-bottom: 6px; overflow-wrap: anywhere; }
+        .pub-summary { font-size: 14px; color: #444; }
+        .pub-summary.clamp { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .pub-more { background: none; border: none; color: var(--primary); font-weight: 600; cursor: pointer; padding: 4px 0 0; font-size: 13px; }
+
         .publication-card {
             background-color: white;
             border-radius: 8px;
@@ -579,19 +601,10 @@
         <div class="container">
             <div class="section-title">
                 <h2>Published Literature</h2>
-                <p>Peer-reviewed articles and publications documenting the effectiveness of Barrier Analysis</p>
+                <p>98 studies, reports, theses and guides that apply Barrier Analysis or its Doer/Non-Doer comparison, newest first. Last updated 12 October 2026.</p>
             </div>
-            
-            <div class="filter-bar">
-                <button class="filter-button active" data-filter="all">All</button>
-                <button class="filter-button" data-filter="health">Health</button>
-                <button class="filter-button" data-filter="nutrition">Nutrition</button>
-                <button class="filter-button" data-filter="agriculture">Agriculture</button>
-                <button class="filter-button" data-filter="wash">WASH</button>
-            </div>
-            
-            <div class="publications-list">
 
+            <div class="publications-list">
                 <div class="publication-card" style="background-color: #E8F5E9; border-left: 4px solid #2E7D32;" data-category="all">
                     <div class="publication-meta">
                         <span class="publication-tag" style="background-color: #2E7D32; color: white;">Literature Review</span>
@@ -602,338 +615,613 @@
                     <p class="publication-abstract">A comprehensive critical review of the Barrier Analysis methodology, its theoretical foundations, the evidence generated from its application worldwide, and its strengths and limitations. Intended for public health professionals, program designers, and researchers considering or currently using BA in their work. Draws on peer-reviewed publications, organizational reports, training materials, and the grey literature.</p>
                     <a href="https://docs.google.com/document/d/1egAQ8SONKjebGS306fQa47vKiijQA3ha/edit?usp=sharing&ouid=101822260208793560054&rtpof=true&sd=true" class="publication-link" target="_blank">Read Literature Review →</a>
                 </div>
-
-                <div class="publication-card" data-category="health">
-                    <div class="publication-meta">
-                        <span class="publication-tag health">Health</span>
-                        <span class="publication-tag year">2025</span>
-                    </div>
-                    <h3 class="publication-title">Comparing Barriers and Facilitators to Physical Activity Among Underrepresented Minorities</h3>
-                    <p class="publication-authors">Alamilla, R.A., Kaushal, N., Bigatti, S.M., &amp; Keith, N.R. (2025). <em>International Journal of Environmental Research and Public Health, 22</em>(2), 234.</p>
-                    <p class="publication-abstract">Used BA alongside mixed methods to compare barriers and facilitators to physical activity among underrepresented minority populations in the United States, with implications for culturally tailored health promotion interventions.</p>
-                    <a href="https://doi.org/10.3390/ijerph22020234" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="health">
-                    <div class="publication-meta">
-                        <span class="publication-tag health">Health</span>
-                        <span class="publication-tag year">2024</span>
-                    </div>
-                    <h3 class="publication-title">Determinants of Uptake of COVID-19 Vaccination Among Teachers in Uganda</h3>
-                    <p class="publication-authors">Mukembo, A. (2024). <em>South Journal of Health Research Africa, 5</em>(3).</p>
-                    <p class="publication-abstract">Applied BA to identify behavioral determinants of COVID-19 vaccination uptake among teachers in Uganda, a key population for school-based transmission prevention, using a cross-sectional study design.</p>
-                    <a href="https://doi.org/10.51168/sjhrafrica.v5i3.1044" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="wash">
-                    <div class="publication-meta">
-                        <span class="publication-tag wash">WASH</span>
-                        <span class="publication-tag year">2024</span>
-                    </div>
-                    <h3 class="publication-title">Behavioural Determinants of Handwashing at Critical Times Among Mothers and Caregivers in Zimbabwe</h3>
-                    <p class="publication-authors">Murendo, C., Benza, R., Gudyanga, N., Velani, B., &amp; Gutusa, F. (2024). <em>Cogent Public Health, 11</em>(1), 2322826.</p>
-                    <p class="publication-abstract">Applied BA to identify behavioral determinants of handwashing at critical times among mothers and caregivers in Zimbabwe, with implications for designing more effective WASH behavior change interventions.</p>
-                    <a href="https://doi.org/10.1080/27707571.2024.2322826" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="nutrition">
-                    <div class="publication-meta">
-                        <span class="publication-tag nutrition">Nutrition</span>
-                        <span class="publication-tag year">2023</span>
-                    </div>
-                    <h3 class="publication-title">Exclusive Breastfeeding: Barrier Analysis Among Omani Mothers</h3>
-                    <p class="publication-authors">Al-Ghannami, S., Al-Mamari, S., Chekaraou, D., et al. (2023). <em>Sultan Qaboos University Medical Journal, 23</em>(2), 158–167.</p>
-                    <p class="publication-abstract">Applied BA to identify key determinants of exclusive breastfeeding among mothers in Oman, revealing perceived self-efficacy and social norms as significant factors and informing targeted lactation support strategies.</p>
-                    <a href="https://doi.org/10.18295/squmj.5.2022.038" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="health">
-                    <div class="publication-meta">
-                        <span class="publication-tag health">Health</span>
-                        <span class="publication-tag year">2023</span>
-                    </div>
-                    <h3 class="publication-title">Barriers to Utilization of Postnatal Care Services within the First 48 Hours of Birth in North West Syria</h3>
-                    <p class="publication-authors">Alkhatib, I., &amp; Mehmet, N. (2023). <em>Journal of Health Policy &amp; Outcomes Research, 2/2023</em>, 15.</p>
-                    <p class="publication-abstract">Identified barriers to postnatal care utilization within the critical 48-hour window after birth among women in conflict-affected northwest Syria, informing health system strengthening in humanitarian settings.</p>
-                    <a href="https://doi.org/10.7365/JHPOR.2023.2.4" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="health">
-                    <div class="publication-meta">
-                        <span class="publication-tag health">Health</span>
-                        <span class="publication-tag year">2023</span>
-                    </div>
-                    <h3 class="publication-title">Determinants of Contraceptive Use Among Unmarried Young Women in Kakamega County, Kenya</h3>
-                    <p class="publication-authors">Arlotti-Parish, E., Ajema, C., Mutea, L., &amp; Ontiri, S. (2023). <em>Adolescents, 3</em>(3), 382–393.</p>
-                    <p class="publication-abstract">Applied BA to understand behavioral determinants of contraceptive use among unmarried young women in Kenya, identifying social norms and access as key factors to address in adolescent reproductive health programming.</p>
-                    <a href="https://doi.org/10.3390/adolescents3030026" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="health">
-                    <div class="publication-meta">
-                        <span class="publication-tag health">Health</span>
-                        <span class="publication-tag year">2023</span>
-                    </div>
-                    <h3 class="publication-title">Understanding Behavioral Determinants of Diabetic Retinopathy Screening and Treatment Among Bangladeshi Women</h3>
-                    <p class="publication-authors">Kalam, M.A., Al Asif, C.A., Hasan, Md.M., et al. (2023). <em>BMC Public Health, 23</em>(1), 1667.</p>
-                    <p class="publication-abstract">Used BA to identify barriers and enablers of diabetic retinopathy screening and treatment behaviors among women in Bangladesh, providing evidence to improve uptake of eye health services.</p>
-                    <a href="https://doi.org/10.1186/s12889-023-16106-8" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="nutrition">
-                    <div class="publication-meta">
-                        <span class="publication-tag nutrition">Nutrition</span>
-                        <span class="publication-tag year">2023</span>
-                    </div>
-                    <h3 class="publication-title">Determinants of Positive Food Procurement Practices in COVID-19 Affected Communities in Zimbabwe</h3>
-                    <p class="publication-authors">Nyathi, C., Mavhudzi, T., Chikwiriro, C., &amp; Maduwa, C. (2023). In <em>COVID-19 in Zimbabwe</em> (pp. 77–85). Springer.</p>
-                    <p class="publication-abstract">Used BA to examine determinants of positive food procurement practices in COVID-19-affected communities in Chiredzi, Zimbabwe, informing nutrition-sensitive programming during public health emergencies.</p>
-                    <a href="https://doi.org/10.1007/978-3-031-21472-1_6" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="health">
-                    <div class="publication-meta">
-                        <span class="publication-tag health">Health</span>
-                        <span class="publication-tag year">2023</span>
-                    </div>
-                    <h3 class="publication-title">Enablers and Barriers to COVID-19 Vaccine Uptake in an Urban Slum in Lagos, Nigeria</h3>
-                    <p class="publication-authors">Ozoh, O.B., Akinkugbe, A.O., Olukoya, M.A., &amp; Adetifa, I.M.O. (2023). <em>International Health</em>, ihad009.</p>
-                    <p class="publication-abstract">Conducted BA to identify enablers and barriers to COVID-19 vaccine uptake in a marginalized urban community in Lagos, Nigeria, informing equity-focused vaccine engagement strategies.</p>
-                    <a href="https://doi.org/10.1093/inthealth/ihad009" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="health">
-                    <div class="publication-meta">
-                        <span class="publication-tag health">Health</span>
-                        <span class="publication-tag year">2022</span>
-                    </div>
-                    <h3 class="publication-title">Behavioral Determinants for COVID-19 Vaccine Acceptance Among Students, Faculty, and Staff at a Rural Public University</h3>
-                    <p class="publication-authors">Bauler, S., Hege, A., Davis, T., et al. (2022). <em>Health Psychology and Behavioral Medicine, 10</em>(1), 467–479.</p>
-                    <p class="publication-abstract">Investigated behavioral determinants of COVID-19 vaccine acceptance at a rural US university using BA, identifying self-efficacy, social norms, and perceived risk as key factors influencing uptake decisions.</p>
-                    <a href="https://doi.org/10.1080/21642850.2022.2074007" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="health">
-                    <div class="publication-meta">
-                        <span class="publication-tag health">Health</span>
-                        <span class="publication-tag year">2022</span>
-                    </div>
-                    <h3 class="publication-title">Behavioural Determinants of COVID-19 Vaccine Acceptance in Rural Areas of Six Lower- and Middle-Income Countries</h3>
-                    <p class="publication-authors">Davis, T.P., Yimam, A.K., Kalam, M.A., et al. (2022). <em>Vaccines, 10</em>(2), 214.</p>
-                    <p class="publication-abstract">Conducted BA studies across six LMIC countries to identify behavioral determinants of COVID-19 vaccine acceptance in rural communities, providing cross-country evidence to inform targeted communication strategies.</p>
-                    <a href="https://doi.org/10.3390/vaccines10020214" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="nutrition">
-                    <div class="publication-meta">
-                        <span class="publication-tag nutrition">Nutrition</span>
-                        <span class="publication-tag year">2022</span>
-                    </div>
-                    <h3 class="publication-title">State of Palestine: Investing in Assessment Positively Impacted Programming for Complementary Feeding</h3>
-                    <p class="publication-authors">Emergency Nutrition Network. (2022). <em>Field Exchange 68</em>.</p>
-                    <p class="publication-abstract">Describes how investment in BA-informed formative assessment positively shaped complementary feeding behavior change programming in the State of Palestine, illustrating the value of evidence-based program design.</p>
-                    <a href="https://www.ennonline.net/fex/68/en/state-palestine-investing-assessment-positively-impacted-programming-complementary" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="nutrition">
-                    <div class="publication-meta">
-                        <span class="publication-tag nutrition">Nutrition</span>
-                        <span class="publication-tag year">2021</span>
-                    </div>
-                    <h3 class="publication-title">Barrier Analysis for Adequate Daily Fruit and Vegetable Consumption Among Low-Income Residents of Hanoi, Vietnam and Ibadan, Nigeria</h3>
-                    <p class="publication-authors">De Filippo, A., Meldrum, G., Samuel, F., et al. (2021). <em>Global Food Security, 31</em>, 100586.</p>
-                    <p class="publication-abstract">Applied BA to understand barriers to adequate fruit and vegetable consumption among low-income urban residents in two cities across two continents, contributing to the evidence base for diet diversification programming.</p>
-                    <a href="https://doi.org/10.1016/j.gfs.2021.100586" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="wash">
-                    <div class="publication-meta">
-                        <span class="publication-tag wash">WASH</span>
-                        <span class="publication-tag year">2021</span>
-                    </div>
-                    <h3 class="publication-title">Exploring Behavioral Determinants of Handwashing with Soap After Defecation in an Urban Setting in Bangladesh</h3>
-                    <p class="publication-authors">Kalam, Md.A., Davis, T.P., Islam, Md.A., et al. (2021). <em>Journal of Water, Sanitation and Hygiene for Development, 11</em>(6), 1006–1015.</p>
-                    <p class="publication-abstract">Explored behavioral determinants of handwashing with soap after defecation in an urban Bangladeshi setting using BA, identifying key enablers and barriers to inform context-specific WASH behavior change interventions.</p>
-                    <a href="https://doi.org/10.2166/washdev.2021.070" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="wash">
-                    <div class="publication-meta">
-                        <span class="publication-tag wash">WASH</span>
-                        <span class="publication-tag year">2020</span>
-                    </div>
-                    <h3 class="publication-title">The Determinants of Handwashing Behaviour Among Internally Displaced Women in Two Camps in the Kurdistan Region of Iraq</h3>
-                    <p class="publication-authors">Zangana, A., Shabila, N., Heath, T., &amp; White, S. (2020). <em>PLOS ONE, 15</em>(5), e0231694.</p>
-                    <p class="publication-abstract">Identified behavioral determinants of handwashing among internally displaced women in Iraq using BA, providing evidence for WASH programming in humanitarian settings where standard approaches may be inadequate.</p>
-                    <a href="https://doi.org/10.1371/journal.pone.0231694" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="nutrition">
-                    <div class="publication-meta">
-                        <span class="publication-tag nutrition">Nutrition</span>
-                        <span class="publication-tag year">2020</span>
-                    </div>
-                    <h3 class="publication-title">Barriers of Dietary Salt Reduction Among Hypertensive Patients</h3>
-                    <p class="publication-authors">Khwaja, M. (2020). <em>International Journal of Community Medicine and Public Health, 7</em>(9), 3459.</p>
-                    <p class="publication-abstract">Applied BA to identify barriers to dietary salt reduction among hypertensive patients, demonstrating the methodology's value in non-communicable disease prevention and chronic condition self-management.</p>
-                    <a href="https://doi.org/10.18203/2394-6040.ijcmph20203907" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="nutrition">
-                    <div class="publication-meta">
-                        <span class="publication-tag nutrition">Nutrition</span>
-                        <span class="publication-tag year">2020</span>
-                    </div>
-                    <h3 class="publication-title">Barriers and Facilitators of Exclusive Breastfeeding in Mwenezi and Chiredzi Districts, Zimbabwe</h3>
-                    <p class="publication-authors">Moyo, G.T., Magaisa, T., Pagiwa, A., et al. (2020). <em>World Nutrition, 11</em>(3).</p>
-                    <p class="publication-abstract">Conducted BA in two districts of Zimbabwe to identify barriers and facilitators of exclusive breastfeeding, providing findings to inform community-based behavior change communication and social support interventions.</p>
-                    <a href="https://doi.org/10.26596/wn.202011312-21" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="nutrition">
-                    <div class="publication-meta">
-                        <span class="publication-tag nutrition">Nutrition</span>
-                        <span class="publication-tag year">2019</span>
-                    </div>
-                    <h3 class="publication-title">Barrier Analysis of Infant and Young Child Feeding and Maternal Nutrition Behaviours Among IDPs in Syria</h3>
-                    <p class="publication-authors">Perera, S.M. (2019). <em>Field Exchange 59</em>, 18.</p>
-                    <p class="publication-abstract">Applied BA to study infant and young child feeding and maternal nutrition behaviors among internally displaced persons in northern and southern Syria, demonstrating the feasibility of BA in active conflict settings.</p>
-                    <a href="https://www.ennonline.net/fex/59/en/barrier-analysis-of-infant-and-young-child-feeding" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="health">
-                    <div class="publication-meta">
-                        <span class="publication-tag health">Health</span>
-                        <span class="publication-tag year">2018</span>
-                    </div>
-                    <h3 class="publication-title">Demand-Side Determinants of Timely Vaccination of Oral Polio Vaccine in Uttar Pradesh, India</h3>
-                    <p class="publication-authors">Choudhary, M., Solomon, R., Awale, J., &amp; Dey, R. (2018). <em>BMC Infectious Diseases, 18</em>(1), 222.</p>
-                    <p class="publication-abstract">Examined demand-side behavioral determinants of timely oral polio vaccine uptake in social mobilization network areas of the CORE Group polio project in India, informing immunization communication strategies.</p>
-                    <a href="https://doi.org/10.1186/s12879-018-3129-2" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="health">
-                    <div class="publication-meta">
-                        <span class="publication-tag health">Health</span>
-                        <span class="publication-tag year">2018</span>
-                    </div>
-                    <h3 class="publication-title">Increasing Aspirin Adherence in Pregnant Women at Risk for Preeclampsia</h3>
-                    <p class="publication-authors">Olszewski, S. (2018). Boston University Open Research.</p>
-                    <p class="publication-abstract">Applied BA to identify barriers to aspirin adherence among pregnant women at risk for preeclampsia, demonstrating the methodology's utility in improving medication compliance in high-risk obstetric populations.</p>
-                    <a href="https://open.bu.edu/items/8e3b0439-33d5-4333-99a5-30e0b95513d0" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="agriculture">
-                    <div class="publication-meta">
-                        <span class="publication-tag agriculture">Agriculture</span>
-                        <span class="publication-tag year">2018</span>
-                    </div>
-                    <h3 class="publication-title">Barrier Analysis as a Tool to Inform Extension Activity Planning: Insights from Guatemala</h3>
-                    <p class="publication-authors">Seiler-Martinez, A., Murphrey, T.P., Wingenbach, G., &amp; Lombardini, L. (2018). <em>Journal of International Agricultural and Extension Education, 25</em>(2), 7–10.</p>
-                    <p class="publication-abstract">Demonstrated BA as a tool for informing agricultural extension activity planning in Guatemala, identifying behavioral determinants of technology adoption among smallholder farmers to improve extension program design.</p>
-                    <a href="https://doi.org/10.5191/jiaee.2018.25201" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="wash">
-                    <div class="publication-meta">
-                        <span class="publication-tag wash">WASH</span>
-                        <span class="publication-tag year">2017</span>
-                    </div>
-                    <h3 class="publication-title">Barriers to Latrine Use for Defecation Among Mothers of Children Less Than 59 Months</h3>
-                    <p class="publication-authors">Daniel, S., Subramanian, J., Sharmine, E., et al. (2017). <em>International Journal of Community Medicine and Public Health, 4</em>(2), 565–571.</p>
-                    <p class="publication-abstract">Identified behavioral barriers to latrine use for defecation among mothers of young children in India, providing evidence to inform open defecation elimination programs and WASH behavior change communication.</p>
-                    <a href="https://doi.org/10.18203/2394-6040.ijcmph20170292" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="health">
-                    <div class="publication-meta">
-                        <span class="publication-tag health">Health</span>
-                        <span class="publication-tag year">2016</span>
-                    </div>
-                    <h3 class="publication-title">Barrier Analysis: Using Quality Improvement Methodology to Decrease Health Disparities in Recurrent Preterm Birth</h3>
-                    <p class="publication-authors">Abbott, J., Smith-Lin, C., O'Toole, R., &amp; Lee-Parritz, A. (2016). <em>American Journal of Obstetrics and Gynecology, 214</em>(1), S70.</p>
-                    <p class="publication-abstract">Applied BA within a quality improvement framework to identify and address health disparities in recurrent preterm birth management, demonstrating its value in clinical settings beyond its traditional community health applications.</p>
-                    <a href="https://doi.org/10.1016/j.ajog.2015.10.122" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="health">
-                    <div class="publication-meta">
-                        <span class="publication-tag health">Health</span>
-                        <span class="publication-tag year">2016</span>
-                    </div>
-                    <h3 class="publication-title">Barrier Analysis to Improve Utilization of a Novel Cervical Cancer Screening Program in Rural Senegal</h3>
-                    <p class="publication-authors">Aspros, N., Komarek, T., Dibaya, C., et al. (2016). <em>Annals of Global Health, 82</em>(3), 384.</p>
-                    <p class="publication-abstract">Used BA to improve uptake of cervical cancer screening in rural Senegal, identifying key behavioral determinants and informing targeted interventions to increase program coverage among women in underserved areas.</p>
-                    <a href="https://doi.org/10.1016/j.aogh.2016.04.625" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="health">
-                    <div class="publication-meta">
-                        <span class="publication-tag health">Health</span>
-                        <span class="publication-tag year">2015</span>
-                    </div>
-                    <h3 class="publication-title">Transition from the Lactational Amenorrhea Method to Other Modern Family Planning Methods in Rural Bangladesh</h3>
-                    <p class="publication-authors">Kouyaté, R.A., Ahmed, S., Haver, J., et al. (2015). <em>Evaluation and Program Planning, 50</em>, 10–17.</p>
-                    <p class="publication-abstract">Applied BA to understand barriers to transitioning from the Lactational Amenorrhea Method to other modern family planning methods in rural Bangladesh, with implications for behavior change communication program design.</p>
-                    <a href="https://doi.org/10.1016/j.evalprogplan.2014.11.008" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="nutrition">
-                    <div class="publication-meta">
-                        <span class="publication-tag nutrition">Nutrition</span>
-                        <span class="publication-tag year">2016</span>
-                    </div>
-                    <h3 class="publication-title">Consumption of Iron-Rich Foods Among Adolescent Girls in Nepal: Identifying Behavioural Determinants</h3>
-                    <p class="publication-authors">Acharya, A., Rana, P.P., Pun, B.K., &amp; Thapa, B. (2016).</p>
-                    <p class="publication-abstract">Identified behavioral determinants affecting iron-rich food consumption among adolescent girls in Nepal using BA, contributing evidence to address micronutrient deficiency through targeted behavior change communication.</p>
-                    <a href="https://www.ennonline.net/fex/57/en/consumption-iron-rich-foods-among-adolescent-girls-nepal-identifying-behavioural" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="health">
-                    <div class="publication-meta">
-                        <span class="publication-tag health">Health</span>
-                        <span class="publication-tag year">2013</span>
-                    </div>
-                    <h3 class="publication-title">Explosive Ordnance Risk Education and Barrier Analysis</h3>
-                    <p class="publication-authors">Fletcher, K., &amp; McGrath, I. (2013). Geneva International Centre for Humanitarian Demining (GICHD).</p>
-                    <p class="publication-abstract">Demonstrated the application of BA to improve Explosive Ordnance Risk Education (EORE), identifying behavioral determinants of safe practices in mine-affected communities and providing a framework for evidence-based risk education programming.</p>
-                    <a href="https://www.gichd.org/fileadmin/uploads/gichd/migration/fileadmin/GICHD-resources/info-documents/EORE_Advisory_Group/Barrier_Analysis_Paper_01.pdf" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="nutrition">
-                    <div class="publication-meta">
-                        <span class="publication-tag nutrition">Nutrition</span>
-                        <span class="publication-tag year">2010</span>
-                    </div>
-                    <h3 class="publication-title">Barrier Analysis of Exclusive Breastfeeding in Ruyigi and Cancuzo Provinces, Burundi</h3>
-                    <p class="publication-authors">Francisco, J.E.V. (2010).</p>
-                    <p class="publication-abstract">Conducted BA to identify behavioral determinants of exclusive breastfeeding in two provinces of Burundi, providing evidence to inform community-based lactation support and behavior change programming.</p>
-                    <a href="https://docs.google.com/document/d/1SJKXStcQX5gSPv3fNLCs1fxygBTXclJT/edit?usp=sharing&ouid=101822260208793560054&rtpof=true&sd=true" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="nutrition">
-                    <div class="publication-meta">
-                        <span class="publication-tag nutrition">Nutrition</span>
-                        <span class="publication-tag year">2023</span>
-                    </div>
-                    <h3 class="publication-title">Use of the Designing for Behaviour Change Framework to Address Barriers to Animal Source Feeding in Children 8–23 Months in Bangladesh</h3>
-                    <p class="publication-authors">Kalam, M.A., Asif, C.A.A., Stormer, A., et al. (2023). <em>Maternal &amp; Child Nutrition</em>, e13472.</p>
-                    <p class="publication-abstract">Applied the DBC framework and BA to identify barriers to and enablers of animal source food feeding to young children in the Bandarban Hill District of Bangladesh, with implications for nutrition-sensitive agriculture programming.</p>
-                    <a href="https://doi.org/10.1111/mcn.13472" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
-                <div class="publication-card" data-category="nutrition">
-                    <div class="publication-meta">
-                        <span class="publication-tag nutrition">Nutrition</span>
-                        <span class="publication-tag year">2021</span>
-                    </div>
-                    <h3 class="publication-title">A Qualitative Analysis of Facilitators and Barriers to Breastfeeding Among Black Mothers in the Greater New Haven Area</h3>
-                    <p class="publication-authors">Tran, V.D-V. (2021).</p>
-                    <p class="publication-abstract">Applied BA framework to identify facilitators and barriers to breastfeeding among Black mothers in the United States, addressing health equity gaps and informing culturally responsive lactation support programs.</p>
-                    <a href="https://elischolar.library.yale.edu/cgi/viewcontent.cgi?article=2096&context=ysphtdl" class="publication-link" target="_blank">View Publication →</a>
-                </div>
-
             </div>
+
+            <div class="pub-controls">
+                <input type="search" id="pubSearch" placeholder="Search by topic, country, author or title (e.g. vaccination, Kenya, breastfeeding)" aria-label="Search publications">
+                <div class="filter-bar">
+                    <button class="filter-button active" data-filter="all">All (98)</button>
+                    <button class="filter-button" data-filter="peer">Peer-reviewed (47)</button>
+                    <button class="filter-button" data-filter="gray">Gray literature (32)</button>
+                    <button class="filter-button" data-filter="preprint">Preprints (5)</button>
+                    <button class="filter-button" data-filter="thesis">Theses (4)</button>
+                    <button class="filter-button" data-filter="guide">Guides (3)</button>
+                    <button class="filter-button" data-filter="other">Other (7)</button>
+                </div>
+                <p id="pubCount" class="pub-count">Showing all 98 publications</p>
+            </div>
+
+            <div class="pub-list" id="pubList">
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2026</span><span class="pub-tag">Zambia</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.38124/ijisrt/26jul356" target="_blank" rel="noopener">Barriers and Enablers to COVID-19 Prevention Behaviours and Vaccine Uptake in Five Districts of Southern Province, Zambia: A Barrier Analysis Study in Sinazongwe, Pemba, Monze and Kalomo</a></h3>
+                    <p class="pub-authors">Malawo Owen · <em>International Journal of Innovative Science and Research Technology (IJISRT), Vol. 11, Issue 7 (July 2026)</em></p>
+                    <p class="pub-summary clamp">Cross-sectional Barrier Analysis using the Doer/Non-Doer approach (conducted July 2020; published 2026) on consistent mask wearing, handwashing and COVID-19 vaccination uptake in Sinazongwe, Pemba, Monze, Kalomo and Namwala districts, Southern Province. 150 households, 1,350 respondents; semi-structured questionnaire on 12 behavioural determinants collected via ODK. Uptake: mask use 37.6%, regular handwashing 44.6%, at least one vaccine dose 48.2%. Key barriers: low perceived susceptibility, mask discomfort, lack of water/soap, fear of vaccine side effects, infertility myths, long clinic queues, poor rural access. Enablers: health workers, fear of fines, vaccine cards needed for travel, social influence of leaders. Concludes knowledge alone did not drive behaviour; recommends SBC programmes addressing misinformation, WASH and vaccine access, and engagement of trusted community and faith leaders.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2026</span><span class="pub-tag">Cameroon</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.55225/hppa.729" target="_blank" rel="noopener">Behavioural determinants of zero-dose and under-immunisation in conflict-affected Northwest and Southwest Cameroon: Findings from a doer/non-doer assessment</a></h3>
+                    <p class="pub-authors">Fri DC, Banlack H, Foyeth E, Epie N, Mah G · <em>Health Promotion &amp; Physical Activity, 35(2), 8-20 (Univ. of Applied Sciences in Tarnow, Poland; diamond OA, CC BY-SA)</em></p>
+                    <p class="pub-summary clamp">Qualitative Doer/Non-Doer analysis in four conflict-affected health districts (Konye, Kumba South, Bamenda, Nwa), March-June 2025: 140 semi-structured interviews with caregivers, health workers and community leaders plus six FGDs, analysed with the Social-Ecological Model, COM-B and HBM. Nine behavioural determinants distinguished doers from non-doers: all doers were confident immunising their children vs 67% of non-doers; 70% of doers vs 33% of non-doers perceived their children as vulnerable to vaccine-preventable disease; 71% of non-doers believed immunisation ended at 9 months. Barriers included stockouts, poor cold chain, clinic hours conflicting with farm work, security constraints, and misinformation from non-state armed groups.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="preprint">
+                    <div class="pub-meta"><span class="pub-tag type-preprint">Preprint</span><span class="pub-tag year">2026</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.21203/rs.3.rs-9378999/v1" target="_blank" rel="noopener">Fruit in the Desert: Assessing Student Access and Consumption, and Barriers and Opportunities for Improvement in the University Environment</a></h3>
+                    <p class="pub-authors">Temilade W. Arulogun; Folake. O Samuel · <em>Springer Science and Business Media LLC</em></p>
+                    <p class="pub-summary clamp">Fruits and vegetables (FV) consumption is below World Health Organisation (WHO) recommendation among University of Ibadan (UI) students. The UI’s food environment has been implicated in this low consumption and has been perceived as a “FV desert” necessitating a need for interventions aimed remedying this, development of which requires a good understanding of environmental and behavioural dynamics. This study, therefore, sought to map retail access, identify behavioural barriers and enablers, and explore stakeholder’s strategies to improve FV access and consumption in UI. Methods This mixed-methods study mapped FV retail points in UI using Geographic Information System (GIS), randomly surveyed 1038 students to assess FV access and consumption, Willingness to pay (WTP) and explore improvement strategies. A sub sample of 145 students participated in a barrier and enabler analysis. While three UI administrators involved in FV retail were engaged in key informant interviews. Quantitative data was analysed using the IBM SPSS version 21.0 and summarized as frequencies and percentages; barrier analysis was done using the Barrier Analysis Calculator; while qualitative responses were analysed thematically. Results Fourteen FV retail points were identified, and there was low adherence to the WHO 5-a-day recommendation among male (87.5%) and female (88.2%) respondents.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2026</span><span class="pub-tag">Malawi</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1177/30502225261476849" target="_blank" rel="noopener">Predictors of Retention Among HIV Exposed Infants in the Early Infant Diagnosis Program in Lilongwe Rural, Malawi</a></h3>
+                    <p class="pub-authors">Phensere J, Nyondo-Mipando AL, Kumwenda S, Jumbe V · <em>Sage open pediatrics</em></p>
+                    <p class="pub-summary clamp">The Early Infant Diagnosis (EID) Program exists to improve the identification of HIV-exposed infants(HEIs) to accelerate linkage to care. The trends of retention in EID have been 88%, 91% and 93% retention at 24 th month age cohort in the last quarter of 2022, 2023 and 2024 respectively. However, these rates varied across health facilities, with some reporting much lower retention. This study explored factors influencing the retention of HEIs within the program. Methods We conducted a barrier analysis study at four facilities. We recruited 90 HIV-exposed infants 0-24 months of age purposively: 45 doers (retained in care) and 45non-doers (not retained in care). The independent variables were self-efficacy, social norms, access, culture, and religion. The dependent variable was retention. Results Distance to the health facility ( p = 0.001), mothers&#x27;/caregivers’ willingness to seek services ( p = 0.006), absence of a life partner ( p = 0.004), and approval and support from partners, family members, and the community ( p = 0.049) were significant determinants of clients’ utilization of early infant diagnosis (EID) program services. These findings suggest that both structural factors (e.g., distance to health facilities) and social factors (e.g., life partner, family and community support) play important roles in influencing the uptake of EID services.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2026</span><span class="pub-tag">Guinea</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1177/03795721261428777" target="_blank" rel="noopener">Understanding the Biocultural Factors Influencing Infant Dietary Diversity in Periurban Guinea: Findings from a Mixed-Methods Study</a></h3>
+                    <p class="pub-authors">Schwendler TR, Wang D, Na M, Keller KL, Jensen L, Fofana ML, Daffé M, Balde I, Kodish SR · <em>Food and nutrition bulletin</em></p>
+                    <p class="pub-summary clamp">Objective: This study aimed to characterize the factors influencing dietary diversity scores (DDS) of infants whose caregivers were classified as doers (those who fed a more diverse diet) and non-doers (those who fed a less diverse diet). Methods: This study was conducted using a multiphase study design and guided by a biocultural framework. Interviews with community leaders (n = 13) and direct 6-h household observations (n = 10) were used to formatively explore factors influencing diet.A dietary assessment (n = 81) was used to determine dietary diversity of indexed infants.A biocultural survey and direct 3-h. observations were conducted among indexed infants (6-9 months) (n = 80) to understand the biocultural factors influencing infant DDS.Interviews (n = 34) were conducted among indexed caregivers to understand why and how biocultural factors shape infant DDS. Dietary data were analyzed, and biocultural survey variables were subjected to a forward stepwise linear regression. Textual data were analyzed to identify salient biocultural factors. Results: Findings revealed that infants had an average DDS of 2. Having water access in the household, owning land for homestead food production, and feeding infants the same foods caregivers consume were positively associated with DDS. Conversely, adhering to food proscriptions was negatively associated with DDS. Most caregivers were food insecure and employed both food and non-food-based coping strategies to feed their infants.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2025</span><span class="pub-tag">United States</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.3390/ijerph22020234" target="_blank" rel="noopener">Comparing Barriers and Facilitators to Physical Activity Among Underrepresented Minorities</a></h3>
+                    <p class="pub-authors">Alamilla RA, Kaushal N, Bigatti SM, Keith NR · <em>International Journal of Environmental Research and Public Health 22(2):234</em></p>
+                    <p class="pub-summary">Used BA alongside mixed methods to compare barriers and facilitators to physical activity among underrepresented minority populations in the United States, with implications for culturally tailored health promotion interventions.</p>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2025</span><span class="pub-tag">Madagascar</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1186/s12913-025-13770-x" target="_blank" rel="noopener">What compels enrollment in a mobile maternal health wallet? A mixed-methods doer/non-doer analysis in Analamanga, Madagascar</a></h3>
+                    <p class="pub-authors">Schäfer LN, Rampanjato Z, Bogler L, Rajemison E, Knauss S, Emmrich JV, Randriamiarisoa ML, Andriamasy HE, Truss LM, Vieira B, Bärnighausen T, Reñosa MDC, McMahon SA · <em>BMC health services research</em></p>
+                    <p class="pub-summary clamp">Care-seeking during antenatal and intrapartum periods has remained persistently low in Madagascar, largely due to financial barriers. To bolster both care-seeking and health financing, a Mobile Maternal Health Wallet (MMHW) was developed and implemented in the Analamanga region, Madagascar. The MMHW, a service based on mobile money, enabled users to digitally save and pay for services at participating public health facilities. Here, we compare perspectives of those who enrolled (doers) and those who did not enroll (non-doers) in the MMHW to understand decision-making processes, interpersonal dynamics, and other factors that informed enrollment. Methods In this mixed methods study, we analyzed data from a quantitative survey ( n = 477) examining predictors of enrollment using logistic probability models, followed by applying Reflexive Thematic Analysis to qualitative in-depth interviews ( n = 29) to gain insights from 11 doers, 12 non-doers, three family members, and three MMHW outreach team members. Results Quantitatively, significant predictors of enrollment included: learning about the MMHW from a midwife, having a pre-existing maternal medical risk factor, and residing in the Avaradrano district of Antananarivo. Predictors of non-enrollment included: learning about the MMHW from family or friends, having a higher salary, and being diagnosed with medical warning signs during pregnancy.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2024</span><span class="pub-tag">Zimbabwe</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1080/27707571.2024.2322826" target="_blank" rel="noopener">Behavioural determinants of handwashing at critical times among mothers and care givers in Zimbabwe: implications for behaviour change interventions</a></h3>
+                    <p class="pub-authors">Murendo C et al. · <em>Cogent Public Health</em></p>
+                    <p class="pub-summary clamp">Handwashing with soap has the potential to reduce the occurrence of infectious diseases. However, few studies have systematically analysed the determinants of handwashing with soap among mothers in rural areas of Zimbabwe. This study was conducted in two rural districts of Zimbabwe to assess the behavioural determinants of hand washing with soap at 5 critical times. Results show that doers wash their hands with soap at critical times for health reasons. Difficulties in accessing soap for handwashing was the main barrier mentioned by 60% and 44% doers and non-doers respectively. The availability of handwashing facilities is an important determinant of handwashing. Family, friends, and village health workers approved handwashing with soap at critical times. Interventions that improve access to soap and handwashing facilities should be promoted. Promoting household income generating activities will go a long way in improving income streams to fund the purchase of soap, handwashing containers and construction of handwashing stations. Households should be encouraged to construct handwashing stations, for example, tippy taps and these should be located at convenient sites to encourage handwashing practice. Hygiene promotion plans and interventions should include the participation of family, friends, and village health workers in mobilizing communities to adopt handwashing with soap at critical times.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2024</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1016/j.cdnut.2024.104414" target="_blank" rel="noopener">Core Principles and Practices for the Design, Implementation, and Evaluation of Social and Behavior Change for Nutrition in Low- and Middle-Income Contexts with Special Applications for Nutrition-Sensitive Agriculture</a></h3>
+                    <p class="pub-authors">Mary Packard-Winkler; Lenette Golding; Tsedenia Tewodros · <em>Current Developments in Nutrition</em></p>
+                    
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2024</span><span class="pub-tag">Uganda</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.51168/sjhrafrica.v5i3.1044" target="_blank" rel="noopener">DETERMINANTS OF UPTAKE OF COVID-19 VACCINATION AMONG TEACHERS IN UGANDA, A CROSS SECTIONAL STUDY USING BARRIER ANALYSIS APPROACH.</a></h3>
+                    <p class="pub-authors">Alex Mukembo · <em>Students Journal of Health Research Africa</em></p>
+                    <p class="pub-summary clamp">The COVID-19 pandemic continues to adversely affect the population with over 233 million infections and over 4 million deaths. COVID-19 resulted in the closure of schools and education institutes in countries including Uganda. Several COVID-19 vaccines have been developed, however uptake and hesitancy remain big challenges. With the reopening of schools and education institutes tagged to total vaccination of teachers, understanding key determinants for uptake of COVID-19 uptake in teachers may help to develop strategies for improving vaccination programs. This study assessed determinants of COVID-19 vaccine uptake among teachers in Uganda. Methods A cross-sectional study was conducted using a barrier analysis approach targeting teachers from both the private and public sectors in 5 districts across the regions of the country. 448 teachers (224 vaccinated and 224 non-vaccinated) were sampled using a multistage approach. Each sampled vaccinated teacher was matched with a non-vaccinated teacher from the same community using a snowball approach. Sampled teachers were interviewed by trained research assistants using structured electronic questionnaires from May –June2021. Collected data was downloaded into Excel then cleaned before being exported to stata version 15 for analysis.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2024</span><span class="pub-tag">Armenia</span></div>
+                    <h3 class="pub-title"><a href="https://www.wfp.org/publications/nutrition-barrier-analysis-qualitative-study-report" target="_blank" rel="noopener">Nutrition Barrier Analysis: Qualitative Study Report (Armenia)</a></h3>
+                    <p class="pub-authors">Ohanjanyan Z · <em>World Food Programme Armenia (USAID-supported)</em></p>
+                    <p class="pub-summary">Explored why vulnerable households receiving food card assistance still struggled to maintain nutritious diets; eight focus group discussions with 105 beneficiaries, analysed with the COM-B model.</p>
+                </article>
+                <article class="pub" data-type="preprint">
+                    <div class="pub-meta"><span class="pub-tag type-preprint">Preprint</span><span class="pub-tag year">2024</span><span class="pub-tag">India</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.21203/rs.3.rs-4075235/v1" target="_blank" rel="noopener">Using a barrier analysis to identify determinants of dietary diversity among adult men and women in rural Odisha, India</a></h3>
+                    <p class="pub-authors">Kasthuri Sivalogan; Allison P. Salinger; Md Abul Kalam · <em>Springer Science and Business Media LLC</em></p>
+                    <p class="pub-summary clamp">Dietary diversity, a predictor of micronutrient adequacy, is low in rural Odisha, India. We conducted formative research to understand determinants of dietary diversity and to inform the design of an agriculture-nutrition intervention in rural Odisha. Methods: We conducted a sequential mixed-method study in June-July 2022. First, an abbreviated 24-hour dietary recall was conducted with 429 respondents from 11 villages to capture food consumption patterns. Then, a barrier analysis was conducted among 41 doers, who consumed ≥5 of 10 food groups, and 40 non-doers, who consumed &amp;lt;5 food groups, to identify enablers and barriers to dietary diversity. Closed-ended responses were analyzed using Fishers exact test. Open-ended responses were analyzed using rapid qualitative methods. Results: Participants in the barrier analysis included men and women from indigenous and non-indigenous groups. Most doers (88%) reported consuming 5 food groups in the past 24 hours. Non-doers reported consuming 2-4 food groups with almost half (47.5%) consuming 3 food groups in the past 24 hours. Accessibility to non-governmental policies, programmes or information channels was the only significant determinant of dietary diversity [p=0.016]. Qualitative results indicated that self-efficacy, access and affordability, perceived consequences of a diverse diet, and dietary practices associated with religious and cultural events influenced dietary diversity.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2023</span><span class="pub-tag">Syria</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.7365/jhpor.2023.2.4" target="_blank" rel="noopener">Barriers to Utilization of Postnatal Care Services within the First 48 Hours of Birth in North West Syria: A Barrier Analysis Study</a></h3>
+                    <p class="pub-authors">Alkhatib I et al. · <em>Journal of Health Policy &amp; Outcomes Research</em></p>
+                    <p class="pub-summary clamp">Objectives: The objective of this study is to identify barriers to the utilization of postnatal care services among mothers and neonates in a conflict-affected area. Methods: This study involves a cross-sectional survey utilizing the Barrier Analysis (BA) approach, which is based on the Health Belief Model and the Theory of Reasoned Action. It explores up to 12 recognized determinants of behavior adoption. The survey was conducted in six communities located in Idlib and western rural Aleppo, representing both urban and rural areas for host and displaced populations in northwest Syria (Selwa, Abin Samaan, Sahara, Tal Elkaramej, Boz Ghaz, Koknaya). Data collection took place from 7th to 11th November 2021. Initially, screening questions were used to verify participants&#x27; eligibility for the survey. The interviewed mothers were then classified into two main groups: the first group consisted of mothers of newborns who attended postnatal care within the first 48 hours after birth (DOERS), while the second group comprised mothers of newborns who did not attend postnatal care within the first 48 hours after birth (NON-DOERS). From both groups, a random sample of 90 mothers of newborns aged 0-6 months was selected (45 DOERS and 45 NON-DOERS) out of a total of 418 respondents. Their answers were analyzed based on the 12 determinants included in the questionnaire.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2023</span><span class="pub-tag">Kenya</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.3390/adolescents3030026" target="_blank" rel="noopener">Determinants of Contraceptive Use among Unmarried Young Women in Kakamega County, Kenya</a></h3>
+                    <p class="pub-authors">Arlotti-Parish E et al. · <em>Adolescents (MDPI)</em></p>
+                    <p class="pub-summary clamp">Adolescent pregnancies adversely impact mental and reproductive health as well as educational and socio-economic outcomes. In Kakamega County, Kenya, 20% of adolescents begin childbearing by age 19. To inform interventions to reduce adolescent pregnancy, Jhpiego used the Barrier Analysis methodology, which is based on the Doer/Non-Doer study model, in which participants are categorized according to whether they are &quot;Doers&quot; or &quot;Non-Doers&quot; of the study behavior. This study examines the determinants of the behavior, &quot;young unmarried women currently use modern contraceptive methods&quot;. Participants included young women aged 15–19 who were sexually active, unmarried, and were using (&quot;Doers&quot;) or not using (&quot;Non-Doers&quot;) modern contraception. The findings reveal that the majority of Doers (88%) and Non-Doers (80%) understand the pregnancy risk associated with non-use, and there is no statistically significant difference between Doers&#x27; and Non-Doers&#x27; understanding of contraceptive benefits. Knowledge of side effects and misconceptions, such as the belief that contraception causes infertility, does not deter Doers from using contraception. Seventy percent of Doers note that contraception is accessible/available, while 39% of Non-Doers state the opposite. Doers are almost three times more likely than Non-Doers to say that most people approve of their contraceptive use, while Non-Doers are twice as likely as Doers to say that most people would not approve.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2023</span><span class="pub-tag">Zimbabwe</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1007/978-3-031-21472-1_6" target="_blank" rel="noopener">Determinants of Positive Food Procurement Practices in COVID-19 Affected Communities in Zimbabwe</a></h3>
+                    <p class="pub-authors">Nyathi C, Mavhudzi T, Chikwiriro C, Maduwa C · <em>Book chapter in: COVID-19 in Zimbabwe (Springer), pp. 77-85</em></p>
+                    <p class="pub-summary">Listed on barrieranalysis.org research page as a Barrier Analysis study of food procurement practices in COVID-19-affected communities in Zimbabwe (chapter not opened).</p>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2023</span><span class="pub-tag">Zimbabwe</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1016/j.mex.2022.101958" target="_blank" rel="noopener">Development of a growth monitoring and promotion index to improve child health in Zimbabwe</a></h3>
+                    <p class="pub-authors">Shamiso Alice Moyo; Ntsieni S. Mashau; Lufuno Makhado · <em>Methodsx</em></p>
+                    
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2023</span><span class="pub-tag">Nigeria</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1093/inthealth/ihad009" target="_blank" rel="noopener">Enablers and barriers to COVID-19 vaccine uptake in an urban slum in Lagos, Nigeria: informing vaccine engagement strategies for the marginalized</a></h3>
+                    <p class="pub-authors">Ozoh OB, Akinkugbe AO, Olukoya MA, Adetifa IMO · <em>International health</em></p>
+                    <p class="pub-summary clamp">Vaccination against coronavirus disease 2019 (COVID-19) is a cost-effective mitigation strategy against the pandemic. As the COVID-19 vaccine becomes more available, low uptake is now a global threat and understanding the underpinnings in local contexts is a priority for intervention development. We aimed to evaluate behavioural determinants of COVID-19 vaccine acceptance that could inform engagement strategies to improve vaccine uptake in Makoko, an urban slum in Lagos, Nigeria. Methods A population-based case–control study utilized the barrier analysis (BA) approach to evaluate the beliefs and behaviours of 45 ‘doers’ and 45 ‘non-doers’. The standardized BA tabulation sheet was used to assess differences in the proportions between the two groups to identify significant factors that could be addressed through a behaviour change strategy. Results Perceived social norms (family, friend, healthcare workers) that approve the vaccine and expected vaccine protection against diseases among doers were determinants of behaviour. Perceived poor accessibility, safety concerns, lack of trust, low vaccine efficacy and low susceptibility to the infection were the most important determinants of behaviour among non-doers.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="preprint">
+                    <div class="pub-meta"><span class="pub-tag type-preprint">Preprint</span><span class="pub-tag year">2023</span><span class="pub-tag">Zambia</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1101/2023.02.23.23286345" target="_blank" rel="noopener">Enhancing household Soybean Processing and Utilization in the Eastern Province of Zambia, a concurrent triangulation study design</a></h3>
+                    <p class="pub-authors">Funduluka P, Twambo H, Mercy M, et al. · <em>medRxiv (preprint)</em></p>
+                    <p class="pub-summary clamp">Soybean processing and utilization is still low in the Eastern Province of Zambia despite the support by local and international NGOs in the sector. This study was designed to establish best ways of improving household soybean use in Petauke, Katete and Chipata districts in Eastern Province. In a concurrent triangulation study design, information was generated using a structured questionnaire on a sample of 1,237 households. Meanwhile two separate semi structured questionnaires were administered on a sample of 42 Focus Group Discussion and In-depth Interview (FGD and IDI) participants. Stata MP 15 software generated frequencies and associated factors for soybean processing and utilization. NVIVO software QSR10 was used to organize qualitative data. All data was ultimately analyzed using the three Food Systems Thematic Areas namely; Socioeconomic, Enabling and Food environment as well as general environmental factors. Among the soybean products, a readymade Textured Vegetable Protein was universally consumed [1,030/1237 (83%)]. Milled Soybean used for cooking Porridge and Shim [279/1237 (22.55%)] among the few whole soybean products, emerged congruent with common household meals. However, accessibility of soybean for household consumption throughout the year was negligible. Immediate strategies should include intensifying soybean production without leaving behind female headed households...</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2023</span><span class="pub-tag">Oman</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.18295/squmj.5.2022.038" target="_blank" rel="noopener">Exclusive Breastfeeding: Barrier analysis amongst Omani mothers</a></h3>
+                    <p class="pub-authors">Al-Ghannami S, Al-Mamari S, Chekaraou D, Abla C, Al-Ghmmari I, Al-Ajmi A, Al-Shammkhi S, Al-Balushi RM, Al-Mamari F, Mabry RM · <em>Sultan Qaboos University medical journal</em></p>
+                    <p class="pub-summary clamp">Objectives: Less than a quarter of Omani infants &amp;lt; 6 months are exclusively breastfed. Therefore, this study aimed to examine individual barriers and supports to exclusive breastfeeding and identify potential policy and programmatic interventions in Oman. Methods: A cross-sectional Barrier Analysis was carried out among a purposive sample of Omani women - 45 “Doers” (who exclusively breastfed their infants) and 52 “Non-Doers” (who do not) – who were selected and interviewed by trained enumerators in health clinics in various parts of the country. A barrier analysis tool, adapted for the Omani context, covered 12 common determinants of behavior adoption using open-ended questions regarding participants’ perceptions about exclusive breastfeeding including positive and negative consequences, self-efficacy and social norms. Qualitative analysis involved coding and tabulating as well as thematic analysis. Results: Mothers report that motivation for exclusive breastfeeding include the perception that it leads to healthier children, is easy, readily available and therefore convenient and that mothers report an elevated level of family support for breastfeeding. Barriers included perceived milk insufficiency and mother’s employment.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2023</span><span class="pub-tag">Zimbabwe</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.3390/healthcare11142011" target="_blank" rel="noopener">Growth Monitoring and Promotion Index Development: A Novel Approach</a></h3>
+                    <p class="pub-authors">Shamiso Alice Moyo; Ntsieni S. Mashau; Lufuno Makhado · <em>Healthcare</em></p>
+                    <p class="pub-summary clamp">There are few growth monitoring and promotion indexes, and currently none of them include any metrics that measure caregiver behaviours. No index to date combines the metrics of both community health worker activeness and caregiver barriers and facilitators towards growth monitoring and promotion (GMP). This study developed a new growth monitoring and promotion index and validated it using the Delphi Technique. Methods: The study began with phase 1, which was a scoping review of the literature on GMP indexes. Phase 2 involved a community health worker (CHW) survey which explored the process of GMP within the Umguza health system, and determined how knowledge of GMP by CHWs translated to frequency of activities. A barrier analysis was also conducted with caregivers of children under five to determine the barriers and facilitators towards GMP attendance by caregivers. Phase 3 was the construction of the index along with its validation, using the Delphi Technique where fifteen experts within the health and nutrition sector were consulted to analyse the constructs/variables of the index. Results: A growth monitoring and promotion index was developed and validated by several technical experts in the health and nutrition sector in Zimbabwe. Conclusions: A new index has been developed to improve the quality of growth monitoring and promotion activities within the communities.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2023</span><span class="pub-tag">Bangladesh</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1186/s12889-023-16106-8" target="_blank" rel="noopener">Understanding the behavioral determinants that predict barriers and enablers of screening and treatment behaviors for diabetic retinopathy among Bangladeshi women: findings from a barrier analysis</a></h3>
+                    <p class="pub-authors">Kalam MA, Al Asif CA, Hasan MM, Arif-Ur-Rahman M, Nag DK, Sen PK, Haque Akhanda MA, Davis TP, Talukder A · <em>BMC public health</em></p>
+                    <p class="pub-summary clamp">and aim While early detection and timely treatments can prevent diabetic retinopathy (DR) related blindness, barriers to receiving these DR services may cause permanent sight loss. Despite having similar prevalence to diabetes and DR, women are less likely than men to perform these behaviors due to multi-faced barriers in screening and receiving follow-up treatments for DR. This study, therefore, aimed at identifying the barriers to – and enablers of – screening and follow-up treatments behaviors for DR among women aged more than 40 years with diabetes from the behavioral perspectives in Bangladesh. Methods This Barrier Analysis study interviewed 360 women (180 “Doers” and 180 “Non-doers”) to explore twelve behavioral determinants of four DR behaviors including screening, injection of anti-vascular endothelial growth factor (anti-VEGF medication), laser therapy and vitro-retinal surgery. The data analysis was performed to calculate estimated relative risk to identify the degree of association between the determinants and behaviors, and to find statistically significant differences (at p &amp;lt; 0.05) in the responses between the Doers and Non-doers. Results Access to healthcare facilities was the major barrier impeding women from performing DR behaviors.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2023</span><span class="pub-tag">Bangladesh</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1111/mcn.13472" target="_blank" rel="noopener">Use of designing for behaviour change framework in identifying and addressing barriers to and enablers of animal source feeding to children ages 8-23 months in Bandarban Hill District in Bangladesh: Implications for a nutrition-sensitive agriculture programme</a></h3>
+                    <p class="pub-authors">Kalam MA, Asif CAA, Stormer A, Bishop T, Jackson-deGraffenried M, Talukder A · <em>Maternal &amp; child nutrition</em></p>
+                    <p class="pub-summary clamp">Inadequate diet quality is a cause of undernutrition among children 6-23 months of age in Bangladesh, particularly in remote and isolated areas such as Bandarban District. Feeding animal source foods can help to combat stunting and wasting problems among children, but it may not be accessible or acceptable. A barrier analysis using the Designing for Behavior Change Framework was conducted in Bandarban district with participants from 4 ethnic groups, to explore potential barriers and key motivators by examining 12 behavioural determinants of consumption of animal-source food in complementary feeding for children 8-23 months. Data were collected from 45 mothers of children 8-23 months, who provided animal-source foods to their children (doers), and from 45 mothers who did not (non-doers), for a total of 90 interviews. Nine determinants were statistically significantly different between doers and non-doers as follows: self-efficacy, positive consequences, negative consequences, social norms, access, reminders, perceived risk, perceived severity and perceived action efficacy. Nearby access to purchase animal-source foods, rearing poultry or livestock at home and the support of household and community members are enablers to feeding animal-source food. In contrast, these same factors are barriers for non-doers. The lack of money to spend on animal-source foods is also a barrier.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="preprint">
+                    <div class="pub-meta"><span class="pub-tag type-preprint">Preprint</span><span class="pub-tag year">2023</span><span class="pub-tag">Indonesia</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.21203/rs.3.rs-3308149/v1" target="_blank" rel="noopener">“We and malaria are already friends, becoming one,” A qualitative study on malaria risk perception in Eastern Indonesia</a></h3>
+                    <p class="pub-authors">Sherria Ayuandini; Fredy Buhama Lumban Tobing; David L.B. Jupp · <em>Research Square Platform LLC</em></p>
+                    <p class="pub-summary clamp">Despite the Government of Indonesia’s success in eliminating malaria in 372 out of 514 districts in 2022, the disease is still highly prevalent in Eastern Indonesia. In 2021, 95% of the total malaria cases in Indonesia were reported from Papua, West Papua and Nusa Tenggara Timur (NTT) provinces. In the context of the persistence of malaria in these areas, there is an increased recognition that malaria elimination will require an understanding of the social determinants of malaria prevention and treatment, informed by local context and local practice. Methods This study is based on qualitative data collected through participatory community assessment and participatory barrier analysis implemented through an adapted immersion approach. For the adapted immersion, researchers immersed themselves in the communities during the day and early evening over a period of 5 days. Researchers gathered insights through informal conversations, discussions using visual tools, and direct observation. The study was conducted in 4 districts of high endemic areas across Papua, West Papua, and Sumba Islands in NTT. Results The study highlights how people’s perception of the disease in high malaria endemic areas affects their health behaviors in dealing with malaria infection, particularly in their decision making for early testing, adherence to malaria treatment, and practices taken to prevent mosquito bites.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2022</span><span class="pub-tag">Kenya</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1093/cdn/nzac104" target="_blank" rel="noopener">Application of the Capabilities, Opportunities, Motivations, and Behavior (COM-B) Change Model to Formative Research for Child Nutrition in Western Kenya</a></h3>
+                    <p class="pub-authors">Emilie E. McClintic; Anna Ellis; Emily Awino Ogutu · <em>Current Developments in Nutrition</em></p>
+                    <p class="pub-summary clamp">Interventions aimed at improving dietary intake and feeding practices have alone proven insufficient for combatting stunting resulting from poor nutrition and repeated infections. Objectives To support the development of an integrated water, sanitation, and hygiene (WASH) and nutrition social and behavior change strategy aimed at reducing stunting, formative research was conducted in two program sites in western Kenya. Methods 29 key informant interviews were conducted with community leaders, health workers, and project staff, and 24 focus group discussions with caregivers of children under two on topics related to feeding, sanitation, and hygiene behaviors. Three frameworks informed the study design and analysis of our formative research: the Capabilities, Opportunities, and Motivations model for Behavior Change which identifies what needs to change in order for behavior change interventions to be effective, the Grandmother Project&#x27;s Change Through Culture Approach, which values the important role of influential household and community members in producing household health, and Starr and Fornoff&#x27;s approach to Theory of Change development. Results Caregivers exhibited sufficient psychological capabilities (knowledge and skills) for many of the key maternal and infant nutrition behaviors.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2026</span></div>
+                    <h3 class="pub-title"><a href="https://www.behaviourchange.net/barrier-analysis-ba" target="_blank" rel="noopener">Barrier Analysis (BA) (People in Need behaviour change resource page)</a></h3>
+                    <p class="pub-authors">People in Need (PIN) · <em>behaviourchange.net (People in Need)</em></p>
+                    <p class="pub-summary clamp">The Barrier Analysis study asks people a series of questions aiming to identify which barriers and motivators have the biggest influence on whether they (do not) practice the desired behaviour. Describes Doer/Non-Doer approach comparing 45 people practicing the behaviour with 45 who have not; links to guidance, questionnaire templates and questionnaires on common behaviours; hosts Kittle 2017 guide.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2022</span><span class="pub-tag">United States</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1111/mcn.13428" target="_blank" rel="noopener">Barriers and facilitators to exclusive breastfeeding among Black mothers: A qualitative study utilizing a modified Barrier Analysis approach</a></h3>
+                    <p class="pub-authors">Tran V et al. · <em>Maternal &amp; Child Nutrition</em></p>
+                    <p class="pub-summary clamp">Breastfeeding has health benefits for both infants and mothers, yet Black mothers and infants are less likely to receive these benefits. Despite research showing no difference in breastfeeding intentions by race or ethnicity, inequities in breastfeeding rates persist, suggesting that Black mothers face unique barriers to meeting their breastfeeding intentions. The aim of this study is to identify barriers and facilitators that Black women perceive as important determinants of exclusively breastfeeding their children for at least 3 months after birth. Utilizing a Barrier Analysis approach, we conducted six focus group discussions, hearing from Black mothers who exclusively breastfed for 3 months and those who did not. Transcripts were coded starting with a priori parent codes based on theory-derived determinants mapped onto the Socioecological Model; themes were analysed for differences between groups. Facilitators found to be important specifically for women who exclusively breastfed for 3 months include self-efficacy, lactation support, appropriate lactation supplies, support of mothers and partners, prior knowledge of breastfeeding, strong intention before birth and perceptions of breastfeeding as money-saving. Barriers that arose more often among those who did not exclusively breastfeed for 3 months include inaccessible lactation support and supplies, difficulties with pumping, latching issues and perceptions of breastfeeding as time-consuming.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2022</span><span class="pub-tag">United States</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1080/21642850.2022.2074007" target="_blank" rel="noopener">Behavioral determinants for COVID-19 vaccine acceptance among students, faculty, and staff at a rural public university</a></h3>
+                    <p class="pub-authors">Bauler S, Hege A, Davis T, Schluth E, Pruitt C, Moreno V, Verhaeghe M, Bouldin ED · <em>Health psychology and behavioral medicine</em></p>
+                    <p class="pub-summary clamp">Vaccine hesitancy for COVID-19 is a major obstacle to achieving high vaccine coverage. Low vaccine confidence among college students is one factor fueling the COVID-19 pandemic in the U.S. Objective The purpose of this study was to evaluate COVID-19 vaccine hesitancy and barriers to vaccine uptake among students, faculty, and staff at a rural public university. Method We used the Barrier Analysis (BA) mixed-methods approach, which explores determinants of the desired behavior using the Health Belief Model and Theory of Reasoned Action. We developed a BA questionnaire and distributed it through Qualtrics to 4,600 randomly selected students ( n = 4,000), faculty ( n = 300), and staff ( n = 300) from March 11 to April 1, 2021. We defined Acceptors as those who were willing to be vaccinated and Non-acceptors as those who were not. Results Our analysis found that among Non-acceptors, perceived social norms, perceived negative consequences, and trust had the highest association with COVID-19 vaccine hesitancy among students, faculty, and staff. Conclusion These findings illustrate the need to develop effective behavior change strategies for COVID-19 vaccines uptake that identify sources of trusted information among vaccine-hesitant college students, faculty, and staff, while leveraging enablers to increase COVID-19 vaccination coverage on university campuses.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2022</span><span class="pub-tag">Bangladesh; India; Myanmar; Kenya; Democratic Republic of the Congo; Tanzania</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.3390/vaccines10020214" target="_blank" rel="noopener">Behavioural Determinants of COVID-19-Vaccine Acceptance in Rural Areas of Six Lower- and Middle-Income Countries</a></h3>
+                    <p class="pub-authors">Davis TP, Yimam AK, Kalam MA, Tolossa AD, Kanwagi R, Bauler S, Kulathungam L, Larson H · <em>Vaccines</em></p>
+                    <p class="pub-summary clamp">Delayed acceptance or refusal of COVID-19 vaccines may increase and prolong the threat to global public health and the economy. Identifying behavioural determinants is considered a critical step in explaining and addressing the barriers of vaccine refusal. This study aimed to identify the behavioural determinants of COVID-19-vaccine acceptance and provide recommendations to design actionable interventions to increase uptake of the COVID-19 vaccine in six lower- and middle-income countries. Taking into consideration the health belief model and the theory of reasoned action, a barrier analysis approach was employed to examine twelve potential behavioural determinants of vaccine acceptance in Bangladesh, India, Myanmar, Kenya, the Democratic Republic of the Congo (DRC), and Tanzania. In all six countries, at least 45 interviews with those who intended to get the vaccine (“Acceptors”) and another 45 or more interviews with those who did not (“Non-acceptors”) were conducted, totalling 542 interviews. Data analysis was performed to find statistically significant (p &amp;lt; 0.05) differences between Acceptors and Non-acceptors of COVID-19 vaccines and to identify which beliefs were most highly associated with acceptance and non-acceptance of vaccination based on the estimated relative risk.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2022</span><span class="pub-tag">United States (New Orleans, LA)</span></div>
+                    <h3 class="pub-title"><a href="https://www.naccho.org/uploads/downloadable-resources/New-Orleans-Barrier-Analysis-RCA-Case-Study.pdf" target="_blank" rel="noopener">Case Study: Barrier Analysis Rapid Community Assessment: A tool for understanding determinants of behavior change (New Orleans)</a></h3>
+                    <p class="pub-authors">New Orleans Health Department (NOHD); NACCHO · <em>NACCHO (National Association of County and City Health Officials) case study</em></p>
+                    <p class="pub-summary">Comparing the responses of people who do a behavior (the Doers) with those who do not (the Non-Doers) helps to identify the most important determinants that can inform the selection or design of effective behavior change activities. Applied to COVID-19 and flu vaccine uptake in Orleans Parish using Doer/Non-Doer surveys.</p>
+                </article>
+                <article class="pub" data-type="other">
+                    <div class="pub-meta"><span class="pub-tag type-other">Other</span><span class="pub-tag year">2022</span><span class="pub-tag">Ethiopia</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.18174/561479" target="_blank" rel="noopener">Rural consumer study : Dairy consumption, beliefs and practices among rural populations in Ethiopia</a></h3>
+                    <p class="pub-authors">Hermine ten Hove; H.M. Snoek; Delphine Bosch · <em>Wageningen Centre for Development Innovation</em></p>
+                    <p class="pub-summary clamp">Ethiopia is among the countries with the highest malnutrition burdens. Dairy is of particular nutritional importance, but Ethiopian per capita consumption is low. This study investigated the drivers and barriers to dairy consumption among rural households in West Amhara, Sululta-Fitche, Adama-Assela and Hawassa-Shashemene project clusters of SNV-BRIDGE project, using a combination of a) focus group discussions with community members; b) key informant group interviews with community leaders, religious leaders and health extension workers and c) quantitative household survey data. It found that cow ownership is the main factor associated with a higher average number of days on which yogurt, milk, buttermilk and cheese is consumed by rural households. More dairy was also consumed by those who report &quot;Improves education performance&quot;, &quot;Good for growth&quot; and &quot;Prevents disease&quot; as advantages of milk consumption. For yogurt, two factors were found to be associated with dairy consumption frequency. Firstly, respondents who reported &quot;gives energy&quot; as an advantage of consuming yogurt consumed more yogurt than those who did not report this advantage. Secondly, respondents that reported that they didn&#x27;t know about disadvantages consume less yogurt. The study concludes that efforts to increase dairy consumption in rural communities should promote cow ownership first, having the largest short-term benefit as the market does not (yet) form an alternative source.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2022</span><span class="pub-tag">State of Palestine (West Bank and Gaza)</span></div>
+                    <h3 class="pub-title"><a href="https://www.ennonline.net/fex/68/cfepalastine" target="_blank" rel="noopener">State of Palestine: Investing in assessment positively impacted programming for complementary feeding</a></h3>
+                    <p class="pub-authors">Jouda A, Abuwarda F, Awad R, Zarrelli A, Qadi K · <em>Field Exchange 68, Emergency Nutrition Network; UNICEF State of Palestine</em></p>
+                    <p class="pub-summary clamp">For each of the six behaviours of the barriers analysis, 45 &#x27;doers&#x27; and 45 &#x27;non-doers&#x27; across different communities in both the West Bank and the Gaza Strip were sampled. The barrier analysis that was conducted in 2019 in West Bank and Gaza has helped to identify and understand the key barriers to optimum maternal and child nutrition behaviours.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="thesis">
+                    <div class="pub-meta"><span class="pub-tag type-thesis">Thesis</span><span class="pub-tag year">2021</span><span class="pub-tag">United States</span></div>
+                    <h3 class="pub-title"><a href="https://elischolar.library.yale.edu/ysphtdl/2102" target="_blank" rel="noopener">A Qualitative Analysis of Facilitators and Barriers to Breastfeeding Among Black Mothers in the Greater New Haven Area</a></h3>
+                    <p class="pub-authors">Tran VD-V · <em>Yale School of Public Health MPH thesis (EliScholar); advisors O&#x27;Connor-Duffany K, Perez-Escamilla R</em></p>
+                    <p class="pub-summary">Compared Black mothers who did exclusively breastfeed for 3 months (EBF3) with those who did not (NEBF3) using focus groups in a modified Barrier Analysis approach. &#x27;Racial and ethnic disparities in breastfeeding persist in Connecticut, with Black and African American mothers breastfeeding at the lowest rate.&#x27;</p>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2021</span><span class="pub-tag">Nigeria</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1016/j.gfs.2021.100586" target="_blank" rel="noopener">Barrier analysis for adequate daily fruit and vegetable consumption among low-income residents of Hanoi, Vietnam and Ibadan, Nigeria</a></h3>
+                    <p class="pub-authors">Amanda De Filippo; Gennifer Meldrum; Folake Samuel · <em>Global Food Security</em></p>
+                    <p class="pub-summary">Listed on barrieranalysis.org research page as a Barrier Analysis of fruit and vegetable consumption in Hanoi and Ibadan (not opened).</p>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2021</span><span class="pub-tag">Bangladesh, India, Myanmar, Kenya, DRC, Tanzania</span></div>
+                    <h3 class="pub-title"><a href="https://www.wvi.org/barrier-analysis-research" target="_blank" rel="noopener">Barrier Analysis Research (Equipping Communities in the Fight Against COVID-19)</a></h3>
+                    <p class="pub-authors">World Vision International · <em>World Vision International web page</em></p>
+                    <p class="pub-summary">Web page describing World Vision&#x27;s Barrier Analysis studies of COVID-19 vaccine acceptance determinants across six countries and links to the resulting Vaccines article and faith-leader publications.</p>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2021</span><span class="pub-tag">Iraq</span></div>
+                    <h3 class="pub-title"><a href="https://issuu.com/cisr-journal/docs/25.2-all/s/14302483" target="_blank" rel="noopener">Barrier Analysis: Explosive Ordnance Risk Education</a></h3>
+                    <p class="pub-authors">HALO Trust / CISR Journal contributors · <em>The Journal of Conventional Weapons Destruction 25(2), Center for International Stabilization and Recovery (JMU)</em></p>
+                    <p class="pub-summary">Journal article applying Barrier Analysis (doer/non-doer comparison) to explosive ordnance risk education; full article text not accessible via Issuu.</p>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2021</span><span class="pub-tag">Sub-Saharan Africa</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1016/j.wre.2021.100189" target="_blank" rel="noopener">COVID-19 and handwashing: Implications for water use in Sub-Saharan Africa</a></h3>
+                    <p class="pub-authors">Franklin Amuakwa‐Mensah; Rebecca Afua Klege; Philip Kofi Adom · <em>Water Resources and Economics</em></p>
+                    
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2021</span><span class="pub-tag">Lao PDR</span></div>
+                    <h3 class="pub-title"><a href="https://www.wvi.org/sites/default/files/2021-05/WVL%20COVID%20Vaccine%20-%20Barrier%20Analysis%20staff_A4.pdf" target="_blank" rel="noopener">COVID-19 Vaccine Barrier Analysis Survey: Key Findings (World Vision Lao PDR staff)</a></h3>
+                    <p class="pub-authors">World Vision International - Lao PDR · <em>World Vision International</em></p>
+                    <p class="pub-summary">Barrier Analysis (BA) is a rapid assessment (formative research) tool to identify behavioural determinants associated with a particular behaviour. Survey conducted 20-26 March 2021 among WV Laos staff comparing Doers (vaccine acceptors, 24% already vaccinated) and Non-Doers (non-acceptors).</p>
+                </article>
+                <article class="pub" data-type="preprint">
+                    <div class="pub-meta"><span class="pub-tag type-preprint">Preprint</span><span class="pub-tag year">2021</span><span class="pub-tag">Bangladesh; Kenya; India; Myanmar; Tanzania; DR Congo</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.21203/rs.3.rs-444605/v3" target="_blank" rel="noopener">Determinants of COVID-19 Vaccine Acceptance in Six Lower- and Middle-Income Countries</a></h3>
+                    <p class="pub-authors">Adugna Kebede; Robert Kanwagi; Asrat Dibaba Tolossa · <em>Research Square Platform LLC</em></p>
+                    <p class="pub-summary clamp">While a vaccine is the only clinical preventive measure to control the infection and mortality caused by SARS-CoV-2 (COVID-19), delayed acceptance or refusal of COVID-19 vaccines may increase and prolong the threat to global public health and the economy. Identifying behavioural determinants is considered a critical step in explaining and addressing the barriers of vaccine refusal, but there is a lack of evidence around COVID-19 vaccine refusal and delay from a behavioural perspective. This study aims to identify the behavioural determinants of COVID-19 vaccine acceptance and provide recommendations to design actionable interventions to increase the uptake of the COVID-19 vaccine in six lower-and-middle income countries. Methods: Taking into consideration the Health Belief Model (HBM), Theory of Reasoned Action (TRA), and other behavioural models, a Barrier Analysis (BA) approach was employed to examine twelve potential behavioural determinants of vaccine acceptance in Bangladesh, India, Myanmar, Kenya, the Democratic Republic of Congo, and Tanzania. In all six countries, at least 45 interviews with those who intended to take the vaccine (“Acceptors”) and another 45 or more interviews with those who did not (“Non-Acceptors”) were conducted, totalling 542 interviews.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2021</span><span class="pub-tag">Bangladesh</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.2166/washdev.2021.070" target="_blank" rel="noopener">Exploring behavioral determinants of handwashing with soap after defecation in an urban setting in Bangladesh: findings from a barrier analysis</a></h3>
+                    <p class="pub-authors">Kalam MA et al. · <em>Journal of Water, Sanitation and Hygiene for Development</em></p>
+                    <p class="pub-summary clamp">Social and behavior change (SBC) has long been recognized as a necessary step in the promotion of handwashing with soap (HHWS), and identifying the barriers and enablers of this behavior are key to increasing its adoption. Based on the health belief model (HBM), the theory of reasoned action (TRA) and other behavioral models, this barrier analysis study was conducted to identify the barriers and enablers of HWWS after defecation in an urban setting in Bangladesh. We conducted interviews with 45 adults who washed their hands with soap after defecation (doers) and compared them to 45 adults who did not (non-doers). The analysis showed that the main barriers of HWWS after defecation were related to perceived self-efficacy, difficulty to remember to buy soap, access to low-cost soap, low perceived severity of diarrhea, and not believing that HWWS would reduce diarrhea. Believing that it is Allah&#x27;s will when one gets diarrhea was mentioned more frequently by the non-doers, while feeling clean and keeping free from illness were reported as benefits of HWWS significantly by the doers. The results suggest that an SBC strategy that addresses these key barriers and enablers would be more effective in promoting the adoption of HWWS.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2021</span><span class="pub-tag">Bangladesh</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1371/journal.pone.0256496" target="_blank" rel="noopener">Exploring the behavioral determinants of COVID-19 vaccine acceptance among an urban population in Bangladesh: Implications for behavior change interventions</a></h3>
+                    <p class="pub-authors">Kalam MA, Davis TP, Shano S, Uddin MN, Islam MA, Kanwagi R, Islam A, Hassan MM, Larson HJ · <em>PloS one</em></p>
+                    <p class="pub-summary clamp">While vaccines ensure individual protection against COVID-19 infection, delay in receipt or refusal of vaccines will have both individual and community impacts. The behavioral factors of vaccine hesitancy or refusal are a crucial dimension that need to be understood in order to design appropriate interventions. The aim of this study was to explore the behavioral determinants of COVID-19 vaccine acceptance and to provide recommendations to increase the acceptance and uptake of COVID-19 vaccines in Bangladesh. Methods We employed a Barrier Analysis (BA) approach to examine twelve potential behavioral determinants (drawn from the Health Belief Model [HBM] and Theory of Reasoned Action [TRA]) of intended vaccine acceptance. We conducted 45 interviews with those who intended to take the vaccine (Acceptors) and another 45 interviews with those who did not have that intention (Non-acceptors). We performed data analysis to find statistically significant differences and to identify which beliefs were most highly associated with acceptance and non-acceptance with COVID-19 vaccines. Results The behavioral determinants associated with COVID-19 vaccine acceptance in Dhaka included perceived social norms, perceived safety of COVID-19 vaccines and trust in them, perceived risk/susceptibility, perceived self-efficacy, perceived positive and negative consequences, perceived action efficacy, perceived severity of COVID-19, access, and perceived divine will.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2021</span><span class="pub-tag">Ethiopia</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.4269/ajtmh.20-0945" target="_blank" rel="noopener">Multi-Sectoral Participatory Design of a BabyWASH Playspace for Rural Ethiopian Households</a></h3>
+                    <p class="pub-authors">Sophie Budge; Alison Parker; Paul Hutchings · <em>American Journal of Tropical Medicine and Hygiene</em></p>
+                    <p class="pub-summary clamp">Growing evidence suggests current water, sanitation, and hygiene interventions do not improve domestic hygiene sufficiently to improve infant health, nor consider the age-specific behaviors which increase infection risk. A household playspace (HPS) is described as one critical intervention to reduce direct fecal–oral transmission within formative growth periods. This article details both the design and development (materials and methods), and testing (results) of a HPS for rural Ethiopian households. Design and testing followed a multi-sectoral, multistep participatory process. This included a focus group discussion (FGD), two user-centered and participatory design workshops in the United Kingdom and Ethiopia, discussions with local manufacturers, and a Trials by Improved Practices (TIPs) leading to a final prototype design. Testing included the FGD and TIPs study and a subsequent randomized controlled feasibility trial in Ethiopian households. This multi-sectoral, multistage development process demonstrated a HPS is an acceptable and feasible intervention in these low-income, rural subsistence Ethiopian households. A HPS may help reduce fecal–oral transmission and infection—particularly in settings where free-range domestic livestock present an increased risk.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="other">
+                    <div class="pub-meta"><span class="pub-tag type-other">News</span><span class="pub-tag year">2021</span><span class="pub-tag">Dominican Republic, Bolivia, Nepal, Bangladesh, Myanmar, Tanzania, Kenya, India, DRC</span></div>
+                    <h3 class="pub-title"><a href="https://www.wvi.org/opinion/view/beauty-truly-listening" target="_blank" rel="noopener">The beauty of truly listening</a></h3>
+                    <p class="pub-authors">Davis T · <em>World Vision International opinion/blog</em></p>
+                    <p class="pub-summary clamp">Opinion piece by Tom Davis (WVI Partnership Leader for Health and Nutrition) on Barrier Analysis: &#x27;we also quantitatively compare the responses that the &quot;Doers&quot; and &quot;Non-doers&quot; give ... We need to stop guessing. Don&#x27;t assume. Be sceptical.&#x27; Draws on BA studies of water purification, growth monitoring, handwashing, COVID-19 vaccine acceptance and mask use.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2021</span><span class="pub-tag">South Sudan</span></div>
+                    <h3 class="pub-title"><a href="https://www.nutritioncluster.net/sites/nutritioncluster.com/files/2022-09/Training%20on%20Qualitative%20Research%20-%20BA%20Feb%2022-23.pdf" target="_blank" rel="noopener">Training on Qualitative Research Methods: Barrier Analysis (South Sudan)</a></h3>
+                    <p class="pub-authors">Save the Children South Sudan team · <em>Save the Children / Global Nutrition Cluster (training slides)</em></p>
+                    <p class="pub-summary">Training deck to build capacity in Barrier Analysis; emphasises comparing Doers versus Non-Doers with a recommended sample of 45 Doers and 45 Non-Doers; references the caregroupinfo.org BA tabulation table.</p>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2020</span><span class="pub-tag">Nepal</span></div>
+                    <h3 class="pub-title"><a href="https://consensus.app/papers/details/7255f1edb064503781b0ab5c04b018bf/" target="_blank" rel="noopener">&quot;Formative Research&quot; for Systematic Behavior Change Program Design</a></h3>
+                    <p class="pub-authors">Kharal L</p>
+                    <p class="pub-summary clamp">We carried out a formative research for developing a structured hand-washing promotion in three municipalities of Bardiya district of Nepal. The research comprised of baseline survey in randomly selected 600 households along with survey on behavioral factors of RANAS (risks, attitude, norm, ability, and self-efficacy) and qualitative assessment of behavioral determinants of barriers and benefits among the doers and non-doers of hand-washing. The survey, assessment and subsequent intervention design were guided by different aspects we found relevant from the following theories and framework: (i) stages of change; (ii) diffusion of innovation; (iii) user centered design; (iv) social marketing; and (v) behavioral economics. The following have been identified among others to be considered while developing the promotion program in close consultation with the target audience: (a) to work on Attitude and Norm (shown by RANAS survey); (b) emphasize hand washing after cleaning child&#x27;s bottom and before feeding a child (shown by baseline survey); (c) promote hand-washing stations (as 92% now wash their hands at the tube wells only); (d) target reducing perceived barriers and increasing perceived benefits (from social marketing), nudging (a concept from behavioral economics) where possible; and (e) work with innovators and early adopters first (from diffusion of innovation).</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2020</span><span class="pub-tag">Viet Nam</span></div>
+                    <h3 class="pub-title"><a href="https://consensus.app/papers/details/3ab93608c03e57959016b75b6ba87dd2/" target="_blank" rel="noopener">Barrier analysis for daily fruit and vegetable consumption among low income consumers in Hanoi, Vietnam</a></h3>
+                    <p class="pub-authors">Truong M et al.</p>
+                    <p class="pub-summary clamp">Barrier analysis is completed with at least 45 doers of the behavior of interest and 45 non-doers who do not practice the behaviour. In this case, the behaviour of interest was the consumption of an adequate quantity and diversity of fruits and vegetables by low income adults in the focal neighbourhoods. Doers and non-doers were selected from the list of 300 lower-income households in the focal neighborhoods using screening questions. Respondents were asked to recount the fruits and vegetables they consumed in the past 24 hours and whether the amount they consumed was typical for them or not. Trained enumerators from NIN converted the reported serving sizes into an approximate number of grams using standardized conversion factors. Based on the answers to the screening questions, the respondents were classified as &#x27;doers&#x27;, &#x27;non-doers&#x27; or &#x27;do not interview&#x27;. Doers met fruit target (200 g fruit) and vegetable target (200g vegetable from at least two MDDW groups) and normally consumed the same amount of fruits and vegetables or more. Nondoers did not meet the fruit target, did not meet the vegetable target and normally consume the same amount or less. We used a quota sampling approach in which households were contacted in randomized order. The gender to be interviewed for each household was randomly assigned so that we did not include men and women from the same household in the sample.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2020</span><span class="pub-tag">Zimbabwe</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.26596/wn.202011312-21" target="_blank" rel="noopener">Barriers and facilitators of exclusive breastfeeding: Findings from a Barrier Analysis Conducted in Mwenezi and Chiredzi Districts, Zimbabwe</a></h3>
+                    <p class="pub-authors">Gugulethu Moyo; Tapiwa Magaisa; Arthur Pagiwa · <em>World Nutrition</em></p>
+                    <p class="pub-summary clamp">A barrier analysis study was carried out in Mwenezi and Chiredzi Districts of Zimbabwe, to guide the development of a community-based behaviour change program. The aim of the barrier analysis was to identify factors that influenced a woman’s infant feeding and care practices. This paper reports the findings for one behaviour, exclusive breastfeeding. The study was based on the methodology from “A Practical Guide to Conducting a Barrier Analysis” (Kittle 2013). Structured in-depth interviews were administered to 91 women who were mothers of infants under the age of six months, 46 of whom who were exclusively breastfeeding and 45 who were not. Issues pertaining to self-efficacy, social support and perceived risks and benefits, as well as cultural and community norms and rules were identified. The qualitative analysis included sorting and identifying themes. Common barriers for exclusive breastfeeding were influence from the mother-in-law, high maternal workload, and perceived breast milk insufficiency. The main enablers were breastfeeding knowledge, the presence of a spouse/partner who assisted with chores and nurses who provided breastfeeding information. The insights gained from this study were used by Nutrition Action Zimbabwe to develop a behaviour change programme that was implemented from 2018-2020.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2020</span><span class="pub-tag">India</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.18203/2394-6040.ijcmph20203907" target="_blank" rel="noopener">Barriers of dietary salt reduction among hypertensive patients</a></h3>
+                    <p class="pub-authors">Khwaja M · <em>International Journal of Community Medicine and Public Health 7(9):3459</em></p>
+                    <p class="pub-summary">Listed on barrieranalysis.org research page as a Barrier Analysis study of dietary salt reduction among hypertensive patients (not opened).</p>
+                </article>
+                <article class="pub" data-type="other">
+                    <div class="pub-meta"><span class="pub-tag type-other">Conference abstract</span><span class="pub-tag year">2020</span><span class="pub-tag">Kenya</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1002/ijgo.13619" target="_blank" rel="noopener">Determinants of uptake of modern family planning methods: A barrier analysis among young women in Kenya (in: Late Breaking Abstracts, FIGO 2020)</a></h3>
+                    <p class="pub-authors">Okoth S, Ontiri S, Ajema C, Orero S · <em>International Journal of Gynecology &amp; Obstetrics 151(S2):103-108 (Late Breaking Abstracts)</em></p>
+                    <p class="pub-summary clamp">The objective of the USAID-funded barrier analysis, which was conducted in 2018, was to gain a deeper understanding of the specific barriers and enablers related to uptake of modern family planning methods among young women in Kakamega County in Kenya. The barrier analysis was used to examine the behavior entitled, &#x27;Young unmarried women currently use modern contraceptive methods.&#x27; The data was analyzed using a standardized Excel spreadsheet to identify statistically significant differences in key determinants between Doers and Non-Doers. Results: Doers were almost 12 times more likely than Non-Doers to indicate that, with their current knowledge, skills, and resources, they felt able to use modern contraception. Doers were almost three times more likely than Non-Doers to say that most people approve of young unmarried women using modern contraception. Doers were four times more likely than Non-Doers to indicate that their mothers approved of their contraceptive use, and four times more likely to indicate that their boyfriends approved. Programs should consider using mothers and boyfriends of Doers, and Non-Doers, as contraceptive champions. (Reconstructed from full-text excerpts of the abstract supplement.)</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2020</span><span class="pub-tag">Guyana</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1186/s12936-020-03289-3" target="_blank" rel="noopener">Digging for care-seeking behaviour among gold miners in the Guyana hinterland: a qualitative doer non-doer analysis of social and behavioural motivations for malaria testing and treatment</a></h3>
+                    <p class="pub-authors">Yan SD, Orkis J, Khan Sohail S, Wilson S, Davis T, Storey JD · <em>Malaria journal</em></p>
+                    <p class="pub-summary clamp">Although Guyana has made significant progress toward malaria control, limited access to malaria testing and treatment services threatens those gains. Mining activities create breeding environments for mosquitoes, and the migrant and mobile mining populations are hard to reach with information and services. The Ministry of Public Health (MoPH) has trained volunteers to test and treat malaria cases in remote regions. However, it remains unclear how miners perceive these testers, the services they provide, or what their malaria care-seeking behaviour is in general. To better address these challenges, Breakthrough ACTION Guyana and MoPH conducted qualitative research from October to November 2018 in Regions 7 and 8 in Guyana. A total of 109 individuals, 70 miners, 17 other mining camp staff, and 22 other key stakeholders (e.g. community health workers, pharmacists, and regional leadership), participated in semi-structured interviews and focus group discussions. Results were derived using a framework analysis, with an adjusted doer and non-doer analysis, and organized using the integrated behaviour framework. Miners sought MoPH-approved services because of close geographic proximity to testing services, a preference for public service treatment, and a desire to correctly diagnose and cure malaria rather than just treat its symptoms.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2020</span><span class="pub-tag">Zimbabwe; United States</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1093/cdn/nzaa043_100" target="_blank" rel="noopener">Identifying Barriers and Enablers to Exclusive Breastfeeding in Mwenezi and Chiredzi Districts, Zimbabwe</a></h3>
+                    <p class="pub-authors">Gugulethu Moyo; Tapiwa Magaisa; Arthur Pagiwa · <em>Current Developments in Nutrition</em></p>
+                    <p class="pub-summary clamp">Objectives To build an understanding of factors that influence exclusive breastfeeding practices (EBF) of lactating mothers which will contribute to the development a behavior change intervention targeting mothers in households with children 0–6 months in Mwenezi and Chiredzi districts of Zimbabwe. Methods A cross sectional study was conducted in May 2018 according to the protocol laid out in United States Agency for International Development (USAID)’s “A Practical Guide to Conducting a Barrier Analysis.” It was carried out in four administrative wards in Mwenezi district and six in Chiredzi district. The behavior under study was “Mothers of children ages 0 – 6 months feed them only breast milk.” Structured in-depth interviews were administered to a total of 90 mothers with children aged 0–6 months, targeting 45 doers and 45 non-doers for the behavior, as part of formative research for the development of a social behavior change intervention. Perceived self-efficacy, social-cultural norms, perceived positive-negative consequences, cues for action and community rules and laws were identified. Qualitative analysis included coding, sorting and identifying themes. Results Barriers to EBF included high labor burden, perceived milk insufficiency and influence from mother-in-law. The main enablers were spousal support with chores and information from nurses.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2020</span><span class="pub-tag">Zimbabwe</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.26596/wn.202011322-34" target="_blank" rel="noopener">Is participation in Care Groups associated with enhanced diet quality amongst women and children? Experiences from Zimbabwe</a></h3>
+                    <p class="pub-authors">Ncube-Murakwani P, Dzimba M, Dube SB, et al. · <em>World Nutrition 11(3):22-34</em></p>
+                    <p class="pub-summary clamp">The Amalima program, a USAID Office of Food for Peace intervention, has been promoting Care Groups from 2014 to 2020 in a resource constrained setting in Zimbabwe. The researchers conducted a study to compare the quality of the diet for children and mothers participating in Care Groups and those not participating, in Gwanda and Tsholotsho districts across 8 purposively selected sites. A total of 242 children aged 6 to 23 months and 168 women were included. Children whose caregivers were Care Group members had higher consumption of pulses and legumes (29% vs 1%), fruits and vegetables (33% vs 18%) and animal source foods (59% vs 26%). There was no difference in diet quality between women participating or not participating in Care Groups. Efforts should be put in place to increase participation in Care Groups.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2020</span><span class="pub-tag">Liberia</span></div>
+                    <h3 class="pub-title"><a href="https://reliefweb.int/report/liberia/liberia-barrier-analysis-report-march-2020" target="_blank" rel="noopener">Liberia Barrier Analysis Report, March 2020</a></h3>
+                    <p class="pub-authors">Liberia WASH Consortium (Action Against Hunger, Concern Worldwide, WaterAid) · <em>Liberia WASH Consortium via ReliefWeb</em></p>
+                    <p class="pub-summary clamp">The BA study sought to identify the factors preventing the priority groups from adopting key behaviours, as well as identifying the enablers facilitating adoption. Behaviours: exclusive breastfeeding, minimum dietary diversity, handwashing, modern family planning, latrine use, safe water storage; interviews with doers and non-doers.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2020</span></div>
+                    <h3 class="pub-title"><a href="https://www.emergency-wash.org/hygiene/en/tools-methods/32-positive-deviancy-and-doer-non-doer" target="_blank" rel="noopener">T.32 Positive Deviancy and Doer/Non-Doer (Compendium of Hygiene Promotion in Emergencies)</a></h3>
+                    <p class="pub-authors">German Toilet Organization; IFRC; SuSanA; Global WASH Cluster · <em>emergency-wash.org Hygiene Promotion Compendium</em></p>
+                    <p class="pub-summary">Both methods aim to identify families or individuals who practise a desired behaviour when many people do not and to find out what motivates them. Notes Doer/Non-Doer analysis is used in Social Marketing, FOAM, RANAS, Barrier Analysis [T.3] and other WASH approaches.</p>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2020</span><span class="pub-tag">Iraq (Kurdistan Region)</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1371/journal.pone.0231694" target="_blank" rel="noopener">The determinants of handwashing behaviour among internally displaced women in two camps in the Kurdistan Region of Iraq</a></h3>
+                    <p class="pub-authors">Zangana A, Shabila N, Heath T, White S · <em>PloS one</em></p>
+                    <p class="pub-summary clamp">Diarrhoea is one of the most common causes of mortality and morbidity among populations displaced due to conflict. Handwashing with soap has the potential to halve the burden of diarrhoeal diseases in crisis contexts. This study aimed to identify which determinants drive handwashing behaviour in post-conflict, displacement camps. This study was conducted in two camps for internally displaced people in the Kurdistan Region of Iraq. A Barrier Analysis questionnaire was used for assessing the determinants of hand washing behaviour. Participants were screened and classified as either &#x27;doers&#x27; (those who wash their hands with soap at critical times) or &#x27;non-doers&#x27; (those who do not wash their hands with soap at critical times). Forty-five doers and non-doers were randomly selected from each camp and asked about behavioural determinants. The Barrier Analysis standard tabulation sheet was used for the analysis. No differences were observed between doers and non-doers in relation to self-efficacy, action efficacy, the difficulties and benefits of handwashing, and levels of access to soap and water. In the first of the two camps, non-doers found it harder to remember to wash their hands (P = 0.045), had lower perceived vulnerability to diarrhoea (P = 0.037), lower perceived severity of diarrhoea (P = 0.020) and were aware of &#x27;policies&#x27; which supported handwashing with soap (P = 0.037). In the second camp non-doers had lower perceived vulnerability to diarrhoea (P = 0.017).</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2020</span><span class="pub-tag">Iraq (Mosul Old City)</span></div>
+                    <h3 class="pub-title"><a href="https://www.gichd.org/fileadmin/uploads/gichd/migration/fileadmin/GICHD-resources/info-documents/EORE_Advisory_Group/Barrier_Analysis_Paper_01.pdf" target="_blank" rel="noopener">Using Barrier Analyses to Improve Explosive Ordnance Risk Education</a></h3>
+                    <p class="pub-authors">The HALO Trust; Al Ghad League for Women and Child Care; GICHD (EORE Advisory Group) · <em>Geneva International Centre for Humanitarian Demining (GICHD) EORE Advisory Group paper</em></p>
+                    <p class="pub-summary clamp">Demonstrates how barrier analysis can improve EORE by &#x27;comparing the personal, social, and environmental factors among the &quot;doers&quot; with those of the &quot;non-doers&quot; of the behavior of interest.&#x27; &#x27;If the responses of &quot;doers&quot; and &quot;non-doers&quot; are different, however, then the assumption is that factor influences the behaviour in some way.&#x27;</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2019</span><span class="pub-tag">State of Palestine</span></div>
+                    <h3 class="pub-title"><a href="https://www.unicef.org/sop/reports/barrier-analysis-and-depth-qualitative-interviews-report" target="_blank" rel="noopener">Barrier Analysis and In-depth Qualitative Interviews Report</a></h3>
+                    <p class="pub-authors">UNICEF State of Palestine · <em>UNICEF State of Palestine</em></p>
+                    <p class="pub-summary">Barrier Analysis report on maternal and child nutrition behaviours in West Bank and Gaza underpinning the Field Exchange 68 article (page fetch returned 403; not opened).</p>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2019</span><span class="pub-tag">Syria</span></div>
+                    <h3 class="pub-title"><a href="https://www.ennonline.net/fex/59/rrtbarrieranalysis" target="_blank" rel="noopener">Barrier analysis of infant and young child feeding and maternal nutrition behaviours among IDPs in northern and southern Syria</a></h3>
+                    <p class="pub-authors">Perera SM · <em>Field Exchange 59, Emergency Nutrition Network; International Medical Corps</em></p>
+                    <p class="pub-summary clamp">Purposive samples of 90 Syrian mothers (45 &#x27;doers&#x27; (those who practice the behaviour) and 45 &#x27;non-doers&#x27; (those who do not)) for each of three behaviours (EBF, minimum dietary diversity, extra meal in pregnancy). Results show various determinants that create barriers ... including lack of correct knowledge and misconceptions; lack of access to markets and availability of diverse foods; inability to afford food; stress; lack of support from critical family members; and lack of time to prepare meals.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2019</span><span class="pub-tag">Malawi</span></div>
+                    <h3 class="pub-title"><a href="https://www.onedrop.org/workspace/uploads/files/inpath-ba-report.pdf" target="_blank" rel="noopener">Barrier Analysis Report: Integrated Pathways for Improving Maternal, New-born and Child Health (InPATH) Project</a></h3>
+                    <p class="pub-authors">Cowater Sogema International; One Drop Foundation; Plan International Malawi; Ministry of Health Malawi · <em>InPATH Project / One Drop Foundation</em></p>
+                    <p class="pub-summary">Barrier Analysis is a rapid assessment tool used in community health and other community development projects to identify behavioural determinants associated with a particular behaviour. Doers/Non-Doers compared for handwashing with soap (caregivers and skilled birth attendants), latrine use, exclusive breastfeeding and ORS use.</p>
+                </article>
+                <article class="pub" data-type="other">
+                    <div class="pub-meta"><span class="pub-tag type-other">Conference abstract</span><span class="pub-tag year">2019</span><span class="pub-tag">Haiti</span></div>
+                    <h3 class="pub-title"><a href="https://coregroup.org/2019-global-health-practitioner-conference-poster-sessions/" target="_blank" rel="noopener">Exploring Willingness to Pay and Determinants of Using a Household Water Treatment Product of Haiti (poster)</a></h3>
+                    <p class="pub-authors">Riems B (Action Against Hunger) · <em>CORE Group Global Health Practitioner Conference 2019 poster session</em></p>
+                    <p class="pub-summary">In January 2019, a barrier analysis paired with a willingness to pay survey was conducted to understand behavioral determinants of household water treatment product use.</p>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2019</span><span class="pub-tag">Bangladesh</span></div>
+                    <h3 class="pub-title"><a href="https://www.ennonline.net/fex/61/en/improving-minimum-dietary-diversity-children-aged-6-23-months-when-household" target="_blank" rel="noopener">Improving minimum dietary diversity for children aged 6-23 months when household affordability is a major constraint in northeast Bangladesh</a></h3>
+                    <p class="pub-authors">Rana MM, Rahman SS, Shovan MA, Joarder BK, Haque MR · <em>Field Exchange 61, Emergency Nutrition Network; Save the Children International</em></p>
+                    <p class="pub-summary">The study primarily employed a &#x27;doer/non-doer analysis&#x27; to identify behavioural determinants (barriers and enablers) among those who consumed a diversified diet (&#x27;doers&#x27;) and those who did not (&#x27;non-doers&#x27;).</p>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2019</span><span class="pub-tag">United States</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1007/s10900-018-0551-8" target="_blank" rel="noopener">What Differentiates Underserved Smokers Who Successfully Quit From Those Who Do Not</a></h3>
+                    <p class="pub-authors">O&#x27;Keefe AM, Bustad K, Apata J, Sheikhattari P, Abrams NR, Mahmud A · <em>Journal of community health</em></p>
+                    <p class="pub-summary clamp">Poor persons continue to smoke at high rates and suffer grave health effects. We have been working with our community partners since 2008 to help poor people in the surrounding neighborhoods stop smoking through a multi-phase CBPR intervention known as CEASE. Our study used qualitative methods to identify factors that characterized those who successfully quit smoking (doers) and those who did not (non-doers). Both doers and non-doers identified social pressure as the main reason for starting to smoke, and health as the main motivator for quitting. Although they were similar in many ways, the doers seemed to have more social support for cessation-i.e., more people in their lives who wanted them to quit and whom they wanted to protect from secondhand smoke. The non-doers offered more feedback on how to improve the cessation classes, including making them longer, reducing the class size, adding extra counseling, and using quitting partners. Both doers and non-doers reported increased self-confidence, appreciation for the cessation support they received from CEASE, and a desire that the group classes continue. Cessation is a social event and smokers with more social support appear to be more successful at quitting. Showing interest in and offering social support to poor underserved smokers in their own communities is a powerful way to help them.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2018</span><span class="pub-tag">Guatemala</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.5191/jiaee.2018.25201" target="_blank" rel="noopener">Barrier Analysis as a Tool to Inform Extension Activity Planning: Insights from Guatemala</a></h3>
+                    <p class="pub-authors">Alene Seiler-Martinez; Theresa Pesl Murphrey; Gary Wingenbach · <em>Journal of International Agricultural and Extension Education</em></p>
+                    <p class="pub-summary clamp">Over the past decade, renewed emphasis has been placed on extension services in developing countries to reduce rural poverty and improve food security. Despite this emphasis, complex physical, political, and socioeconomic environments in developing countries pose significant difficulties to extension agents’ success rates of adoption of new practices and/or behavior change among rural populations. In addition, agents have meager resources at their disposal. Development programs in the health sector have had success with employing behavior change theories for program design, driven by the Barrier Analysis as a method for gathering data about target populations. Theory and research suggest this method provides key information about why a target population might adopt new practices. If extension agents in developing countries such as Guatemala had access to such information, they might intentionally design interventions that lead to adoption. This paper provides an examination of examples from the field in Guatemala that illuminate ways in which extension agents can gain formative data that when analyzed, may shape how they encourage adoption of new practices. The implications of this paper suggest that using formative data gathering for planning interventions can lead to the behavior change extension agents and their governments seek.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2018</span><span class="pub-tag">India</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1186/s12879-018-3129-2" target="_blank" rel="noopener">Demand-side determinants of timely vaccination of oral polio vaccine in social mobilization network areas of CORE Group polio project in Uttar Pradesh, India</a></h3>
+                    <p class="pub-authors">Choudhary M, Solomon R, Awale J, Dey R · <em>BMC infectious diseases</em></p>
+                    <p class="pub-summary clamp">Children who receive all doses of scheduled vaccines reduce their susceptibility to vaccine-preventable diseases. In India, full immunization coverage has increased significantly. However, only a small proportion of children are immunized on time. Globally, studies on factors affecting coverage of childhood immunization have found a significant impact by demand and supply-side determinants. This paper explores the demand-side determinants of timely immunization of the third dose of oral polio vaccine (OPV3) among children aged 6-11 months in the catchment areas of CORE Group Polio Project India. We analyzed secondary de-identified data from a household level &#x27;Doers and Non-doers survey&#x27; conducted in 2015. Determinants of timely OPV3 immunization were identified by modeling the characteristics of index children and survey respondents, surveyed households, respondents&#x27; media habits, their exposure to immunization services and perceptions towards child immunization, through a multinomial regression analysis. The eight demand-side predictors based on the background characteristics and perceptions of caregivers determined timely vaccination of OPV3. The strongest predictor of timely OPV3 immunization was found to be the fathers&#x27; educational level. Children of uneducated or lesser educated fathers had increased odds of not receiving the OPV1 vaccination, as compared to children of more educated fathers (OR &gt; 10).</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2018</span><span class="pub-tag">Vanuatu</span></div>
+                    <h3 class="pub-title"><a href="https://www.susana.org/_resources/documents/default/3-4825-7-1642070955.pdf" target="_blank" rel="noopener">First 1,000 Days Project: Barrier Analysis Report and Social and Behaviour Change Strategy (Vanuatu)</a></h3>
+                    <p class="pub-authors">Save the Children · <em>Save the Children (hosted on SuSanA library)</em></p>
+                    <p class="pub-summary clamp">The Barrier Analysis methodology seeks to identify the specific determinants that differ significantly between &#x27;doers&#x27; and &#x27;nondoers&#x27; of a particular behaviour, and to tailor project behaviour change strategies. Behaviours: feeding children 6-23 months fruits/vegetables, handwashing with soap, continued breastfeeding 12-23 months.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2018</span><span class="pub-tag">Zambia</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1186/s12884-018-1837-7" target="_blank" rel="noopener">Home deliveries in the capital: a qualitative exploration of barriers to institutional deliveries in peri-urban areas of Lusaka, Zambia</a></h3>
+                    <p class="pub-authors">Tamara Mulenga; Misinzo Moono; Martha Mwendafilumba · <em>Bmc Pregnancy and Childbirth</em></p>
+                    <p class="pub-summary clamp">A shortage of skilled birth attendants and low quality of care in health facilities along with unattended home deliveries contribute to the high maternal and neonatal mortality in sub Saharan Africa. Identifying and addressing context-specific reasons for not delivering at health care facilities could increase births assisted by skilled attendants who, if required, can provide life-saving interventions. Methods: We conducted 22 in-depth interviews (IDIs) with midwives at three health facilities in peri-urban communities and 24 semi-structured surveys with mothers in two areas served by health facilities with the highest number of reported home deliveries in Lusaka, Zambia. Both IDIs and surveys were audio-recorded, transcribed and coded to identify themes around delivery and birthing experience. Results: We found that most women preferred institutional deliveries to home deliveries, but were unable to utilize these services due to inability to recognize labour symptoms or lack of resources. Midwives speculated that women used herbal concoctions to reduce the duration of delivery with the result that women either did not present in time or endangered themselves and the baby with powerful contractions and precipitous labour. Respondents suggested that disrespectful and abusive maternity care dissuaded some women from delivering at health facilities.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="thesis">
+                    <div class="pub-meta"><span class="pub-tag type-thesis">Thesis</span><span class="pub-tag year">2018</span><span class="pub-tag">United States</span></div>
+                    <h3 class="pub-title"><a href="https://open.bu.edu/items/8e3b0439-33d5-4333-99a5-30e0b95513d0" target="_blank" rel="noopener">Increasing Aspirin Adherence in Pregnant Women at Risk for Preeclampsia</a></h3>
+                    <p class="pub-authors">Olszewski S · <em>Boston University OpenBU (thesis/project)</em></p>
+                    <p class="pub-summary">Listed on barrieranalysis.org research page as applying Barrier Analysis to aspirin adherence among pregnant women at risk of preeclampsia (repository page not opened).</p>
+                </article>
+                <article class="pub" data-type="guide">
+                    <div class="pub-meta"><span class="pub-tag type-guide">Methodology guide</span><span class="pub-tag year">2017</span></div>
+                    <h3 class="pub-title"><a href="https://www.fsnnetwork.org/practical-guide-conducting-barrier-analysis" target="_blank" rel="noopener">A Practical Guide to Conducting a Barrier Analysis (2nd edition)</a></h3>
+                    <p class="pub-authors">Bonnie Kittle · <em>Helen Keller International / FSN Network (TOPS)</em></p>
+                    <p class="pub-summary">Second edition of the training and self-study manual for planning, conducting, tabulating and applying Barrier Analysis studies (Doers vs Non-Doers, 12 determinants); available in English, Spanish, French and Arabic.</p>
+                </article>
+                <article class="pub" data-type="other">
+                    <div class="pub-meta"><span class="pub-tag type-other">Conference abstract</span><span class="pub-tag year">2017</span><span class="pub-tag">United States</span></div>
+                    <h3 class="pub-title"><a href="https://apha.confex.com/apha/2017/meetingapi.cgi/Session/52088?filename=2017_Session52088.html&amp;template=Word" target="_blank" rel="noopener">Assessing the underlying beliefs and perceptions of &#x27;doers&#x27; vs. &#x27;non-doers&#x27; regarding getting a mammogram</a></h3>
+                    <p class="pub-authors">Geshnizjani A · <em>APHA 2017 Annual Meeting &amp; Expo abstract (University of Maine, Farmington)</em></p>
+                    <p class="pub-summary">Compare and contrast the underlying beliefs and circumstances towards getting a mammogram across women who get a mammogram for the first time and those who did not.</p>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2017</span><span class="pub-tag">Burkina Faso, Cambodia, Ethiopia, Haiti, Kenya, Nigeria, Sierra Leone, Uganda</span></div>
+                    <h3 class="pub-title"><a href="https://knowledgeagainsthunger.org/wp-content/uploads/2018/12/Barrier-analysis-capitalisation.pdf" target="_blank" rel="noopener">Barrier Analysis Capitalisation (Learning Review 2017)</a></h3>
+                    <p class="pub-authors">Sacher A, Fuseau A · <em>Action Against Hunger (Knowledge Against Hunger)</em></p>
+                    <p class="pub-summary">Barrier analysis is a rapid assessment that aims to inform design of behaviour change projects by identifying the main enablers and barriers to behaviour adoption. Reviews 40 barrier analyses (2015-2017) by Action Against Hunger across FSL, WASH, MHCP and nutrition/health; methodology compares &#x27;doers&#x27; and &#x27;non-doers&#x27;.</p>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2017</span><span class="pub-tag">Myanmar</span></div>
+                    <h3 class="pub-title"><a href="https://www.lift-fund.org/en/download/file/fid/3602" target="_blank" rel="noopener">Barriers and Enablers of Agriculture and Nutrition Behaviors in Chin State, Myanmar: Formative Research for Productive Agriculture through Community Engagement (PACE)</a></h3>
+                    <p class="pub-authors">Lian TZ, Weatherson J · <em>Catholic Relief Services Myanmar / LIFT Fund</em></p>
+                    <p class="pub-summary clamp">The BA was the preferred formative research method for two key reasons, the BA is a rapid form of formative research and the BA can be conducted by national field staff. Four behaviours (maternal extra meals, colourful fruits/vegetables for 6-23 month olds, hermetic seed storage, legume intercropping) compared between doers and non-doers.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2017</span><span class="pub-tag">India</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.18203/2394-6040.ijcmph20170292" target="_blank" rel="noopener">Barriers to latrine use for defecation among mothers of children less than 59 months</a></h3>
+                    <p class="pub-authors">Daniel S et al. · <em>International Journal of Community Medicine and Public Health</em></p>
+                    <p class="pub-summary clamp">India has high concentration of its population who defecate outdoors or at least 620 million people who practice open defecation. This share has seen a slight decline in the past decade but with rapid population growth most Indians are being exposed to more human waste than ever before. Methods: This paper aims to study what is preventing the mothers of children 0-59 months in using latrine for defecation at all times through barrier analysis survey. It is a doer and non-doer study, a doer is defined as mothers of children 0-59 months of age who defecate in a latrine at all times and a non-doer are mothers of children 0-59 months of age who do not defecate in a latrine at all times. Results: Mothers who use latrine felt that having a latrine close to their residence or a private latrine makes it easy for them to use latrine every time for defecation. Clean environment was considered as an advantage among those who use latrine every time. They feel it is safer from harm if a latrine is used every time for defecation. Mothers who did not use a latrine felt very difficult to remember to use a latrine each time for defecation. Also those who do not use latrine feel that no toilet or a land to build one makes it difficult for them in making use of a latrine every time for defecation. Conclusions: The determinants studied will help in carefully addressing the barriers through targeted activities to encourage and promote the use of latrine.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2017</span><span class="pub-tag">Nepal</span></div>
+                    <h3 class="pub-title"><a href="https://www.ennonline.net/sites/default/files/FEX-57-Web_20Sept18_19-21.pdf" target="_blank" rel="noopener">Consumption of iron-rich foods among adolescent girls in Nepal: Identifying behavioural determinants</a></h3>
+                    <p class="pub-authors">Acharya A, Rana PP, Pun BK, Thapa B · <em>Field Exchange 57, Emergency Nutrition Network; USAID Suaahara II (Helen Keller International)</em></p>
+                    <p class="pub-summary clamp">A doer was defined as an adolescent girl who reported having eaten iron-rich foods in the 24 hours prior to the interview. A non-doer was defined as an adolescent girl who reported not having eaten any iron-rich foods ... There were significant differences between the two groups in their perceptions of the advantages of eating iron-rich foods.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2017</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1186/s41043-017-0127-8" target="_blank" rel="noopener">Engaging men to promote and support exclusive breastfeeding: a descriptive review of 28 projects in 20 low- and middle-income countries from 2003 to 2013</a></h3>
+                    <p class="pub-authors">Jennifer Yourkavitch; Jeniece Alvey; Debra Prosnitz · <em>Journal of Health Population and Nutrition</em></p>
+                    <p class="pub-summary clamp">Lay support has been associated with improved breastfeeding practices, but studies of programs that engage men in breastfeeding support have shown mixed results and most are from high-income countries. The purpose of our research is to review strategies to engage men in exclusive breastfeeding (EBF) promotion or support in 28 project areas across 20 low- and middle-income countries. This information may be used to inform program implementers and policymakers seeking to increase EBF. Methods: We tested the difference between baseline and final EBF proportions using Pearson’s chi-square (a = 0.05) and identified project areas with a significant increase. We categorized male engagement strategies as low- and high-intensity, using information from project reports. We looked for patterns by intensity and geography and described strategies used to engage men in different places. Results: Twenty-eight projects were reviewed; 21 (75%) were in areas where a statistically significant increase in EBF was observed between the beginning and end of the project. A variety of high- and low-intensity male engagement strategies was used in areas with an increase in EBF prevalence and in all geographic regions. High-intensity strategies engaged men directly during home or health visits by forming men’s groups and by working with male community leaders or members to promote EBF.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2016</span><span class="pub-tag">Lebanon</span></div>
+                    <h3 class="pub-title"><a href="https://fsnnetwork.org/resource/barrier-analysis-exclusive-breastfeeding-minimum-dietary-diversity-and-early-antenatal" target="_blank" rel="noopener">Barrier Analysis of Exclusive Breastfeeding, Minimum Dietary Diversity and Early Antenatal Care Seeking Behaviors of Syrian Refugees in Lebanon, September 2016</a></h3>
+                    <p class="pub-authors">International Medical Corps (IMC) Lebanon · <em>International Medical Corps; posted on FSN Network and ReliefWeb</em></p>
+                    <p class="pub-summary">Barrier Analysis of exclusive breastfeeding, minimum dietary diversity and early ANC-seeking among Syrian refugees in Lebanon (FSN Network and ReliefWeb pages returned 403; not opened).</p>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2016</span><span class="pub-tag">Senegal</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1016/j.aogh.2016.04.625" target="_blank" rel="noopener">Barrier analysis to improve utilization of a novel cervical cancer screening program in rural Senegal</a></h3>
+                    <p class="pub-authors">N. Aspros; Tess Komarek; C. Dibaya · <em>Annals of Global Health</em></p>
+                    <p class="pub-summary">Used BA to improve uptake of cervical cancer screening in rural Senegal, identifying key behavioral determinants and informing targeted interventions to increase program coverage among women in underserved areas.</p>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">c. 2016</span><span class="pub-tag">Multiple countries</span></div>
+                    <h3 class="pub-title"><a href="https://www.fsnnetwork.org/sites/default/files/barrier_analysis_english.pdf" target="_blank" rel="noopener">Barrier analysis: Lessons from the field</a></h3>
+                    <p class="pub-authors">Kittle B, Rutishauser-Perera A · <em>International Medical Corps / FSN Network (TOPS, USAID-funded via Save the Children)</em></p>
+                    <p class="pub-summary">Barrier Analysis is a study that allows us to identify behavioral determinants associated with a particular behavior ... We develop a questionnaire and do interviews with people who do the behavior (Doers) and people who do not do the behavior (non-Doers).</p>
+                </article>
+                <article class="pub" data-type="other">
+                    <div class="pub-meta"><span class="pub-tag type-other">Conference abstract</span><span class="pub-tag year">2016</span><span class="pub-tag">United States</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1016/j.ajog.2015.10.122" target="_blank" rel="noopener">Barrier Analysis: Using Quality Improvement Methodology to Decrease Health Disparities in Recurrent Preterm Birth</a></h3>
+                    <p class="pub-authors">Abbott J, Smith-Lin C, O&#x27;Toole R, Lee-Parritz A · <em>American Journal of Obstetrics and Gynecology 214(1):S70 (SMFM abstract)</em></p>
+                    <p class="pub-summary">Applied BA within a quality improvement framework to identify and address health disparities in recurrent preterm birth management, demonstrating its value in clinical settings beyond its traditional community health applications.</p>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2016</span><span class="pub-tag">Ethiopia</span></div>
+                    <h3 class="pub-title"><a href="https://www.ennonline.net/fex/6/en/keyhole-gardens-ethiopia-study-barriers-scale" target="_blank" rel="noopener">Keyhole gardens in Ethiopia: A study of the barriers to scale-up</a></h3>
+                    <p class="pub-authors">Haile Y · <em>Field Exchange, Emergency Nutrition Network; Catholic Relief Services</em></p>
+                    <p class="pub-summary">90 women engaged in the original KHG project were interviewed. Of these, 45 were still cultivating (referred to as &#x27;doers&#x27;) and 45 had stopped KHG activities (referred to as &#x27;non-doers&#x27;). The results of the BA have been used to develop a refined behaviour change communication (BCC) strategy.</p>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2015</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.9745/ghsp-d-15-00051" target="_blank" rel="noopener">Care Groups I: An Innovative Community-Based Strategy for Improving Maternal, Neonatal, and Child Health in Resource-Constrained Settings</a></h3>
+                    <p class="pub-authors">Tom Davis; Henry B. Perry; Melanie Morrow · <em>Global Health Science and Practice</em></p>
+                    <p class="pub-summary clamp">Care Groups use volunteers to motivate mothers to adopt key MCH behaviors. The volunteers meet as a group every 2–4 weeks with a paid facilitator to learn new health promotion messages. Key ingredients of the approach include: peer-to-peer health promotion, selection of volunteers by the mothers, a manageable workload for the volunteers (no more than 15 households per volunteer), frequent (at least monthly) contact between volunteers and mothers, and regular supervision of the volunteers.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">c. 2015</span><span class="pub-tag">Sierra Leone, Liberia, Guinea (West Africa Ebola-affected)</span></div>
+                    <h3 class="pub-title"><a href="https://www.fsnnetwork.org/resource/ebola-barrier-analysis-compendium-summary-barrier-analysis-studies-ebola-related-behaviors" target="_blank" rel="noopener">Ebola Barrier Analysis Compendium: Summary of Barrier Analysis Studies on Ebola-related Behaviors</a></h3>
+                    <p class="pub-authors">Davis T, Srinivasan A (eds.); contributions from CRS, NestBuilders International, Mercy Corps, Samaritan&#x27;s Purse, Curamericas Global · <em>FSN Network SBC Task Force / CORE Group SBC Working Group / TOPS</em></p>
+                    <p class="pub-summary">This compendium was put together to add to the growing body of Ebola-related research and to understand ways in which improvements can be made in community mobilization. Summarises Barrier Analysis (doer/non-doer) studies on handwashing with soap, referral of cases, and prevention, early treatment and management of EVD.</p>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2014</span><span class="pub-tag">Bolivia</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.4269/ajtmh.13-0568" target="_blank" rel="noopener">A Cluster Randomized Controlled Trial to Reduce Childhood Diarrhea Using Hollow Fiber Water Filter and/or Hygiene–Sanitation Educational Interventions</a></h3>
+                    <p class="pub-authors">Tom Davis; Erik D. Lindquist; Christine Marie George · <em>American Journal of Tropical Medicine and Hygiene</em></p>
+                    <p class="pub-summary clamp">Safe domestic potable water supplies are urgently needed to reduce childhood diarrheal disease. In periurban neighborhoods in Cochabamba, Bolivia, we conducted a cluster randomized controlled trial to evaluate the efficacy of a household-level hollow fiber filter and/or behavior change communication (BCC) on water, sanitation, and hygiene (WASH) to reduce the diarrheal disease in children less than 5 years of age. In total, 952 households were followed for a period of 12 weeks post-distribution of the study interventions. Households using Sawyer PointONE filters had significantly less diarrheal disease compared with the control arm during the intervention period, which was shown by diarrheal prevalence ratios of 0.21 (95% confidence interval [95% CI] = 0.15–0.30) for the filter arm and 0.27 (95% CI = 0.22–0.34) for the filter and WASH BCC arm. A non-significant reduction in diarrhea prevalence was reported in the WASH BCC study arm households (0.71, 95% CI = 0.59–0.86).</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2014</span><span class="pub-tag">Zimbabwe</span></div>
+                    <h3 class="pub-title"><a href="https://www.careevaluations.org/wp-content/uploads/evaluations/barrier-analysis-report-ensure.pdf" target="_blank" rel="noopener">Barrier Analysis Study Report (ENSURE Project): Exclusive breastfeeding, meal frequency, meal variety and hand washing — Manicaland and Masvingo Provinces</a></h3>
+                    <p class="pub-authors">World Vision Zimbabwe; CARE Zimbabwe · <em>World Vision Zimbabwe / CARE Zimbabwe (ENSURE food security program); careevaluations.org</em></p>
+                    <p class="pub-summary clamp">Four barrier analysis studies conducted in August 2014 across Manicaland and Masvingo Provinces to identify motivators and barriers to exclusive breastfeeding (0-5 months), meal frequency (9-23 months), meal variety (6-23 months) and hand washing with soap/ash at five critical times. Key barriers included limited food access, mothers-in-law disapproval of exclusive breastfeeding, perceived insufficient breast milk, time constraints for meal preparation and difficulty remembering hand washing; motivators included health worker support, social approval and perceived health benefits. Recommendations were made to strengthen Care Group modules.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">c. 2014</span><span class="pub-tag">Seven countries</span></div>
+                    <h3 class="pub-title"><a href="https://www.fsnnetwork.org/resource/determined-behavior-change-comparative-study-application-barrier-analysis-methodology" target="_blank" rel="noopener">Determined Behavior Change: A Comparative Study of the Application of Barrier Analysis Methodology</a></h3>
+                    <p class="pub-authors">Mercy Corps · <em>Mercy Corps; hosted on FSN Network</em></p>
+                    <p class="pub-summary">Barrier Analysis is a methodology for better understanding the underlying determinants or factors that influence individual behavior choice. Comparative study of BA application across seven Mercy Corps country programs.</p>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2014</span><span class="pub-tag">Bangladesh</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1016/j.evalprogplan.2014.11.008" target="_blank" rel="noopener">Transition from the Lactational Amenorrhea Method to other modern family planning methods in rural Bangladesh: barrier analysis and implications for behavior change communication program intervention design</a></h3>
+                    <p class="pub-authors">Kouyaté RA, Ahmed S, Haver J, McKaig C, Akter N, Nash-Mercado A, Baqui A · <em>Evaluation and program planning</em></p>
+                    <p class="pub-summary clamp">The timely transition from Lactational Amenorrhea Method (LAM)(2) to another modern family planning method contributes to healthy spacing of pregnancies by increasing the adoption of family planning during the first year postpartum. Yet, literature suggests challenges in completing a timely LAM transition. To guide program implementation in Bangladesh, this study identified factors influencing women&#x27;s transition decisions. Eighty postpartum women, comprising 40 who transitioned from LAM(3) and 40 who did not,(4) participated. Half of each group participated in in-depth interviews to explore the decision-making process. All participants responded to a &quot;Barrier Analysis&quot; questionnaire to identify differences in eight behavioral determinants. More than half of transitioners switched to another modern method before or within the same month that LAM ended. Of the 18 transitioners who delayed,(5) 15 waited for menses to return. For non-transitioners, key barriers included waiting for menses to return, misconceptions on return to fertility, and perceived lack of familial support. The LAM transition can help women prevent unintended pregnancy during the first year postpartum. Increased emphasis on counseling women about the risk of pregnancy, and misconceptions about personal fertility patterns are critical for facilitating the transition. Strategies should also include interventions that train health workers and improve social support.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="guide">
+                    <div class="pub-meta"><span class="pub-tag type-guide">Methodology guide</span><span class="pub-tag year">2013</span></div>
+                    <h3 class="pub-title"><a href="https://coregroup.org/wp-content/uploads/media-backup/documents/Resources/Tools/Final_Practical_Guide_to_Conducting_BA_July_2014.pdf" target="_blank" rel="noopener">A Practical Guide to Conducting a Barrier Analysis</a></h3>
+                    <p class="pub-authors">Kittle BL · <em>Helen Keller International / CORE Group / TOPS (USAID)</em></p>
+                    <p class="pub-summary">Core methodology guide for conducting a Barrier Analysis with 45 Doers and 45 Non-Doers (reference item).</p>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2013</span><span class="pub-tag">Multiple countries</span></div>
+                    <h3 class="pub-title"><a href="https://fsnnetwork.org/resource/behavior-bank" target="_blank" rel="noopener">Behavior Bank (database of Barrier Analysis and Doer/Non-Doer study results)</a></h3>
+                    <p class="pub-authors">FSN Network / TOPS / Food for the Hungry · <em>Food Security and Nutrition Network</em></p>
+                    <p class="pub-summary">A database featuring research results from Barrier Analysis and Doer/NonDoer Studies ... browse the database by country, region, and behavior studied ... Submissions accepted for Barrier Analysis or Doer-NonDoer studies with adequate sample size (at least 30 Doers and 30 NonDoers).</p>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2013</span><span class="pub-tag">Mozambique</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.9745/ghsp-d-12-00045" target="_blank" rel="noopener">Reducing child global undernutrition at scale in Sofala Province, Mozambique, using Care Group Volunteers to communicate health messages to mothers</a></h3>
+                    <p class="pub-authors">Tom Davis; Carolyn Wetzel; Emma Hernandez Avilan · <em>Global Health Science and Practice</em></p>
+                    <p class="pub-summary">The second type of rapid formative research used to inform project planning was a series of Barrier Analysis studies of key health behaviors ... In these studies, mothers who were practicing a particular behavior (the &#x27;doers&#x27;) were compared with those who were not (the &#x27;non-doers&#x27;) to identify behavioral determinants.</p>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2013</span><span class="pub-tag">Nepal</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1111/mcn.12032" target="_blank" rel="noopener">Using formative research to design a context-specific behaviour change strategy to improve infant and young child feeding practices and nutrition in Nepal</a></h3>
+                    <p class="pub-authors">Locks LM, Pandey PR, Osei AK, Spiro DS, Adhikari DP, Haselow NJ, Quinn VJ, Nielsen JN · <em>Maternal &amp; child nutrition</em></p>
+                    <p class="pub-summary clamp">Global recommendations on strategies to improve infant feeding, care and nutrition are clear; however, there is limited literature that explains methods for tailoring these recommendations to the local context where programmes are implemented. This paper aims to: (1) highlight the individual, cultural and environmental factors revealed by formative research to affect infant and young child feeding and care practices in Baitadi district of Far Western Nepal; and (2) outline how both quantitative and qualitative research methods were used to design a context-specific behaviour change strategy to improve child nutrition. Quantitative data on 750 children aged 12-23 months and their families were collected via surveys administered to mothers. The participants were selected using a multistage cluster sampling technique. The survey asked about knowledge, attitude and behaviours relating to infant and young child feeding. Qualitative data on breastfeeding and complementary feeding beliefs and practices were also collected from a separate sample via focus group discussions with mothers, and key informant interviews with mothers-in-law and husbands. Key findings revealed gaps in knowledge among many informants resulting in suboptimal infant and young child feeding practices - particularly with relation to duration of exclusive breastfeeding and dietary diversity of complementary foods.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">2010</span><span class="pub-tag">Burundi</span></div>
+                    <h3 class="pub-title"><a href="https://docs.google.com/document/d/1SJKXStcQX5gSPv3fNLCs1fxygBTXclJT/edit?usp=sharing" target="_blank" rel="noopener">Barrier Analysis of Exclusive Breastfeeding in Ruyigi and Cancuzo Provinces, Burundi</a></h3>
+                    <p class="pub-authors">Francisco JEV · <em>Unpublished report</em></p>
+                    <p class="pub-summary">Unpublished Barrier Analysis report on exclusive breastfeeding in Ruyigi and Cancuzo provinces, Burundi (listed on barrieranalysis.org; not opened).</p>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">c. 2010</span></div>
+                    <h3 class="pub-title"><a href="https://www.slideshare.net/slideshow/barrier-analysis-survey-working-group-participation/3966732" target="_blank" rel="noopener">Barrier Analysis Survey: Working Group Participation (slides)</a></h3>
+                    <p class="pub-authors">Hanold M (Food for the Hungry) · <em>SlideShare presentation, Food for the Hungry</em></p>
+                    <p class="pub-summary">Slide deck by Mitzi Hanold, MPH, Food for the Hungry, presenting a Barrier Analysis survey on working-group participation (doers vs non-doers); SlideShare page not renderable for content extraction.</p>
+                </article>
+                <article class="pub" data-type="thesis">
+                    <div class="pub-meta"><span class="pub-tag type-thesis">Thesis</span><span class="pub-tag year">2010</span><span class="pub-tag">Madagascar</span></div>
+                    <h3 class="pub-title"><a href="https://consensus.app/papers/details/e81aac5861fb561e83d044b2fc6c3ac3/" target="_blank" rel="noopener">Using Barrier Analysis to Inform Behavior Change Communication Strategy</a></h3>
+                    <p class="pub-authors">Zafimanjaka M</p>
+                    <p class="pub-summary clamp">Explanatory behavior change theories and models were adopted in health behavior to understand its determinants in order to better influence behaviors for a healthy community. ... The barrier analysis approach, which draws its roots from several available cognitive-behavioral theories and models, brings a progress in the field application of health behavior sciences while including quantitative doers and non doers comparison. By identifying which potential determinants are actually powerful determinants for a specific behavior among specific target populations, the comparison of doers and non doers, barrier analysis approach provides sound information to public health practitioners in orienting efforts to address the most effective behavioral determinants when designing or reviewing their public health interventions (Davis, 2004). Additionally, comparing non doers with doers considers the changeability criterion suggested by Gielen and Mac Donald in 2002. Based on the idea of comparing two population groups (doers and non doers), we will borrow statistical techniques which are frequently used in epidemiology to make comparisons more scientific and detect the presence or lack of association between behavior and its potential determinants suggested by theories. Furthermore, this quantitative barrier analysis can be easily conducted in few days and with a simplified toolkit that can be used by field practitioners. In this paper, I will accomplish two objectives.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2006</span><span class="pub-tag">Ghana</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.1186/1475-2875-5-61" target="_blank" rel="noopener">Who sleeps under bednets in Ghana? A doer/non-doer analysis of malaria prevention behaviours</a></h3>
+                    <p class="pub-authors">De La Cruz N, Crookston B, Dearden K, Gray B, Ivins N, Alder S, Davis R · <em>Malaria journal</em></p>
+                    <p class="pub-summary clamp">Malaria prevention programmes should be based in part on knowledge of why some individuals use bednets while others do not. This paper identifies factors and characteristics of women that affect bednet use among their children less than five years of age in Ghana. Data come from the baseline component of an evaluation of Freedom from Hunger&#x27;s malaria curriculum. A quasi-experimental design was used to select clients (n = 516) of Credit with Education (an integrated package of microfinance and health education) and non-clients (n = 535). Chi-squares, Fisher&#x27;s Exact tests and logistic regression were used to compare the characteristics of mothers whose children use bednets (doers) with those whose children do not (non-doers) and to identify factors associated with bednet use among children less than five years of age. The following factors were most closely associated with bednet use: region of residence; greater food security; and caregivers&#x27; beliefs about symptoms, causation and groups most vulnerable to malaria. Most respondents knew mosquitoes caused malaria; however, 20.6% of doers and 12.3% of non-doers (p = .0228) thought overworking oneself caused malaria. Ninety percent of doers and 77.0% of non-doers felt that sleeping under a net was protective against malaria (p = .0040). In addition, 16.5% of doers and 7.5% of non-doers (p = .0025) identified adult males as most vulnerable to malaria.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="other">
+                    <div class="pub-meta"><span class="pub-tag type-other">News</span><span class="pub-tag year">2005</span><span class="pub-tag">United States (Baltimore)</span></div>
+                    <h3 class="pub-title"><a href="https://www.baltimoresun.com/2005/06/12/city-launches-initiative-to-boost-trash-can-use/" target="_blank" rel="noopener">City launches initiative to boost trash-can use</a></h3>
+                    <p class="pub-authors">Jonathan D. Rockoff · <em>The Baltimore Sun</em></p>
+                    <p class="pub-summary clamp">News report on a Baltimore City behavior-change initiative to increase residents&#x27; use of covered trash cans (rat control). The approach questions trash-can users and non-users to determine the sources of their behavior, then formulates and implements an intervention plan; technical adviser Mary M. Hennigan describes applying a technique used in developing countries to encourage latrine use.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="guide">
+                    <div class="pub-meta"><span class="pub-tag type-guide">Methodology guide</span><span class="pub-tag year">2004</span></div>
+                    <h3 class="pub-title"><a href="https://coregroup.org/wp-content/uploads/media-backup/Tools/Barrier_Analysis_2010.pdf" target="_blank" rel="noopener">Barrier Analysis Facilitator&#x27;s Guide: A Tool for Improving Behavior Change Communication in Child Survival and Community Development Programs</a></h3>
+                    <p class="pub-authors">Davis TP Jr · <em>Food for the Hungry / CORE Group</em></p>
+                    <p class="pub-summary">Core methodology guide introducing Barrier Analysis and the Doer/Non-Doer comparison (reference item).</p>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">c. 2004</span></div>
+                    <h3 class="pub-title"><a href="http://barrieranalysis.fh.org/what_is/doer_non_doer.htm" target="_blank" rel="noopener">Barrier Analysis: A Tool for Improving Behavior Change Communication (Doer/Non-Doer page)</a></h3>
+                    <p class="pub-authors">Food for the Hungry (Davis TP) · <em>barrieranalysis.fh.org (Food for the Hungry legacy website)</em></p>
+                    <p class="pub-summary">Legacy Food for the Hungry web pages explaining Barrier Analysis and the Doer/Non-Doer comparison.</p>
+                </article>
+                <article class="pub" data-type="peer">
+                    <div class="pub-meta"><span class="pub-tag type-peer">Peer-reviewed</span><span class="pub-tag year">2002</span><span class="pub-tag">Viet Nam</span></div>
+                    <h3 class="pub-title"><a href="https://pubmed.ncbi.nlm.nih.gov/12503240/" target="_blank" rel="noopener">What influences health behavior? Learning from caregivers of young children in Viet Nam</a></h3>
+                    <p class="pub-authors">Dearden KA, Quan le N, Do M, Marsh DR, Schroeder DG, Pachón H, Lang TT · <em>Food and nutrition bulletin</em></p>
+                    <p class="pub-summary clamp">Globally, the caregiving behaviors that contribute to good nutritional status are well understood; but it is not clear why some caregivers perform these behaviors while others do not. This formative qualitative research was designed to improve understanding about what distinguishes caregivers who practice optimal behaviors from those who do not. This study is a one-time, cross-sectional baseline assessment of factors that affect nutrition-related behavior change. It took place in a rural northern province in Viet Nam. One hundred caregivers of children 6 to 17.9 months of age from five communes were interviewed. None of the five communes were included in the larger prospective study designed to test the impact of the Community Empowerment and Nutrition Program (CENP). Four behaviors were examined: feeding the child &quot;positive deviant&quot; foods, feeding the child during diarrheal episodes, washing the child&#x27;s hands, and taking the child to the health center when ill. Results indicate that for all four behaviors, favorable social norms distinguished those who practiced each behavior from those who did not. Positive, reinforcing beliefs and attitudes were important determinants of every behavior except handwashing Likewise, self-efficacy differentiated doers from non-doers for all behaviors except feeding during diarrheal episodes.</p><button class="pub-more" type="button">More</button>
+                </article>
+                <article class="pub" data-type="gray">
+                    <div class="pub-meta"><span class="pub-tag type-gray">Gray literature</span><span class="pub-tag year">n.d.</span><span class="pub-tag">Madagascar</span></div>
+                    <h3 class="pub-title">Barrier Analysis on a Maternal Iron-Folic Acid Supplementation Program in Madagascar</h3>
+                    <p class="pub-authors">USAID Infant &amp; Young Child Nutrition (IYCN) Project · <em>USAID IYCN Project (PATH)</em></p>
+                    <p class="pub-summary">Barrier Analysis report on a maternal iron-folic acid supplementation programme in Madagascar.</p>
+                </article>
+                <article class="pub" data-type="thesis">
+                    <div class="pub-meta"><span class="pub-tag type-thesis">Thesis</span><span class="pub-tag year">n.d.</span><span class="pub-tag">Senegal</span></div>
+                    <h3 class="pub-title"><a href="https://doi.org/10.37099/mtu.dc.etdr/284" target="_blank" rel="noopener">Barriers to and Efficacy of Point-of-Use Chemical Drinking Water Treatment in Kolda, Senegal, West Africa</a></h3>
+                    <p class="pub-authors">Barbara L. Michel · <em>Michigan Technological University</em></p>
+                    
+                </article>
+            </div>
+            <p id="pubNone" class="pub-count" style="display:none">No publications match your search.</p>
         </div>
     </section>
     
@@ -1011,24 +1299,42 @@
     </footer>
     
     <script>
-        document.querySelectorAll('.filter-button').forEach(button => {
-            button.addEventListener('click', () => {
-                // Update active button
-                document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                const filter = (button.getAttribute('data-filter') || button.textContent.trim()).toLowerCase();
-
-                document.querySelectorAll('.publication-card').forEach(card => {
-                    const category = (card.getAttribute('data-category') || '').toLowerCase();
-                    if (filter === 'all' || category === 'all' || category === filter) {
-                        card.style.display = '';
-                    } else {
-                        card.style.display = 'none';
-                    }
+        (function () {
+            const cards = [...document.querySelectorAll('#pubList .pub')];
+            const search = document.getElementById('pubSearch');
+            const count = document.getElementById('pubCount');
+            const none = document.getElementById('pubNone');
+            let type = 'all';
+            function apply() {
+                const words = search.value.toLowerCase().split(/\s+/).filter(Boolean);
+                let shown = 0;
+                cards.forEach(card => {
+                    const okType = type === 'all' || card.dataset.type === type;
+                    const text = card._t || (card._t = card.textContent.toLowerCase());
+                    const ok = okType && words.every(w => text.includes(w));
+                    card.style.display = ok ? '' : 'none';
+                    if (ok) shown++;
+                });
+                count.textContent = shown === cards.length ? `Showing all ${cards.length} publications` : `Showing ${shown} of ${cards.length} publications`;
+                none.style.display = shown ? 'none' : '';
+            }
+            document.querySelectorAll('.pub-controls .filter-button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.pub-controls .filter-button').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    type = btn.dataset.filter;
+                    apply();
                 });
             });
-        });
+            search.addEventListener('input', apply);
+            document.querySelectorAll('.pub-more').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const p = btn.previousElementSibling;
+                    const open = p.classList.toggle('clamp');
+                    btn.textContent = open ? 'More' : 'Less';
+                });
+            });
+        })();
     </script>
 
     <script>
